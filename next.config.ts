@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const repoName = "webiste";
-const isGithubPages = process.env.GITHUB_ACTIONS === "true";
+const isProduction = process.env.NODE_ENV === "production";
+const basePath = isProduction ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -10,8 +11,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isGithubPages ? `/${repoName}` : "",
-  assetPrefix: isGithubPages ? `/${repoName}/` : undefined,
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   turbopack: {
     root: path.join(__dirname),
   },

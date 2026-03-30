@@ -5,7 +5,7 @@ import { siteUrl } from "@/lib/site-content";
 import "./globals.css";
 
 const deployedSiteUrl =
-  process.env.GITHUB_ACTIONS === "true"
+  process.env.NODE_ENV === "production"
     ? "https://powerinteriosolutions-hash.github.io/webiste"
     : siteUrl;
 
