@@ -1,0 +1,226 @@
+{
+  "stats": [
+    { "value": "95%", "label": "client satisfaction" },
+    { "value": "10+", "label": "years of experience" },
+    { "value": "1500+", "label": "handovers" },
+    { "value": "24/7", "label": "support availability" }
+  ],
+  "services": [
+    {
+      "title": "Residential Interiors",
+      "description": "From living rooms and bedrooms to wardrobes, bathrooms, and kitchens, we shape homes around your lifestyle."
+    },
+    {
+      "title": "Commercial Office Interiors",
+      "description": "Professional office interiors, reception areas, workstations, cafes, and retail spaces designed for function and brand impact."
+    },
+    {
+      "title": "Interior Consultation",
+      "description": "Thoughtful planning, design direction, and material guidance to help every decision feel clear and intentional."
+    },
+    {
+      "title": "Turnkey Execution",
+      "description": "From concept to completion, our team manages interiors with creativity, professionalism, and detail."
+    }
+  ],
+  "reasons": [
+    "Plan designs tailored to the space and lifestyle",
+    "Client consultation with a practical, transparent approach",
+    "Creativity, professionalism, and client-first execution",
+    "Design choices that add style, function, and lasting value"
+  ],
+  "projects": [
+    {
+      "name": "Living Rooms",
+      "category": "Residential interior",
+      "description": "Comfort-first living spaces with visual warmth, practical planning, and details that make everyday life feel elevated."
+    },
+    {
+      "name": "Commercial Offices",
+      "category": "Commercial workspace",
+      "description": "Efficient office environments with better workflow, clearer zoning, and a polished professional identity."
+    },
+    {
+      "name": "Kitchens and Wardrobes",
+      "category": "Storage and utility",
+      "description": "Functional storage and kitchen layouts built to improve comfort, movement, and everyday usability."
+    }
+  ],
+  "process": [
+    {
+      "title": "Discover",
+      "text": "We understand your space, goals, style preferences, and practical constraints before proposing direction."
+    },
+    {
+      "title": "Design",
+      "text": "Layouts, moodboards, material selections, and 3D views help you see the space before execution begins."
+    },
+    {
+      "title": "Deliver",
+      "text": "Our team coordinates production, site work, and finishing details with timeline and quality control in focus."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Power On Interio transformed our living room into a calm, luxurious space that still feels practical for everyday family life.",
+      "name": "Ritika Sharma",
+      "role": "Residential Interior Client",
+      "service": "Living Room Interior",
+      "rating": 5,
+      "happiness": "Absolutely delighted with the finish and comfort."
+    },
+    {
+      "quote": "The office redesign improved movement, focus, and the overall look of our workspace. Clients notice the difference immediately.",
+      "name": "Arjun Mehta",
+      "role": "Commercial Office Client",
+      "service": "Office Interior Design",
+      "rating": 5,
+      "happiness": "Very happy with the functionality and professional look."
+    },
+    {
+      "quote": "Our modular kitchen feels elegant and far more organized now. Every shelf and work zone has been planned with real care.",
+      "name": "Neha Kapoor",
+      "role": "Homeowner",
+      "service": "Modular Kitchen",
+      "rating": 5,
+      "happiness": "Thrilled with the utility and premium finish."
+    },
+    {
+      "quote": "They understood our brand perfectly and translated it into a smart office interior that feels polished without being overwhelming.",
+      "name": "Sameer Khan",
+      "role": "Founder, Startup Workspace",
+      "service": "Commercial Office Interiors",
+      "rating": 4,
+      "happiness": "Very satisfied with the overall execution and tone."
+    },
+    {
+      "quote": "From planning to handover, the team stayed responsive and clear. The wardrobe and bedroom combination came out beautifully.",
+      "name": "Priya Nair",
+      "role": "Residential Client",
+      "service": "Bedroom and Wardrobe Design",
+      "rating": 5,
+      "happiness": "Extremely happy with the storage planning."
+    },
+    {
+      "quote": "The consultation stage itself was valuable. We got clarity on materials, layouts, and budget before committing to execution.",
+      "name": "Dev Malhotra",
+      "role": "Interior Consultation Client",
+      "service": "Interior Consultation",
+      "rating": 4,
+      "happiness": "Really pleased with the guidance and transparency."
+    },
+    {
+      "quote": "Our reception and workstation areas now feel more cohesive, brighter, and better aligned with the way our team actually works.",
+      "name": "Ananya Verma",
+      "role": "Operations Lead",
+      "service": "Reception and Workstation Design",
+      "rating": 5,
+      "happiness": "Very pleased with the planning and team support."
+    },
+    {
+      "quote": "The final home interior feels warm and tailored instead of generic. Small details in lighting and storage made a big impact.",
+      "name": "Farhan Ali",
+      "role": "Home Interior Client",
+      "service": "Turnkey Home Interiors",
+      "rating": 5,
+      "happiness": "Super happy with the detailing and final ambience."
+    },
+    {
+      "quote": "They balanced aesthetics with deadlines very well. The project stayed on track and the completed office feels premium and efficient.",
+      "name": "Kavya Reddy",
+      "role": "Business Owner",
+      "service": "Turnkey Office Execution",
+      "rating": 4,
+      "happiness": "Happy with the speed, polish, and professionalism."
+    },
+    {
+      "quote": "We wanted a stylish yet practical kitchen and dining zone, and the team delivered a solution that works beautifully for daily use.",
+      "name": "Sana Iqbal",
+      "role": "Residential Upgrade Client",
+      "service": "Kitchen and Dining Interiors",
+      "rating": 5,
+      "happiness": "Genuinely excited every time we use the space."
+    }
+  ],
+  "founders": [
+    {
+      "name": "Shaik Shoiab",
+      "role": "CEO-Founder",
+      "image": "",
+      "vision": "To build Power On Interio into a trusted interior brand known for timeless design, practical execution, and client-first service.",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    },
+    {
+      "name": "Syed Naveed",
+      "role": "Co-Founder",
+      "image": "",
+      "vision": "To create residential and commercial spaces that combine strong aesthetics, functional planning, and long-term value for every client.",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    }
+  ],
+  "team": [
+    {
+      "name": "Sageer",
+      "role": "Head of Sales",
+      "image": "",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    },
+    {
+      "name": "Bakash",
+      "role": "Head of Client",
+      "image": "",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    },
+    {
+      "name": "Syed Barkath",
+      "role": "Head of Operation",
+      "image": "",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    },
+    {
+      "name": "Shaik Shazill",
+      "role": "Head of Marketing",
+      "image": "",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    },
+    {
+      "name": "Aashik",
+      "role": "Tech",
+      "image": "",
+      "email": "poweroninterio@gmail.com",
+      "phone": "973-867-7363"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do you offer complete interior design and execution?",
+      "answer": "Yes. Power On Interio handles both design and turnkey execution, from concept planning and material selection to on-site coordination, finishing, and handover."
+    },
+    {
+      "question": "Which cities do you currently serve?",
+      "answer": "We currently provide interior services in Bangalore, Chennai, and Hyderabad for residential interiors, office interiors, and turnkey commercial projects."
+    },
+    {
+      "question": "Are your services available 24/7?",
+      "answer": "Yes. Our team offers 24/7 support for client coordination, project updates, and urgent execution requirements so communication stays smooth throughout the project."
+    },
+    {
+      "question": "Do you take residential as well as commercial projects?",
+      "answer": "Yes. We work on home interiors, modular kitchens, wardrobes, living spaces, office interiors, workstations, reception areas, and other commercial design requirements."
+    },
+    {
+      "question": "How do I get a quotation for my interior project?",
+      "answer": "You can contact us with your location, project type, space size, and requirements. Our team will discuss the scope, understand your needs, and guide you toward the right quotation and design approach."
+    },
+    {
+      "question": "How long does an interior project usually take?",
+      "answer": "Project timelines depend on the size, scope, and finish level, but we always aim for clear planning, realistic timelines, and smooth execution so you know what to expect at every stage."
+    }
+  ]
+}

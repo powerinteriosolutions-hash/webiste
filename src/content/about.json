@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "About Us",
+    "description": "Learn about Power On Interio, an interior design company focused on premium residential and commercial spaces."
+  },
+  "hero": {
+    "eyebrow": "About Us",
+    "title": "An interior design company built around thoughtful spaces and reliable execution.",
+    "paragraphOneSuffix": "We focus on creating spaces that feel elegant, practical, and aligned with the people who use them every day.",
+    "paragraphTwo": "This website is now structured as a company profile, giving you a stronger foundation for trust, enquiries, and long-term SEO growth than a simple one-page portfolio."
+  },
+  "approach": {
+    "eyebrow": "Our Approach",
+    "title": "Design with clarity, detail, and a calm execution process."
+  },
+  "leadership": {
+    "eyebrow": "Leadership",
+    "title": "The team behind the magic."
+  }
+}

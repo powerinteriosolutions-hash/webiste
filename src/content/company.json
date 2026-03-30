@@ -1,0 +1,26 @@
+{
+  "siteUrl": "https://poweroninterio.com",
+  "company": {
+    "name": "Power On Interio",
+    "shortName": "Poweroninterio",
+    "email": "poweroninterio@gmail.com",
+    "phone": "973-867-7363",
+    "phoneHref": "tel:9738677363",
+    "logoPath": "/poweron-logo.png",
+    "tagline": "We design interiors that inspire, delight, and elevate your everyday life.",
+    "description": "At Power On Interio, we design interiors that inspire, delight, and elevate your everyday life across residential and commercial spaces.",
+    "location": "India",
+    "heroTitle": "Find Your Dream Interior Space",
+    "heroDescription": "Power On Interio creates residential and commercial interiors that balance style, function, and timeless elegance with a client-first approach.",
+    "instagram": "https://instagram.com/poweroninterio",
+    "whatsapp": "https://wa.me/9738677363",
+    "linkedin": "#"
+  },
+  "navLinks": [
+    { "href": "/", "label": "Home" },
+    { "href": "/about", "label": "About" },
+    { "href": "/services", "label": "Services" },
+    { "href": "/projects", "label": "Projects" },
+    { "href": "/contact", "label": "Contact" }
+  ]
+}
