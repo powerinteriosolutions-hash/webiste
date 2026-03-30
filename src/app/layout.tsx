@@ -4,8 +4,13 @@ import { SiteHeader } from "@/components/site-header";
 import { siteUrl } from "@/lib/site-content";
 import "./globals.css";
 
+const deployedSiteUrl =
+  process.env.GITHUB_ACTIONS === "true"
+    ? "https://powerinteriosolutions-hash.github.io/webiste"
+    : siteUrl;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(deployedSiteUrl),
   title: {
     default: "Power On Interio | Interior Design Company",
     template: "%s | Power On Interio",
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: siteUrl,
+    url: deployedSiteUrl,
     title: "Power On Interio | Interior Design Company",
     description:
       "Residential and commercial interior design presented in a premium, SEO-ready company website.",

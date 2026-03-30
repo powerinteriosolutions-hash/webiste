@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://powerinteriosolutions-hash.github.io/webiste/sitemap.xml

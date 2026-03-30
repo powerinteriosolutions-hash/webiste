@@ -7,7 +7,7 @@ import {
   faqs,
   founders,
   homeContent,
-  process,
+  process as processSteps,
   projects,
   reasons,
   services,
@@ -15,6 +15,11 @@ import {
   stats,
   testimonials,
 } from "@/lib/site-content";
+
+const deployedSiteUrl =
+  process.env.GITHUB_ACTIONS === "true"
+    ? "https://powerinteriosolutions-hash.github.io/webiste"
+    : siteUrl;
 
 export const metadata: Metadata = {
   title: homeContent.meta.title,
@@ -25,7 +30,7 @@ const seoSchema = {
   "@context": "https://schema.org",
   "@type": "InteriorDesign",
   name: company.name,
-  url: siteUrl,
+  url: deployedSiteUrl,
   description: company.description,
   areaServed: company.location,
   serviceType: services.map((service) => service.title),
@@ -362,7 +367,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-3 md:gap-5">
-            {process.map((step, index) => (
+            {processSteps.map((step, index) => (
               <article
                 key={step.title}
                 className="interactive-card rounded-[1.45rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-5 shadow-[0_18px_50px_rgba(86,64,44,0.05)] sm:rounded-[1.8rem] sm:p-7"
