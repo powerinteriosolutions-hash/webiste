@@ -1,0 +1,2 @@
+:HL["/webiste/_next/static/css/9602b5e520257f4d.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"contact","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"yQPvoPVu5O1LPXpoM8JD4"}
