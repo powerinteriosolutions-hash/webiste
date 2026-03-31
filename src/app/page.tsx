@@ -255,7 +255,7 @@ export default function Home() {
         <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
-        <div className="mx-auto flex min-h-[86vh] max-w-7xl flex-col justify-end px-4 pb-6 pt-12 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
+        <div className="mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-end px-4 pb-6 pt-12 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
           <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
             <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white">
               <div className="hero-cinematic-fact-wrap hidden h-[4.1rem] sm:block sm:h-[4.8rem]" aria-hidden>
