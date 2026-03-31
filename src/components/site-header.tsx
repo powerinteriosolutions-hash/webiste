@@ -3,10 +3,26 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { company, navLinks } from "@/lib/site-content";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const normalizePath = (value: string) => {
+    const path = value.split("#")[0]?.split("?")[0] ?? "/";
+    if (path === "/") return "/";
+    return path.replace(/\/+$/, "");
+  };
+
+  const currentPath = normalizePath(pathname ?? "/");
+
+  const isLinkActive = (href: string) => {
+    const targetPath = normalizePath(href);
+    if (targetPath === "/") return currentPath === "/";
+    return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(248,242,234,0.88)] backdrop-blur">
@@ -59,16 +75,26 @@ export function SiteHeader() {
             </span>
           </button>
 
-          <nav className="hidden flex-wrap gap-4 text-xs font-semibold tracking-[0.16em] uppercase text-[var(--color-muted)] sm:text-sm lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="transition hover:-translate-y-0.5 hover:text-[var(--color-accent)]"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden flex-wrap gap-2 text-xs font-semibold tracking-[0.16em] uppercase sm:text-sm lg:flex">
+            {navLinks.map((link) => {
+              const isActive = isLinkActive(link.href);
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  prefetch
+                  aria-current={isActive ? "page" : undefined}
+                  className={`rounded-full px-3 py-1.5 transition-[color,background-color,transform] duration-200 ${
+                    isActive
+                      ? "bg-[rgba(157,113,69,0.14)] text-[var(--color-accent)]"
+                      : "text-[var(--color-muted)] hover:-translate-y-0.5 hover:text-[var(--color-accent)]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
@@ -83,16 +109,26 @@ export function SiteHeader() {
             }`}
           >
             <div className="grid gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.14em] uppercase text-[var(--color-muted)] transition hover:bg-[rgba(157,113,69,0.08)] hover:text-[var(--color-accent)]"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = isLinkActive(link.href);
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    prefetch
+                    onClick={() => setIsOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.14em] uppercase transition-[color,background-color] duration-200 ${
+                      isActive
+                        ? "bg-[rgba(157,113,69,0.14)] text-[var(--color-accent)]"
+                        : "text-[var(--color-muted)] hover:bg-[rgba(157,113,69,0.08)] hover:text-[var(--color-accent)]"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           </nav>
         </div>
