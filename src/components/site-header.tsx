@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,6 +24,25 @@ export function SiteHeader() {
     return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
   };
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [currentPath]);
+
+  const handleSamePageLinkClick = (href: string) => {
+    if (isLinkActive(href)) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleMobileNavLinkClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isLinkActive(href)) {
+      return;
+    }
+
+    event.preventDefault();
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(248,242,234,0.88)] backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-8 lg:px-12">
@@ -31,7 +50,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className="group flex min-w-0 items-center gap-3"
-            onClick={() => setIsOpen(false)}
+            onClick={() => handleSamePageLinkClick("/")}
           >
             <div className="rounded-xl bg-white p-2 shadow-[0_10px_24px_rgba(71,52,34,0.08)] group-hover:-translate-y-0.5 group-hover:shadow-[0_16px_34px_rgba(71,52,34,0.12)]">
               <Image
@@ -112,11 +131,10 @@ export function SiteHeader() {
                 const isActive = isLinkActive(link.href);
 
                 return (
-                  <Link
+                  <a
                     key={link.href}
-                    href={link.href}
-                    prefetch
-                    onClick={() => setIsOpen(false)}
+                    href={withBasePath(link.href)}
+                    onClick={(event) => handleMobileNavLinkClick(event, link.href)}
                     aria-current={isActive ? "page" : undefined}
                     className={`rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.14em] uppercase transition-[color,background-color] duration-200 ${
                       isActive
@@ -125,7 +143,7 @@ export function SiteHeader() {
                     }`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 );
               })}
             </div>
