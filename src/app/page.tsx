@@ -6,7 +6,7 @@ import {
   company,
   faqs,
   homeContent,
-  process as processSteps,
+  processSteps,
   projects,
   reasons,
   services,
