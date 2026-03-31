@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, MapPin, Ruler, Sparkles } from "lucide-react";
-import { projects, projectsPageContent } from "@/lib/site-content";
+import { projects, projectsPageContent, withBasePath } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: projectsPageContent.meta.title,
@@ -29,11 +29,11 @@ const residentialGalleryImages = [
   "/residential/residential-wardrobe-corner-storage.jpg",
   "/residential/residential-wardrobe-entry-view.jpg",
   "/residential/residential-wardrobe-white-panel.jpg",
-];
+].map((imagePath) => withBasePath(imagePath));
 
 const commercialGalleryImages = Array.from(
   { length: 16 },
-  (_, index) => `/commercial/comercial-${index + 1}.jpeg`,
+  (_, index) => withBasePath(`/commercial/comercial-${index + 1}.jpeg`),
 );
 
 const locationCycle = ["Bengaluru", "Hyderabad", "Chennai"];
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
           <article className="project-feature-card animate-fade-rise-delay">
             <div className="project-feature-image-wrap">
               <Image
-                src="/commercial/comercial-13.jpeg"
+                src={withBasePath("/commercial/comercial-13.jpeg")}
                 alt="Feature project interior with premium office styling"
                 fill
                 priority

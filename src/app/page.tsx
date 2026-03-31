@@ -13,6 +13,7 @@ import {
   siteUrl,
   stats,
   testimonials,
+  withBasePath,
 } from "@/lib/site-content";
 
 const deployedSiteUrl =
@@ -35,7 +36,7 @@ const seoSchema = {
   serviceType: services.map((service) => service.title),
 };
 
-const projectImages = homeContent.projectImages;
+const projectImages = homeContent.projectImages.map((imagePath) => withBasePath(imagePath));
 const mobileTestimonials = testimonials.slice(0, 4);
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
@@ -78,7 +79,10 @@ const heroSlides = [
       "Utility-first kitchens with efficient storage, easy movement, and premium finish combinations.",
     expertiseTags: ["Kitchen Planning", "Storage Optimization", "Residential"],
   },
-];
+].map((slide) => ({
+  ...slide,
+  image: withBasePath(slide.image),
+}));
 
 export default function Home() {
   return (
@@ -225,7 +229,7 @@ export default function Home() {
           <div className="interactive-card grid max-w-2xl gap-4 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-5 sm:rounded-[2rem] sm:p-7">
             <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
-                src="/residential/residential-bedroom-upholstered-headboard.jpg"
+                src={withBasePath("/residential/residential-bedroom-upholstered-headboard.jpg")}
                 alt="Premium residential bedroom interior"
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
