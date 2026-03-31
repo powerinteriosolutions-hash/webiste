@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack && node scripts/prepare-github-pages.mjs",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
