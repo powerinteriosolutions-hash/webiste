@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { company, navLinks } from "@/lib/site-content";
+import { company, navLinks, withBasePath } from "@/lib/site-content";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export function SiteHeader() {
           >
             <div className="rounded-xl bg-white p-2 shadow-[0_10px_24px_rgba(71,52,34,0.08)] group-hover:-translate-y-0.5 group-hover:shadow-[0_16px_34px_rgba(71,52,34,0.12)]">
               <Image
-                src={company.logoPath}
+                src={withBasePath(company.logoPath)}
                 alt={`${company.name} logo`}
                 width={120}
                 height={52}

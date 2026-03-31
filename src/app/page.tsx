@@ -7,13 +7,14 @@ import {
   faqs,
   founders,
   homeContent,
-  process as processSteps,
+  processSteps,
   projects,
   reasons,
   services,
   siteUrl,
   stats,
   testimonials,
+  withBasePath,
 } from "@/lib/site-content";
 
 const deployedSiteUrl =
@@ -36,7 +37,7 @@ const seoSchema = {
   serviceType: services.map((service) => service.title),
 };
 
-const projectImages = homeContent.projectImages;
+const projectImages = homeContent.projectImages.map((image) => withBasePath(image));
 const mobileTestimonials = testimonials.slice(0, 4);
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
@@ -54,7 +55,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.36)_0%,_rgba(20,17,14,0.68)_100%)]" />
         <div className="float-slow absolute inset-0 -z-30">
           <Image
-            src="/office-premium.jpg"
+            src={withBasePath("/office-premium.jpg")}
             alt="Premium interior workspace"
             fill
             priority
@@ -154,7 +155,7 @@ export default function Home() {
           <div className="interactive-card grid max-w-2xl gap-5 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-6 sm:rounded-[2rem] sm:p-8">
             <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
-                src="/living-premium.jpg"
+                src={withBasePath("/living-premium.jpg")}
                 alt="Luxury living room interior"
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"

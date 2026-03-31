@@ -7,6 +7,7 @@ import {
   reasons,
   stats,
   team,
+  withBasePath,
 } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -96,7 +97,7 @@ export default function AboutPage() {
                 typeof founder.image === "string" &&
                 founder.image.trim() &&
                 !founder.image.startsWith("data:")
-                  ? founder.image
+                  ? withBasePath(founder.image)
                   : "";
 
               return (
@@ -189,7 +190,7 @@ export default function AboutPage() {
                   typeof member.image === "string" &&
                   member.image.trim() &&
                   !member.image.startsWith("data:")
-                    ? member.image
+                    ? withBasePath(member.image)
                     : "";
 
                 return (
