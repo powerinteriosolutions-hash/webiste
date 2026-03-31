@@ -7,6 +7,16 @@ import servicesPage from "@/content/services-page.json";
 import sharedSections from "@/content/shared-sections.json";
 
 export const basePath = process.env.NODE_ENV === "production" ? "/webiste" : "";
+const optimizedAssetRoot = "/optimized";
+const localJpegPattern = /\.(jpe?g)$/i;
+
+const withOptimizedAssetPath = (assetPath: string) => {
+  if (!localJpegPattern.test(assetPath)) {
+    return assetPath;
+  }
+
+  return `${optimizedAssetRoot}${assetPath.replace(localJpegPattern, ".webp")}`;
+};
 
 export const withBasePath = (assetPath: string) => {
   if (!assetPath || assetPath.startsWith("http")) {
@@ -14,7 +24,7 @@ export const withBasePath = (assetPath: string) => {
   }
 
   const normalized = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
-  return `${basePath}${normalized}`;
+  return `${basePath}${withOptimizedAssetPath(normalized)}`;
 };
 
 export const siteUrl = companyData.siteUrl;
