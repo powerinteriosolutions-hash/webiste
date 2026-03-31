@@ -998,6 +998,20 @@ h6 {
   }
 }
 
+.no-view-timeline main > section[data-reveal-section] {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 760ms ease-out,
+    transform 760ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.no-view-timeline main > section[data-reveal-section].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 @media (min-width: 1024px) {
   .client-carousel-column {
     height: 460px;
@@ -1104,11 +1118,7 @@ h6 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
+  html {
     scroll-behavior: auto !important;
   }
 
@@ -1119,6 +1129,8 @@ h6 {
   .project-filmstrip-track,
   .project-gallery-ambient,
   .project-feature-badge,
+  .float-slow,
+  .drift-glow,
   .project-gallery-card,
   .hero-cinematic-slide,
   .hero-cinematic-image,
@@ -1147,5 +1159,11 @@ h6 {
   .hero-cinematic-indicator {
     opacity: 0.6;
     transform: scaleX(1);
+  }
+
+  .no-view-timeline main > section[data-reveal-section] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

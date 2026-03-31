@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionFallback } from "@/components/motion-fallback";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteUrl } from "@/lib/site-content";
@@ -71,6 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        <MotionFallback />
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />
