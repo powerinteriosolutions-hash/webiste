@@ -133,14 +133,14 @@ h6 {
     opacity: 0;
     transform: scale(1.08);
   }
-  4% {
+  3% {
     opacity: 1;
   }
-  28% {
+  11% {
     opacity: 1;
     transform: scale(1);
   }
-  33% {
+  14.5% {
     opacity: 0;
     transform: scale(0.98);
   }
@@ -163,17 +163,17 @@ h6 {
     transform: translate3d(0, 14px, 0);
     filter: blur(2px);
   }
-  5% {
+  3% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     filter: blur(0);
   }
-  28% {
+  11% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     filter: blur(0);
   }
-  33% {
+  14.5% {
     opacity: 0;
     transform: translate3d(0, -10px, 0);
     filter: blur(2px);
@@ -187,13 +187,13 @@ h6 {
     transform: scaleX(0.35);
     background: rgba(255, 255, 255, 0.34);
   }
-  5%,
-  28% {
+  3%,
+  11% {
     opacity: 1;
     transform: scaleX(1);
-    background: rgba(217, 180, 140, 0.95);
+    background: var(--hero-indicator-active, rgba(217, 180, 140, 0.95));
   }
-  33% {
+  14.5% {
     opacity: 0.34;
     transform: scaleX(0.35);
     background: rgba(255, 255, 255, 0.34);
@@ -259,15 +259,20 @@ h6 {
 }
 
 .hero-content-shell {
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(180deg, rgba(18, 15, 12, 0.34), rgba(18, 15, 12, 0.18));
-  backdrop-filter: blur(4px);
-  padding: 1rem;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0;
+  text-shadow: 0 10px 30px rgba(9, 7, 6, 0.44);
+}
+
+.hero-mobile-dock {
+  width: 100%;
 }
 
 .hero-expertise-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  background: transparent;
 }
 
 .hero-cinematic-fact-wrap {
@@ -300,15 +305,22 @@ h6 {
 
 .hero-expertise-stage {
   position: relative;
-  min-height: 12.4rem;
+  min-height: 21.2rem;
 }
 
 .hero-expertise-frame {
   position: absolute;
   inset: 0;
   opacity: 0;
+  border-width: 1px;
+  border-style: solid;
+  backdrop-filter: blur(7px) saturate(110%);
   animation: heroFactCycle 18s ease-in-out infinite;
   will-change: transform, opacity, filter;
+}
+
+.hero-cinematic-fact-value {
+  text-shadow: 0 12px 32px rgba(10, 8, 6, 0.52);
 }
 
 .hero-expertise-image {
@@ -322,23 +334,40 @@ h6 {
 
 @media (min-width: 640px) {
   .hero-content-shell {
-    border-radius: 1.9rem;
-    padding: 1.4rem;
+    border-radius: 0;
+    padding: 0;
   }
 
   .hero-expertise-stage {
-    min-height: 13.2rem;
+    min-height: 22.6rem;
   }
 }
 
 @media (max-width: 640px) {
+  .hero-mobile-dock {
+    border-radius: 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(180deg, rgba(19, 16, 13, 0.18), rgba(19, 16, 13, 0.62));
+    backdrop-filter: blur(8px);
+    padding: 0.7rem;
+  }
+
+  .hero-mobile-dock .hero-expertise-card {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .hero-mobile-dock .hero-cta-wrap {
+    margin-top: 0.55rem;
+  }
+
   .hero-cinematic-indicator {
     width: 1.65rem;
     height: 0.2rem;
   }
 
   .hero-expertise-stage {
-    min-height: 12.1rem;
+    min-height: 6.8rem;
   }
 }
 
@@ -512,6 +541,29 @@ h6 {
   animation-play-state: paused;
 }
 
+@media (max-width: 640px) {
+  .client-name-marquee {
+    overflow: hidden;
+    mask-image: none;
+    padding-bottom: 0.15rem;
+  }
+
+  .client-name-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .client-name-marquee-track {
+    animation: marqueeLeft 58s linear infinite;
+    padding-right: 0;
+  }
+
+  .client-name-marquee:hover .client-name-marquee-track,
+  .client-name-marquee:active .client-name-marquee-track,
+  .client-name-marquee:focus-within .client-name-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 .client-carousel-column {
   position: relative;
 }
@@ -678,11 +730,16 @@ h6 {
   display: flex;
   gap: 0.9rem;
   width: max-content;
-  animation: projectStripScroll 34s linear infinite;
+  animation: projectStripScroll 46s linear infinite;
   will-change: transform;
 }
 
 .project-filmstrip:hover .project-filmstrip-track {
+  animation-play-state: paused;
+}
+
+.project-filmstrip:active .project-filmstrip-track,
+.project-filmstrip:focus-within .project-filmstrip-track {
   animation-play-state: paused;
 }
 
@@ -829,6 +886,12 @@ h6 {
   opacity: 1;
   transform: translateY(0);
   border-color: rgba(255, 255, 255, 0.38);
+}
+
+@media (max-width: 640px) {
+  .project-filmstrip-track {
+    animation-duration: 120s;
+  }
 }
 
 @media (min-width: 640px) {

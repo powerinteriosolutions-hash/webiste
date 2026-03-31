@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
   company,
@@ -48,6 +49,8 @@ const clientMarqueeItems = [
   ...homeContent.clientsSection.items,
   ...homeContent.clientsSection.items,
 ];
+
+const heroSlideIntervalSeconds = 6;
 const heroSlides = [
   {
     image: "/commercial/comercial-3.jpeg",
@@ -58,6 +61,19 @@ const heroSlides = [
     expertiseDetail:
       "Shared workspace planning with cleaner zoning, brighter circulation paths, and better team comfort.",
     expertiseTags: ["Shared Workspace", "Commercial", "Turnkey"],
+    palette: {
+      frameFrom: "rgba(31, 24, 19, 0.58)",
+      frameTo: "rgba(31, 24, 19, 0.24)",
+      frameBorder: "rgba(245, 219, 185, 0.52)",
+      title: "#fff0db",
+      body: "rgba(255, 246, 235, 0.96)",
+      tagBg: "rgba(66, 48, 30, 0.48)",
+      tagBorder: "rgba(245, 219, 185, 0.56)",
+      tagText: "#ffe6c7",
+      metric: "#fff0dc",
+      indicator: "rgba(226, 183, 138, 0.92)",
+      shadow: "rgba(13, 10, 8, 0.36)",
+    },
   },
   {
     image: "/commercial/comercial-4.jpeg",
@@ -68,6 +84,19 @@ const heroSlides = [
     expertiseDetail:
       "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
     expertiseTags: ["Group Discussion", "Meeting Rooms", "Acoustic Comfort"],
+    palette: {
+      frameFrom: "rgba(25, 33, 40, 0.58)",
+      frameTo: "rgba(25, 33, 40, 0.24)",
+      frameBorder: "rgba(208, 222, 236, 0.5)",
+      title: "#eef7ff",
+      body: "rgba(239, 247, 255, 0.95)",
+      tagBg: "rgba(49, 68, 86, 0.48)",
+      tagBorder: "rgba(208, 222, 236, 0.56)",
+      tagText: "#e4f1ff",
+      metric: "#eff8ff",
+      indicator: "rgba(187, 203, 218, 0.92)",
+      shadow: "rgba(12, 18, 24, 0.36)",
+    },
   },
   {
     image: "/residential/residential-kitchen-beige-modern.jpg",
@@ -78,11 +107,117 @@ const heroSlides = [
     expertiseDetail:
       "Utility-first kitchens with efficient storage, easy movement, and premium finish combinations.",
     expertiseTags: ["Kitchen Planning", "Storage Optimization", "Residential"],
+    palette: {
+      frameFrom: "rgba(48, 36, 24, 0.56)",
+      frameTo: "rgba(48, 36, 24, 0.24)",
+      frameBorder: "rgba(244, 225, 196, 0.52)",
+      title: "#fff2df",
+      body: "rgba(255, 247, 236, 0.95)",
+      tagBg: "rgba(88, 66, 43, 0.48)",
+      tagBorder: "rgba(244, 225, 196, 0.56)",
+      tagText: "#ffeacb",
+      metric: "#fff1de",
+      indicator: "rgba(229, 199, 160, 0.92)",
+      shadow: "rgba(20, 14, 9, 0.36)",
+    },
+  },
+  {
+    image: "/commercial/comercial-9.jpeg",
+    metric: "320+",
+    metricLabel: "Office Zones",
+    caption: "Executive meeting spaces built for comfort, focus, and presentation quality.",
+    expertiseTitle: "Executive Meeting Interiors",
+    expertiseDetail:
+      "Boardroom and client-facing spaces with better acoustics, polished finishes, and cleaner circulation.",
+    expertiseTags: ["Meeting Room", "Executive", "Commercial"],
+    palette: {
+      frameFrom: "rgba(26, 33, 41, 0.58)",
+      frameTo: "rgba(26, 33, 41, 0.24)",
+      frameBorder: "rgba(208, 221, 236, 0.52)",
+      title: "#eef7ff",
+      body: "rgba(240, 247, 255, 0.96)",
+      tagBg: "rgba(50, 69, 88, 0.48)",
+      tagBorder: "rgba(208, 221, 236, 0.56)",
+      tagText: "#e5f2ff",
+      metric: "#eff8ff",
+      indicator: "rgba(191, 206, 220, 0.92)",
+      shadow: "rgba(12, 18, 25, 0.36)",
+    },
+  },
+  {
+    image: "/commercial/comercial-12.jpeg",
+    metric: "48hr",
+    metricLabel: "Concept Previews",
+    caption: "Fast concept iterations with practical layout thinking and execution clarity.",
+    expertiseTitle: "Startup Collaboration Bays",
+    expertiseDetail:
+      "Dynamic team zones designed for brainstorming, standups, and rapid ideation without visual clutter.",
+    expertiseTags: ["Startup", "Collaboration", "Office"],
+    palette: {
+      frameFrom: "rgba(30, 38, 31, 0.58)",
+      frameTo: "rgba(30, 38, 31, 0.24)",
+      frameBorder: "rgba(207, 226, 201, 0.5)",
+      title: "#ebffe6",
+      body: "rgba(239, 252, 235, 0.95)",
+      tagBg: "rgba(57, 82, 50, 0.48)",
+      tagBorder: "rgba(207, 226, 201, 0.56)",
+      tagText: "#deffd6",
+      metric: "#ecffe8",
+      indicator: "rgba(181, 214, 172, 0.92)",
+      shadow: "rgba(15, 24, 15, 0.34)",
+    },
+  },
+  {
+    image: "/residential/residential-bedroom-soft-neutral.jpg",
+    metric: "900+",
+    metricLabel: "Bedrooms Crafted",
+    caption: "Calm bedroom concepts with layered lighting and restful color palettes.",
+    expertiseTitle: "Premium Bedroom Styling",
+    expertiseDetail:
+      "Soft-tone bedroom interiors balancing elegance, storage practicality, and day-to-night comfort.",
+    expertiseTags: ["Bedroom", "Residential", "Soft Luxury"],
+    palette: {
+      frameFrom: "rgba(45, 35, 29, 0.56)",
+      frameTo: "rgba(45, 35, 29, 0.24)",
+      frameBorder: "rgba(242, 224, 204, 0.54)",
+      title: "#fff2e5",
+      body: "rgba(255, 246, 238, 0.96)",
+      tagBg: "rgba(86, 63, 48, 0.48)",
+      tagBorder: "rgba(242, 224, 204, 0.56)",
+      tagText: "#ffe8d2",
+      metric: "#fff0e1",
+      indicator: "rgba(231, 204, 174, 0.92)",
+      shadow: "rgba(20, 14, 10, 0.34)",
+    },
+  },
+  {
+    image: "/residential/residential-wardrobe-white-panel.jpg",
+    metric: "1:1",
+    metricLabel: "Storage Planning",
+    caption: "Wardrobe systems shaped around real daily routines and clean organization.",
+    expertiseTitle: "Smart Wardrobe Utility",
+    expertiseDetail:
+      "Custom wardrobe layouts with optimized shelves, hanging zones, and long-term storage efficiency.",
+    expertiseTags: ["Wardrobe", "Utility", "Storage"],
+    palette: {
+      frameFrom: "rgba(34, 36, 39, 0.56)",
+      frameTo: "rgba(34, 36, 39, 0.24)",
+      frameBorder: "rgba(223, 229, 237, 0.52)",
+      title: "#f2f6fc",
+      body: "rgba(241, 246, 252, 0.95)",
+      tagBg: "rgba(62, 70, 82, 0.48)",
+      tagBorder: "rgba(223, 229, 237, 0.56)",
+      tagText: "#e7eef7",
+      metric: "#f3f7fd",
+      indicator: "rgba(202, 214, 228, 0.92)",
+      shadow: "rgba(16, 18, 22, 0.34)",
+    },
   },
 ].map((slide) => ({
   ...slide,
   image: withBasePath(slide.image),
 }));
+const heroAnimationDurationSeconds = heroSlides.length * heroSlideIntervalSeconds;
 
 export default function Home() {
   return (
@@ -93,13 +228,16 @@ export default function Home() {
       />
 
       <section className="relative isolate overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.24)_0%,_rgba(20,17,14,0.56)_100%)]" />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.12)_0%,_rgba(20,17,14,0.34)_100%)]" />
         <div className="hero-cinematic-backdrop absolute inset-0 -z-30">
           {heroSlides.map((slide, index) => (
             <div
               key={slide.metricLabel}
               className="hero-cinematic-slide"
-              style={{ animationDelay: `${index * 6}s` }}
+              style={{
+                animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                animationDuration: `${heroAnimationDurationSeconds}s`,
+              }}
             >
               <Image
                 src={slide.image}
@@ -109,6 +247,7 @@ export default function Home() {
                 quality={68}
                 sizes="100vw"
                 className="hero-cinematic-image object-cover object-center"
+                style={{ animationDuration: `${heroAnimationDurationSeconds}s` }}
               />
             </div>
           ))}
@@ -116,45 +255,70 @@ export default function Home() {
         <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
-        <div className="mx-auto flex min-h-[72vh] max-w-7xl flex-col px-4 py-10 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
-          <div className="grid flex-1 gap-7 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="hero-content-shell animate-fade-rise max-w-3xl text-white">
-              <div className="hero-cinematic-fact-wrap h-[4.1rem] sm:h-[4.8rem]" aria-hidden>
+        <div className="mx-auto flex min-h-[86vh] max-w-7xl flex-col justify-end px-4 pb-6 pt-12 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
+          <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white">
+              <div className="hero-cinematic-fact-wrap hidden h-[4.1rem] sm:block sm:h-[4.8rem]" aria-hidden>
                 {heroSlides.map((slide, index) => (
                   <div
                     key={slide.metric}
                     className="hero-cinematic-fact"
-                    style={{ animationDelay: `${index * 6}s` }}
+                    style={{
+                      animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                      animationDuration: `${heroAnimationDurationSeconds}s`,
+                    }}
                   >
-                    <p className="font-serif text-[2.35rem] leading-none text-[var(--color-accent-soft)] sm:text-[3.2rem]">
+                    <p
+                      className="hero-cinematic-fact-value font-serif font-semibold text-[4.79rem] leading-none sm:text-[5.79rem]"
+                      style={{ color: slide.palette.metric }}
+                    >
                       {slide.metric}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="hero-expertise-card mt-4 rounded-[1.7rem] border border-white/18 p-4 text-white shadow-[0_28px_80px_rgba(10,8,7,0.2)] backdrop-blur sm:rounded-[2rem] sm:p-6">
-                <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)] sm:text-[0.78rem] sm:tracking-[0.24em]">
+              <div className="hero-expertise-card mt-1 rounded-[1.45rem] p-2.5 text-white sm:mt-4 sm:rounded-[2rem] sm:p-6">
+                <p className="text-[0.82rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[1.08rem] sm:tracking-[0.2em]">
                   Core Expertise
                 </p>
-                <div className="hero-expertise-stage mt-4 sm:mt-5" aria-hidden>
+                <div className="hero-expertise-stage mt-2 sm:mt-5" aria-hidden>
                   {heroSlides.map((slide, index) => (
                     <article
                       key={`expertise-left-${slide.metricLabel}`}
-                      className="hero-expertise-frame rounded-[1rem] border border-white/12 bg-black/16 p-3.5 backdrop-blur sm:rounded-[1.2rem] sm:p-4"
-                      style={{ animationDelay: `${index * 6}s` }}
+                      className="hero-expertise-frame rounded-[1rem] border p-2.5 backdrop-blur-[2px] flex flex-col items-center justify-center text-center sm:items-start sm:justify-start sm:text-left sm:rounded-[1.2rem] sm:p-4"
+                      style={
+                        {
+                          animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                          animationDuration: `${heroAnimationDurationSeconds}s`,
+                          background: `linear-gradient(158deg, ${slide.palette.frameFrom} 0%, ${slide.palette.frameTo} 100%)`,
+                          borderColor: slide.palette.frameBorder,
+                          boxShadow: `0 20px 48px ${slide.palette.shadow}`,
+                        } as CSSProperties
+                      }
                     >
-                      <h3 className="font-serif text-[1.18rem] leading-tight text-[var(--color-accent-soft)] sm:text-[1.42rem]">
+                      <h3
+                        className="font-serif font-semibold text-[1.96rem] leading-[1.1] sm:text-[3.6rem]"
+                        style={{ color: slide.palette.title }}
+                      >
                         {slide.expertiseTitle}
                       </h3>
-                      <p className="mt-2 text-[0.88rem] leading-6 text-white/80 sm:text-[0.92rem] sm:leading-7">
+                      <p
+                        className="mt-2 hidden text-[1.45rem] leading-9 font-medium sm:block sm:text-[1.55rem] sm:leading-10"
+                        style={{ color: slide.palette.body }}
+                      >
                         {slide.expertiseDetail}
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <div className="mt-3 hidden flex-wrap gap-2 sm:flex">
                         {slide.expertiseTags.map((tag) => (
                           <span
                             key={`${slide.metricLabel}-left-${tag}`}
-                            className="rounded-full border border-[rgba(217,180,140,0.34)] bg-[rgba(217,180,140,0.12)] px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.13em] uppercase text-[var(--color-accent-soft)] sm:text-[0.62rem]"
+                            className="rounded-full border px-3 py-1 text-[0.86rem] font-bold tracking-[0.1em] uppercase sm:text-[0.92rem]"
+                            style={{
+                              background: slide.palette.tagBg,
+                              borderColor: slide.palette.tagBorder,
+                              color: slide.palette.tagText,
+                            }}
                           >
                             {tag}
                           </span>
@@ -165,7 +329,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+              <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-7 sm:flex-row">
                 <Link
                   href="/contact"
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
@@ -174,18 +338,24 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="hero-cinematic-indicators mt-5 sm:mt-6" aria-hidden>
+              <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-6" aria-hidden>
                 {heroSlides.map((slide, index) => (
                   <span
                     key={`indicator-${slide.metric}`}
                     className="hero-cinematic-indicator"
-                    style={{ animationDelay: `${index * 6}s` }}
+                    style={
+                      {
+                        animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                        animationDuration: `${heroAnimationDurationSeconds}s`,
+                        "--hero-indicator-active": slide.palette.indicator,
+                      } as CSSProperties
+                    }
                   />
                 ))}
               </div>
             </div>
 
-            <div className="hero-stats-shell animate-fade-rise-delay">
+            <div className="hero-stats-shell animate-fade-rise-delay hidden md:block">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
                 {stats.map((item) => (
                   <div
@@ -293,12 +463,12 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f2f1ee_0%,#f8f7f4_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
-            <div className="lg:pt-2">
+          <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div className="min-w-0 lg:pt-2">
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.clientsSection.eyebrow}
               </p>
-              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight sm:text-5xl">
+              <h2 className="mt-4 w-full max-w-full pr-1 font-serif text-[1.82rem] leading-[1.12] sm:max-w-xl sm:text-5xl sm:leading-tight">
                 {homeContent.clientsSection.title}
               </h2>
               <p className="mt-5 max-w-lg text-base leading-7 text-[var(--color-muted)] sm:mt-6 sm:text-lg sm:leading-8">
@@ -306,7 +476,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <div className="client-name-marquee lg:hidden">
                 <div className="client-name-marquee-track">
                   {clientMarqueeItems.map((client, index) => (
