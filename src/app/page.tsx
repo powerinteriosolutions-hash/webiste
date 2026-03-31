@@ -5,16 +5,14 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import {
   company,
   faqs,
-  founders,
   homeContent,
-  processSteps,
+  process as processSteps,
   projects,
   reasons,
   services,
   siteUrl,
   stats,
   testimonials,
-  withBasePath,
 } from "@/lib/site-content";
 
 const deployedSiteUrl =
@@ -37,11 +35,50 @@ const seoSchema = {
   serviceType: services.map((service) => service.title),
 };
 
-const projectImages = homeContent.projectImages.map((image) => withBasePath(image));
+const projectImages = homeContent.projectImages;
 const mobileTestimonials = testimonials.slice(0, 4);
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
 );
+const clientColumns = Array.from({ length: 3 }, (_, columnIndex) =>
+  homeContent.clientsSection.items.filter((_, index) => index % 3 === columnIndex),
+);
+const clientMarqueeItems = [
+  ...homeContent.clientsSection.items,
+  ...homeContent.clientsSection.items,
+];
+const heroSlides = [
+  {
+    image: "/commercial/comercial-3.jpeg",
+    metric: "1500+",
+    metricLabel: "Interiors Delivered",
+    caption: "Residential and commercial spaces shaped with turnkey precision.",
+    expertiseTitle: company.heroTitle,
+    expertiseDetail:
+      "Shared workspace planning with cleaner zoning, brighter circulation paths, and better team comfort.",
+    expertiseTags: ["Shared Workspace", "Commercial", "Turnkey"],
+  },
+  {
+    image: "/commercial/comercial-4.jpeg",
+    metric: "10+",
+    metricLabel: "Years of Experience",
+    caption: "From design direction to execution, every step stays client-first.",
+    expertiseTitle: "Group Discussion & Meeting Zones",
+    expertiseDetail:
+      "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
+    expertiseTags: ["Group Discussion", "Meeting Rooms", "Acoustic Comfort"],
+  },
+  {
+    image: "/residential/residential-kitchen-beige-modern.jpg",
+    metric: "24/7",
+    metricLabel: "Support Availability",
+    caption: "Continuous updates and proactive support from brief to handover.",
+    expertiseTitle: "Modular Kitchen Interiors",
+    expertiseDetail:
+      "Utility-first kitchens with efficient storage, easy movement, and premium finish combinations.",
+    expertiseTags: ["Kitchen Planning", "Storage Optimization", "Residential"],
+  },
+];
 
 export default function Home() {
   return (
@@ -52,66 +89,99 @@ export default function Home() {
       />
 
       <section className="relative isolate overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.36)_0%,_rgba(20,17,14,0.68)_100%)]" />
-        <div className="float-slow absolute inset-0 -z-30">
-          <Image
-            src={withBasePath("/office-premium.jpg")}
-            alt="Premium interior workspace"
-            fill
-            priority
-            quality={68}
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.24)_0%,_rgba(20,17,14,0.56)_100%)]" />
+        <div className="hero-cinematic-backdrop absolute inset-0 -z-30">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.metricLabel}
+              className="hero-cinematic-slide"
+              style={{ animationDelay: `${index * 6}s` }}
+            >
+              <Image
+                src={slide.image}
+                alt="Premium interior workspace"
+                fill
+                priority={index === 0}
+                quality={68}
+                sizes="100vw"
+                className="hero-cinematic-image object-cover object-center"
+              />
+            </div>
+          ))}
         </div>
+        <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
         <div className="mx-auto flex min-h-[72vh] max-w-7xl flex-col px-4 py-10 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
           <div className="grid flex-1 gap-7 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="animate-fade-rise max-w-4xl text-white">
-              <p className="text-[0.7rem] font-semibold tracking-[0.26em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.3em]">
-                {homeContent.heroTag}
-              </p>
-              <h1 className="mt-4 max-w-[12ch] font-serif text-[2.8rem] leading-[0.96] sm:mt-5 sm:text-6xl lg:text-8xl">
-                {company.heroTitle}
-              </h1>
-              <p className="mt-5 max-w-xl text-[0.98rem] leading-7 text-white/78 sm:mt-7 sm:max-w-2xl sm:text-lg sm:leading-8">
-                {company.heroDescription}
-              </p>
+            <div className="hero-content-shell animate-fade-rise max-w-3xl text-white">
+              <div className="hero-cinematic-fact-wrap h-[4.1rem] sm:h-[4.8rem]" aria-hidden>
+                {heroSlides.map((slide, index) => (
+                  <div
+                    key={slide.metric}
+                    className="hero-cinematic-fact"
+                    style={{ animationDelay: `${index * 6}s` }}
+                  >
+                    <p className="font-serif text-[2.35rem] leading-none text-[var(--color-accent-soft)] sm:text-[3.2rem]">
+                      {slide.metric}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-              <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:gap-4 sm:flex-row">
+              <div className="hero-expertise-card mt-4 rounded-[1.7rem] border border-white/18 p-4 text-white shadow-[0_28px_80px_rgba(10,8,7,0.2)] backdrop-blur sm:rounded-[2rem] sm:p-6">
+                <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)] sm:text-[0.78rem] sm:tracking-[0.24em]">
+                  Core Expertise
+                </p>
+                <div className="hero-expertise-stage mt-4 sm:mt-5" aria-hidden>
+                  {heroSlides.map((slide, index) => (
+                    <article
+                      key={`expertise-left-${slide.metricLabel}`}
+                      className="hero-expertise-frame rounded-[1rem] border border-white/12 bg-black/16 p-3.5 backdrop-blur sm:rounded-[1.2rem] sm:p-4"
+                      style={{ animationDelay: `${index * 6}s` }}
+                    >
+                      <h3 className="font-serif text-[1.18rem] leading-tight text-[var(--color-accent-soft)] sm:text-[1.42rem]">
+                        {slide.expertiseTitle}
+                      </h3>
+                      <p className="mt-2 text-[0.88rem] leading-6 text-white/80 sm:text-[0.92rem] sm:leading-7">
+                        {slide.expertiseDetail}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {slide.expertiseTags.map((tag) => (
+                          <span
+                            key={`${slide.metricLabel}-left-${tag}`}
+                            className="rounded-full border border-[rgba(217,180,140,0.34)] bg-[rgba(217,180,140,0.12)] px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.13em] uppercase text-[var(--color-accent-soft)] sm:text-[0.62rem]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
                 <Link
                   href="/contact"
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.heroPrimaryCta}
                 </Link>
-                <Link
-                  href="/services"
-                  className="btn-premium inline-flex items-center justify-center rounded-full border border-white/28 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-white/10 sm:px-7 sm:py-4 sm:text-sm"
-                >
-                  {homeContent.heroSecondaryCta}
-                </Link>
+              </div>
+
+              <div className="hero-cinematic-indicators mt-5 sm:mt-6" aria-hidden>
+                {heroSlides.map((slide, index) => (
+                  <span
+                    key={`indicator-${slide.metric}`}
+                    className="hero-cinematic-indicator"
+                    style={{ animationDelay: `${index * 6}s` }}
+                  />
+                ))}
               </div>
             </div>
 
-            <div className="animate-fade-rise-delay grid gap-4">
-              <div className="interactive-card-dark rounded-[1.7rem] border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))] p-4 text-white shadow-[0_28px_80px_rgba(10,8,7,0.2)] backdrop-blur sm:rounded-[2rem] sm:p-6">
-                <p className="text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.25em]">
-                  Core Expertise
-                </p>
-                <div className="mt-4 grid gap-2.5 sm:mt-5 sm:gap-3">
-                  {services.map((service) => (
-                    <div
-                      key={service.title}
-                      className="interactive-card-dark rounded-[1rem] border border-white/12 bg-black/12 px-3.5 py-3 transition hover:border-white/25 hover:bg-black/18 sm:rounded-[1.2rem] sm:px-4 sm:py-4"
-                    >
-                      <p className="font-serif text-[1.7rem] leading-tight sm:text-2xl">{service.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
+            <div className="hero-stats-shell animate-fade-rise-delay">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
                 {stats.map((item) => (
                   <div
@@ -152,11 +222,11 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="interactive-card grid max-w-2xl gap-5 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-6 sm:rounded-[2rem] sm:p-8">
+          <div className="interactive-card grid max-w-2xl gap-4 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-5 sm:rounded-[2rem] sm:p-7">
             <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
-                src={withBasePath("/living-premium.jpg")}
-                alt="Luxury living room interior"
+                src="/residential/residential-bedroom-upholstered-headboard.jpg"
+                alt="Premium residential bedroom interior"
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
                 quality={68}
@@ -166,36 +236,12 @@ export default function Home() {
             <p className="text-base leading-7 text-[var(--color-muted)] sm:text-lg sm:leading-8">
               {company.description} {homeContent.aboutSection.description}
             </p>
-            <div className="interactive-card grid gap-3 rounded-[1.3rem] border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.46)] p-4 sm:rounded-[1.5rem] sm:p-5">
-              {founders.map((founder) => (
-                <div
-                  key={founder.name}
-                  className="grid gap-2 border-b border-[var(--color-line)] pb-4 last:border-b-0 last:pb-0 sm:grid-cols-[1fr_auto]"
-                >
-                  <div>
-                    <p className="font-serif text-xl sm:text-2xl">{founder.name}</p>
-                    <p className="mt-1.5 max-w-xl text-[0.92rem] leading-6 text-[var(--color-muted)] sm:mt-2 sm:text-sm">
-                      {founder.vision}
-                    </p>
-                  </div>
-                  <p className="pt-1 text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)] sm:text-xs sm:tracking-[0.18em]">
-                    {founder.role}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:flex-wrap">
+            <div className="pt-1">
                 <Link
                   href="/about"
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.aboutSection.primaryCta}
-                </Link>
-                <Link
-                  href="/projects"
-                  className="btn-premium inline-flex items-center justify-center rounded-full border border-[var(--color-line-strong)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
-                >
-                  {homeContent.aboutSection.secondaryCta}
                 </Link>
             </div>
           </div>
@@ -243,37 +289,70 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f2f1ee_0%,#f8f7f4_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-        <div className="grid gap-7 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-              {homeContent.clientsSection.eyebrow}
-            </p>
-            <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight sm:text-5xl">
-              {homeContent.clientsSection.title}
-            </h2>
-            <p className="mt-6 max-w-lg text-lg leading-8 text-[var(--color-muted)]">
-              {homeContent.clientsSection.description}
-            </p>
-          </div>
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div className="lg:pt-2">
+              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                {homeContent.clientsSection.eyebrow}
+              </p>
+              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight sm:text-5xl">
+                {homeContent.clientsSection.title}
+              </h2>
+              <p className="mt-5 max-w-lg text-base leading-7 text-[var(--color-muted)] sm:mt-6 sm:text-lg sm:leading-8">
+                {homeContent.clientsSection.description}
+              </p>
+            </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
-            {homeContent.clientsSection.items.map((client) => (
-              <article
-                key={client}
-                className="interactive-card group rounded-[1.45rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-5 shadow-[0_18px_50px_rgba(55,45,34,0.05)] sm:rounded-[1.8rem] sm:p-6"
-              >
-                <div className="flex h-full min-h-24 flex-col justify-between sm:min-h-32">
-                  <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)] sm:text-xs sm:tracking-[0.2em]">
-                    Client Partner
-                  </p>
-                  <h3 className="mt-6 font-serif text-[1.9rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)] sm:mt-8 sm:text-3xl">
-                    {client}
-                  </h3>
+            <div>
+              <div className="client-name-marquee lg:hidden">
+                <div className="client-name-marquee-track">
+                  {clientMarqueeItems.map((client, index) => (
+                    <article
+                      key={`${client}-mobile-${index}`}
+                      className="interactive-card group min-w-[13.2rem] rounded-[1.25rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-4 shadow-[0_12px_30px_rgba(55,45,34,0.04)]"
+                    >
+                      <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
+                        Client Partner
+                      </p>
+                      <h3 className="mt-4 font-serif text-[1.55rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                        {client}
+                      </h3>
+                    </article>
+                  ))}
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="hidden gap-4 lg:grid lg:grid-cols-3">
+                {clientColumns.map((column, columnIndex) => (
+                  <div
+                    key={`client-column-${columnIndex}`}
+                    className="client-carousel-column"
+                  >
+                    <div
+                      className={`client-carousel-track ${
+                        columnIndex === 1 ? "client-carousel-track-reverse" : ""
+                      }`}
+                    >
+                      {[...column, ...column].map((client, index) => (
+                        <article
+                          key={`${client}-${columnIndex}-${index}`}
+                          className="interactive-card group rounded-[1.45rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-5 shadow-[0_16px_40px_rgba(55,45,34,0.05)]"
+                        >
+                          <div className="flex h-full min-h-24 flex-col justify-between">
+                            <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
+                              Client Partner
+                            </p>
+                            <h3 className="mt-6 font-serif text-[1.9rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                              {client}
+                            </h3>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
