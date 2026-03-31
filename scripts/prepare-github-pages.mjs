@@ -2,10 +2,34 @@ import fs from "node:fs";
 import path from "node:path";
 
 const outDir = path.join(process.cwd(), "out");
-const repoBase = "/webiste";
-const deployedUrl = "https://powerinteriosolutions-hash.github.io/webiste";
+
+const siteUrlFromEnv = process.env.NEXT_PUBLIC_SITE_URL;
+const derivedBasePath =
+  siteUrlFromEnv && (() => {
+    try {
+      const url = new URL(siteUrlFromEnv);
+      return url.pathname.replace(/\/$/, "");
+    } catch {
+      return "";
+    }
+  })();
+
+const basePathEnv = process.env.BASE_PATH ?? derivedBasePath ?? "";
+const repoBase = basePathEnv
+  ? basePathEnv.startsWith("/")
+    ? basePathEnv
+    : `/${basePathEnv}`
+  : "";
+
+const deployedUrl =
+  siteUrlFromEnv ?? "https://poweroninterio.com";
 const oldUrl = "https://poweroninterio.com";
 const textFileExtensions = new Set([".html", ".txt", ".xml", ".webmanifest"]);
+
+if (!repoBase) {
+  console.log("BASE_PATH not set and no path in NEXT_PUBLIC_SITE_URL; skipping GitHub Pages rewrite.");
+  process.exit(0);
+}
 
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -21,9 +45,16 @@ function walk(dir) {
     }
 
     const current = fs.readFileSync(fullPath, "utf8");
-    const updated = current
-      .replaceAll(oldUrl, deployedUrl)
-      .replace(/(["'=])\/(?!\/|webiste\/)/g, `$1${repoBase}/`);
+    let updated = current;
+
+    if (deployedUrl && deployedUrl !== oldUrl) {
+      updated = updated.replaceAll(oldUrl, deployedUrl);
+    }
+
+    updated = updated.replace(
+      /(href|src)=(["'])\/(?!\/)/g,
+      (_match, attr, quote) => `${attr}=${quote}${repoBase}/`,
+    );
 
     if (updated !== current) {
       fs.writeFileSync(fullPath, updated);

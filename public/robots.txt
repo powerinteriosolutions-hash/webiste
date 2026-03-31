@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://powerinteriosolutions-hash.github.io/webiste/sitemap.xml
+Sitemap: https://poweroninterio.com/sitemap.xml

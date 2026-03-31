@@ -1,9 +1,22 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const repoName = "webiste";
-const isProduction = process.env.NODE_ENV === "production";
-const basePath = isProduction ? `/${repoName}` : "";
+// Base path logic:
+// 1) Respect explicit BASE_PATH (e.g., "/webiste" for GitHub Pages).
+// 2) Otherwise, derive from NEXT_PUBLIC_SITE_URL so GitHub Pages works even if
+//    only that env var is set (pathname portion becomes the base path).
+// 3) Fallback to "" for root deployments.
+const siteUrlFromEnv = process.env.NEXT_PUBLIC_SITE_URL;
+const derivedBasePath =
+  siteUrlFromEnv && (() => {
+    try {
+      const url = new URL(siteUrlFromEnv);
+      return url.pathname.replace(/\/$/, "");
+    } catch {
+      return "";
+    }
+  })();
+const basePath = process.env.BASE_PATH ?? derivedBasePath ?? "";
 
 const nextConfig: NextConfig = {
   output: "export",

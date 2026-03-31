@@ -16,10 +16,7 @@ import {
   testimonials,
 } from "@/lib/site-content";
 
-const deployedSiteUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://powerinteriosolutions-hash.github.io/webiste"
-    : siteUrl;
+const deployedSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? siteUrl;
 
 export const metadata: Metadata = {
   title: homeContent.meta.title,

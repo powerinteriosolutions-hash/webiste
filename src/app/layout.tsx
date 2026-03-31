@@ -4,10 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { siteUrl } from "@/lib/site-content";
 import "./globals.css";
 
-const deployedSiteUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://powerinteriosolutions-hash.github.io/webiste"
-    : siteUrl;
+const deployedSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(deployedSiteUrl),
