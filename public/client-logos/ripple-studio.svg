@@ -1,0 +1,7 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="220" rx="36" fill="white"/>
+  <path d="M46 54H144C180 54 198 71 198 95C198 115 184 129 158 134L198 166H150L116 138H84V166H46V54ZM84 87V108H139C149 108 158 103 158 97C158 90 149 87 139 87H84Z" stroke="#F05A2B" stroke-width="8" stroke-linejoin="round"/>
+  <text x="226" y="92" fill="#48423E" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">The</text>
+  <text x="226" y="128" fill="#48423E" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Ripple</text>
+  <text x="226" y="166" fill="#48423E" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700">Studio</text>
+</svg>
