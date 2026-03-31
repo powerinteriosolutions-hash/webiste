@@ -113,7 +113,6 @@ export default function AboutPage() {
                           alt={founder.name}
                           fill
                           sizes="(max-width: 1280px) 100vw, 190px"
-                          quality={68}
                           className="object-cover"
                         />
                       </div>
@@ -207,7 +206,6 @@ export default function AboutPage() {
                               alt={member.name}
                               fill
                               sizes="112px"
-                              quality={66}
                               className="object-cover"
                             />
                           </div>

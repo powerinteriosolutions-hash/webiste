@@ -169,7 +169,6 @@ export default function ProjectsPage() {
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
-                quality={72}
                 className="object-cover object-center"
               />
               <span className="project-feature-badge">Featured Transformation</span>
@@ -210,7 +209,6 @@ export default function ProjectsPage() {
                     alt={item.name}
                     fill
                     sizes="56px"
-                    quality={66}
                     className="object-cover object-center"
                   />
                 </div>
@@ -248,7 +246,6 @@ export default function ProjectsPage() {
                   alt={`${item.name} by Power On Interio`}
                   fill
                   sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
-                  quality={72}
                   className="project-gallery-image object-cover object-center"
                 />
                 <div className="project-gallery-overlay" />

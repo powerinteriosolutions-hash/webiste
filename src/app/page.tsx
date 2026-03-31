@@ -244,7 +244,6 @@ export default function Home() {
                 alt="Premium interior workspace"
                 fill
                 priority={index === 0}
-                quality={68}
                 sizes="100vw"
                 className="hero-cinematic-image object-cover object-center"
                 style={{ animationDuration: `${heroAnimationDurationSeconds}s` }}
@@ -403,7 +402,6 @@ export default function Home() {
                 alt="Premium residential bedroom interior"
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
-                quality={68}
                 className="object-cover object-center"
               />
             </div>
@@ -588,7 +586,6 @@ export default function Home() {
                     alt={project.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    quality={68}
                     className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />

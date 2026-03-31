@@ -41,7 +41,6 @@ export function SiteHeader() {
                 height={52}
                 sizes="120px"
                 className="h-9 w-auto object-contain sm:h-11"
-                priority
               />
             </div>
             <span className="hidden text-[0.68rem] font-semibold tracking-[0.14em] uppercase text-[var(--color-muted)] sm:inline-block lg:text-xs">

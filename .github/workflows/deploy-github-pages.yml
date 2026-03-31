@@ -40,6 +40,9 @@ jobs:
           GITHUB_ACTIONS: "true"
         run: npm run build
 
+      - name: Preserve Next.js _next Assets On Pages
+        run: touch ./out/.nojekyll
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
