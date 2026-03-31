@@ -1,0 +1,9 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="220" rx="36" fill="white"/>
+  <g transform="translate(48 64)">
+    <rect x="0" y="0" width="42" height="42" rx="10" stroke="#315EF6" stroke-width="6"/>
+    <path d="M12 16H30M21 16V36" stroke="#315EF6" stroke-width="6" stroke-linecap="round"/>
+    <path d="M48 50H10" stroke="#315EF6" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="124" y="126" fill="#1F1A17" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">Trend Works</text>
+</svg>

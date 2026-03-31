@@ -1,0 +1,8 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="220" rx="36" fill="white"/>
+  <g transform="translate(44 52)">
+    <circle cx="56" cy="58" r="34" stroke="#E9885F" stroke-width="8"/>
+    <path d="M56 18L76 30L82 54L70 76L46 92L24 80L16 56L28 34L56 18Z" stroke="#DD5A7B" stroke-width="6"/>
+  </g>
+  <text x="154" y="124" fill="#2A2622" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" letter-spacing="4">LIVSPACE</text>
+</svg>
