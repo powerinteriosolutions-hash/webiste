@@ -47,6 +47,38 @@ const clientMarqueeItems = [
   ...homeContent.clientsSection.items,
   ...homeContent.clientsSection.items,
 ];
+const heroSlides = [
+  {
+    image: "/commercial/comercial-3.jpeg",
+    metric: "1500+",
+    metricLabel: "Interiors Delivered",
+    caption: "Residential and commercial spaces shaped with turnkey precision.",
+    expertiseTitle: company.heroTitle,
+    expertiseDetail:
+      "Shared workspace planning with cleaner zoning, brighter circulation paths, and better team comfort.",
+    expertiseTags: ["Shared Workspace", "Commercial", "Turnkey"],
+  },
+  {
+    image: "/commercial/comercial-4.jpeg",
+    metric: "10+",
+    metricLabel: "Years of Experience",
+    caption: "From design direction to execution, every step stays client-first.",
+    expertiseTitle: "Group Discussion & Meeting Zones",
+    expertiseDetail:
+      "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
+    expertiseTags: ["Group Discussion", "Meeting Rooms", "Acoustic Comfort"],
+  },
+  {
+    image: "/residential/residential-kitchen-beige-modern.jpg",
+    metric: "24/7",
+    metricLabel: "Support Availability",
+    caption: "Continuous updates and proactive support from brief to handover.",
+    expertiseTitle: "Modular Kitchen Interiors",
+    expertiseDetail:
+      "Utility-first kitchens with efficient storage, easy movement, and premium finish combinations.",
+    expertiseTags: ["Kitchen Planning", "Storage Optimization", "Residential"],
+  },
+];
 
 export default function Home() {
   return (
@@ -57,66 +89,99 @@ export default function Home() {
       />
 
       <section className="relative isolate overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.36)_0%,_rgba(20,17,14,0.68)_100%)]" />
-        <div className="float-slow absolute inset-0 -z-30">
-          <Image
-            src="/office-premium.jpg"
-            alt="Premium interior workspace"
-            fill
-            priority
-            quality={68}
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.24)_0%,_rgba(20,17,14,0.56)_100%)]" />
+        <div className="hero-cinematic-backdrop absolute inset-0 -z-30">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.metricLabel}
+              className="hero-cinematic-slide"
+              style={{ animationDelay: `${index * 6}s` }}
+            >
+              <Image
+                src={slide.image}
+                alt="Premium interior workspace"
+                fill
+                priority={index === 0}
+                quality={68}
+                sizes="100vw"
+                className="hero-cinematic-image object-cover object-center"
+              />
+            </div>
+          ))}
         </div>
+        <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
         <div className="mx-auto flex min-h-[72vh] max-w-7xl flex-col px-4 py-10 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
           <div className="grid flex-1 gap-7 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="animate-fade-rise max-w-4xl text-white">
-              <p className="text-[0.7rem] font-semibold tracking-[0.26em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.3em]">
-                {homeContent.heroTag}
-              </p>
-              <h1 className="mt-4 max-w-[12ch] font-serif text-[2.8rem] leading-[0.96] sm:mt-5 sm:text-6xl lg:text-8xl">
-                {company.heroTitle}
-              </h1>
-              <p className="mt-5 max-w-xl text-[0.98rem] leading-7 text-white/78 sm:mt-7 sm:max-w-2xl sm:text-lg sm:leading-8">
-                {company.heroDescription}
-              </p>
+            <div className="hero-content-shell animate-fade-rise max-w-3xl text-white">
+              <div className="hero-cinematic-fact-wrap h-[4.1rem] sm:h-[4.8rem]" aria-hidden>
+                {heroSlides.map((slide, index) => (
+                  <div
+                    key={slide.metric}
+                    className="hero-cinematic-fact"
+                    style={{ animationDelay: `${index * 6}s` }}
+                  >
+                    <p className="font-serif text-[2.35rem] leading-none text-[var(--color-accent-soft)] sm:text-[3.2rem]">
+                      {slide.metric}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-              <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:gap-4 sm:flex-row">
+              <div className="hero-expertise-card mt-4 rounded-[1.7rem] border border-white/18 p-4 text-white shadow-[0_28px_80px_rgba(10,8,7,0.2)] backdrop-blur sm:rounded-[2rem] sm:p-6">
+                <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)] sm:text-[0.78rem] sm:tracking-[0.24em]">
+                  Core Expertise
+                </p>
+                <div className="hero-expertise-stage mt-4 sm:mt-5" aria-hidden>
+                  {heroSlides.map((slide, index) => (
+                    <article
+                      key={`expertise-left-${slide.metricLabel}`}
+                      className="hero-expertise-frame rounded-[1rem] border border-white/12 bg-black/16 p-3.5 backdrop-blur sm:rounded-[1.2rem] sm:p-4"
+                      style={{ animationDelay: `${index * 6}s` }}
+                    >
+                      <h3 className="font-serif text-[1.18rem] leading-tight text-[var(--color-accent-soft)] sm:text-[1.42rem]">
+                        {slide.expertiseTitle}
+                      </h3>
+                      <p className="mt-2 text-[0.88rem] leading-6 text-white/80 sm:text-[0.92rem] sm:leading-7">
+                        {slide.expertiseDetail}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {slide.expertiseTags.map((tag) => (
+                          <span
+                            key={`${slide.metricLabel}-left-${tag}`}
+                            className="rounded-full border border-[rgba(217,180,140,0.34)] bg-[rgba(217,180,140,0.12)] px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.13em] uppercase text-[var(--color-accent-soft)] sm:text-[0.62rem]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
                 <Link
                   href="/contact"
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.heroPrimaryCta}
                 </Link>
-                <Link
-                  href="/services"
-                  className="btn-premium inline-flex items-center justify-center rounded-full border border-white/28 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-white/10 sm:px-7 sm:py-4 sm:text-sm"
-                >
-                  {homeContent.heroSecondaryCta}
-                </Link>
+              </div>
+
+              <div className="hero-cinematic-indicators mt-5 sm:mt-6" aria-hidden>
+                {heroSlides.map((slide, index) => (
+                  <span
+                    key={`indicator-${slide.metric}`}
+                    className="hero-cinematic-indicator"
+                    style={{ animationDelay: `${index * 6}s` }}
+                  />
+                ))}
               </div>
             </div>
 
-            <div className="animate-fade-rise-delay grid gap-4">
-              <div className="interactive-card-dark rounded-[1.7rem] border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))] p-4 text-white shadow-[0_28px_80px_rgba(10,8,7,0.2)] backdrop-blur sm:rounded-[2rem] sm:p-6">
-                <p className="text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.25em]">
-                  Core Expertise
-                </p>
-                <div className="mt-4 grid gap-2.5 sm:mt-5 sm:gap-3">
-                  {services.map((service) => (
-                    <div
-                      key={service.title}
-                      className="interactive-card-dark rounded-[1rem] border border-white/12 bg-black/12 px-3.5 py-3 transition hover:border-white/25 hover:bg-black/18 sm:rounded-[1.2rem] sm:px-4 sm:py-4"
-                    >
-                      <p className="font-serif text-[1.7rem] leading-tight sm:text-2xl">{service.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
+            <div className="hero-stats-shell animate-fade-rise-delay">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
                 {stats.map((item) => (
                   <div
@@ -160,8 +225,8 @@ export default function Home() {
           <div className="interactive-card grid max-w-2xl gap-4 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-5 sm:rounded-[2rem] sm:p-7">
             <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
-                src="/living-premium.jpg"
-                alt="Luxury living room interior"
+                src="/residential/residential-bedroom-upholstered-headboard.jpg"
+                alt="Premium residential bedroom interior"
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
                 quality={68}

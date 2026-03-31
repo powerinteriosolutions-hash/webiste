@@ -19,92 +19,126 @@ type GalleryItem = {
   size: "standard" | "wide" | "tall";
 };
 
-const galleryItems: GalleryItem[] = [
-  {
-    name: projects[0].name,
-    category: projects[0].category,
-    description: "Layered neutrals, warm lighting, and custom seating to make evenings feel calmer.",
-    image: "/living-premium.jpg",
-    location: "Bengaluru",
-    area: "2,300 sq ft",
-    styleNote: "Warm Minimal",
-    size: "tall",
-  },
-  {
-    name: projects[1].name,
-    category: projects[1].category,
-    description: "A brighter reception-to-workstation flow designed for better focus and faster collaboration.",
-    image: "/office-premium.jpg",
-    location: "Hyderabad",
-    area: "6,100 sq ft",
-    styleNote: "Modern Corporate",
-    size: "wide",
-  },
-  {
-    name: projects[2].name,
-    category: projects[2].category,
-    description: "Storage-first planning with cleaner lines and easier movement through every work zone.",
-    image: "/workspace-premium.jpg",
-    location: "Chennai",
-    area: "1,450 sq ft",
-    styleNote: "Smart Utility",
-    size: "standard",
-  },
-  {
-    name: "Executive Cabin Refresh",
-    category: "Commercial workspace",
-    description: "Soft textures and acoustic surfaces that upgrade privacy while keeping an open visual tone.",
-    image: "/office-premium.jpg",
-    location: "Bengaluru",
-    area: "1,900 sq ft",
-    styleNote: "Executive Calm",
-    size: "standard",
-  },
-  {
-    name: "Family Lounge + Dining",
-    category: "Residential interior",
-    description: "A social core with durable finishes, concealed storage, and a richer hospitality feel.",
-    image: "/living-premium.jpg",
-    location: "Hyderabad",
-    area: "2,000 sq ft",
-    styleNote: "Contemporary Warm",
-    size: "wide",
-  },
-  {
-    name: "Open Collaboration Zone",
-    category: "Commercial workspace",
-    description: "Flexible furniture modules that support team huddles, quick reviews, and breakout discussions.",
-    image: "/workspace-premium.jpg",
-    location: "Chennai",
-    area: "3,700 sq ft",
-    styleNote: "Agile Planning",
-    size: "tall",
-  },
-  {
-    name: "Compact Kitchen Reset",
-    category: "Storage and utility",
-    description: "Task lighting, easy-clean counters, and practical zoning tuned for real daily routines.",
-    image: "/living-premium.jpg",
-    location: "Bengaluru",
-    area: "980 sq ft",
-    styleNote: "Functional Premium",
-    size: "standard",
-  },
-  {
-    name: "Reception + Waiting",
-    category: "Commercial workspace",
-    description: "A stronger first impression with material layering and cleaner wayfinding across entry points.",
-    image: "/office-premium.jpg",
-    location: "Hyderabad",
-    area: "1,650 sq ft",
-    styleNote: "Brand Forward",
-    size: "standard",
-  },
+const residentialGalleryImages = [
+  "/residential/residential-bedroom-dark-accent-wall.jpg",
+  "/residential/residential-bedroom-marble-headboard.jpg",
+  "/residential/residential-bedroom-soft-neutral.jpg",
+  "/residential/residential-bedroom-upholstered-headboard.jpg",
+  "/residential/residential-kitchen-beige-modern.jpg",
+  "/residential/residential-tv-unit-marble-panel.jpg",
+  "/residential/residential-wardrobe-corner-storage.jpg",
+  "/residential/residential-wardrobe-entry-view.jpg",
+  "/residential/residential-wardrobe-white-panel.jpg",
 ];
+
+const commercialGalleryImages = Array.from(
+  { length: 16 },
+  (_, index) => `/commercial/comercial-${index + 1}.jpeg`,
+);
+
+const locationCycle = ["Bengaluru", "Hyderabad", "Chennai"];
+const sizeCycle: GalleryItem["size"][] = ["wide", "standard", "tall", "standard", "wide"];
+
+const residentialTitles = [
+  projects[0].name,
+  "Master Bedroom Marble Wall",
+  "Soft Neutral Bedroom",
+  "Upholstered Headboard Suite",
+  "Compact Kitchen Reset",
+  "Living TV Unit Styling",
+  "Wardrobe Corner Storage",
+  "Wardrobe Entry View",
+  projects[2].name,
+];
+
+const residentialDescriptions = [
+  "Residential details layered around comfort, with warm textures and elegant wall treatment.",
+  "A statement bedroom wall concept that adds depth while keeping the palette calm and cohesive.",
+  "Soft residential styling designed for restful ambience, balanced lighting, and practical upkeep.",
+  "A premium bedroom headboard treatment that combines hotel-like comfort with daily durability.",
+  "Kitchen planning focused on movement, countertop utility, and optimized cabinet workflow.",
+  "Media wall and storage composition shaped for clean cable management and visual balance.",
+  "Corner wardrobe design that unlocks hard-to-use zones with stronger storage efficiency.",
+  "Entry wardrobe arrangement with better circulation and practical day-to-day access.",
+  "Storage-focused wardrobe planning with clean paneling and modular organization logic.",
+];
+
+const residentialStyles = [
+  "Warm Minimal",
+  "Marble Accent",
+  "Soft Contemporary",
+  "Hospitality Home",
+  "Functional Premium",
+  "Modern Media Wall",
+  "Smart Utility",
+  "Clean Entry Layout",
+  "Storage First",
+];
+
+const commercialTitles = [
+  "Shared Workspace Deck",
+  "Open Collaboration Zone",
+  "Coworking Desk Cluster",
+  "Group Discussion Table",
+  "Townhall Presentation Hall",
+  "Interactive Event Floor",
+  "Creative Dot Wall Studio",
+  "Casual Discussion Lounge",
+  "Executive Meeting Room",
+  "Open Office Benching",
+  "Business Café Seating",
+  "Startup Green Collaboration Bay",
+  "Executive Cabin Refresh",
+  "Conference Table Suite",
+  "Reception + Waiting",
+  projects[1].name,
+];
+
+const commercialDescriptions = [
+  "Shared work areas planned for better movement, cleaner zoning, and stronger team interaction.",
+  "Layouts designed for group collaboration with practical desk clusters and meeting touchpoints.",
+  "Workspace interiors balancing density, visibility, and productivity for daily operations.",
+  "Discussion-first zones with table arrangements optimized for quick team decision-making.",
+  "Multi-use spaces built for presentations, internal events, and structured knowledge sessions.",
+  "Commercial interiors combining brand expression with durable finishes and easier maintenance.",
+];
+
+const commercialStyles = [
+  "Open Plan",
+  "Collaboration Core",
+  "Modern Corporate",
+  "Community Floor",
+  "Executive Calm",
+  "Brand Forward",
+];
+
+const residentialItems: GalleryItem[] = residentialGalleryImages.map((image, index) => ({
+  name: residentialTitles[index],
+  category: index === 4 || index === 8 ? "Storage and utility" : "Residential interior",
+  description: residentialDescriptions[index],
+  image,
+  location: locationCycle[index % locationCycle.length],
+  area: `${920 + index * 170} sq ft`,
+  styleNote: residentialStyles[index],
+  size: sizeCycle[index % sizeCycle.length],
+}));
+
+const commercialItems: GalleryItem[] = commercialGalleryImages.map((image, index) => ({
+  name: commercialTitles[index],
+  category: "Commercial workspace",
+  description: commercialDescriptions[index % commercialDescriptions.length],
+  image,
+  location: locationCycle[index % locationCycle.length],
+  area: `${1600 + index * 230} sq ft`,
+  styleNote: commercialStyles[index % commercialStyles.length],
+  size: sizeCycle[(index + 2) % sizeCycle.length],
+}));
+
+const galleryItems: GalleryItem[] = [...residentialItems, ...commercialItems];
 
 const stripItems = [...galleryItems, ...galleryItems];
 const heroDescription =
-  "Browse a curated mix of residential and commercial transformations, with animated previews and project-specific details designed for quick exploration.";
+  "Browse 25 curated residential and commercial frames, including kitchens, shared workspaces, and discussion-focused interiors.";
 
 export default function ProjectsPage() {
   return (
@@ -130,7 +164,7 @@ export default function ProjectsPage() {
           <article className="project-feature-card animate-fade-rise-delay">
             <div className="project-feature-image-wrap">
               <Image
-                src="/office-premium.jpg"
+                src="/commercial/comercial-13.jpeg"
                 alt="Feature project interior with premium office styling"
                 fill
                 priority

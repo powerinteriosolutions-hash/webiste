@@ -127,6 +127,221 @@ h6 {
   animation: driftGlow 12s ease-in-out infinite;
 }
 
+@keyframes heroSlideCycle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  4% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  33% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes heroImageDrift {
+  0%,
+  100% {
+    transform: scale(1.12) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.02) translate3d(-12px, -8px, 0);
+  }
+}
+
+@keyframes heroFactCycle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    filter: blur(2px);
+  }
+  5% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+  28% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+  33% {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+    filter: blur(2px);
+  }
+}
+
+@keyframes heroIndicatorCycle {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scaleX(0.35);
+    background: rgba(255, 255, 255, 0.34);
+  }
+  5%,
+  28% {
+    opacity: 1;
+    transform: scaleX(1);
+    background: rgba(217, 180, 140, 0.95);
+  }
+  33% {
+    opacity: 0.34;
+    transform: scaleX(0.35);
+    background: rgba(255, 255, 255, 0.34);
+  }
+}
+
+@keyframes heroTextureDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-20px, 12px, 0);
+  }
+}
+
+.hero-cinematic-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-cinematic-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: heroSlideCycle 18s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.hero-cinematic-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    122deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.1) 42%,
+    rgba(255, 255, 255, 0.02) 84%
+  );
+  clip-path: polygon(48% 0, 78% 0, 52% 100%, 22% 100%);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.hero-cinematic-image {
+  animation: heroImageDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-cinematic-texture {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(217, 180, 140, 0.2), transparent 36%),
+    radial-gradient(circle at 12% 78%, rgba(157, 113, 69, 0.16), transparent 40%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.05), transparent 46%),
+    repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.04) 0 2px,
+      rgba(255, 255, 255, 0) 2px 18px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.24;
+  animation: heroTextureDrift 16s ease-in-out infinite;
+}
+
+.hero-content-shell {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(18, 15, 12, 0.34), rgba(18, 15, 12, 0.18));
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+
+.hero-expertise-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+}
+
+.hero-cinematic-fact-wrap {
+  position: relative;
+}
+
+.hero-cinematic-fact {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: heroFactCycle 18s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+.hero-cinematic-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.44rem;
+}
+
+.hero-cinematic-indicator {
+  display: inline-block;
+  width: 2.4rem;
+  height: 0.24rem;
+  border-radius: 9999px;
+  transform-origin: left center;
+  background: rgba(255, 255, 255, 0.34);
+  animation: heroIndicatorCycle 18s ease-in-out infinite;
+}
+
+.hero-expertise-stage {
+  position: relative;
+  min-height: 12.4rem;
+}
+
+.hero-expertise-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: heroFactCycle 18s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+.hero-expertise-image {
+  animation: heroImageDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-stats-shell {
+  align-self: end;
+}
+
+@media (min-width: 640px) {
+  .hero-content-shell {
+    border-radius: 1.9rem;
+    padding: 1.4rem;
+  }
+
+  .hero-expertise-stage {
+    min-height: 13.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-cinematic-indicator {
+    width: 1.65rem;
+    height: 0.2rem;
+  }
+
+  .hero-expertise-stage {
+    min-height: 12.1rem;
+  }
+}
+
 .interactive-card {
   position: relative;
   overflow: hidden;
@@ -841,7 +1056,33 @@ h6 {
   .project-filmstrip-track,
   .project-gallery-ambient,
   .project-feature-badge,
-  .project-gallery-card {
+  .project-gallery-card,
+  .hero-cinematic-slide,
+  .hero-cinematic-image,
+  .hero-cinematic-texture,
+  .hero-cinematic-fact,
+  .hero-cinematic-indicator,
+  .hero-expertise-frame,
+  .hero-expertise-image {
     animation: none !important;
+  }
+
+  .hero-cinematic-slide,
+  .hero-cinematic-fact,
+  .hero-expertise-frame {
+    opacity: 0;
+    transform: none;
+    filter: none;
+  }
+
+  .hero-cinematic-slide:first-child,
+  .hero-cinematic-fact:first-child,
+  .hero-expertise-frame:first-child {
+    opacity: 1;
+  }
+
+  .hero-cinematic-indicator {
+    opacity: 0.6;
+    transform: scaleX(1);
   }
 }
