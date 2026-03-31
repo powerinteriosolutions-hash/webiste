@@ -237,6 +237,24 @@ h6 {
   }
 }
 
+@keyframes clientColumnUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes clientColumnDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .team-marquee {
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -250,6 +268,31 @@ h6 {
 
 .team-marquee:hover .team-marquee-track {
   animation-play-state: paused;
+}
+
+.client-name-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
+.client-name-marquee-track {
+  display: flex;
+  gap: 0.95rem;
+  width: max-content;
+  animation: marqueeLeft 36s linear infinite;
+}
+
+.client-name-marquee:hover .client-name-marquee-track {
+  animation-play-state: paused;
+}
+
+.client-carousel-column {
+  position: relative;
+}
+
+.client-carousel-track {
+  display: grid;
+  gap: 1rem;
 }
 
 .testimonial-column {
@@ -325,6 +368,25 @@ h6 {
 }
 
 @media (min-width: 1024px) {
+  .client-carousel-column {
+    height: 460px;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+  }
+
+  .client-carousel-track {
+    width: 100%;
+    animation: clientColumnUp 54s linear infinite;
+  }
+
+  .client-carousel-track-reverse {
+    animation-name: clientColumnDown;
+  }
+
+  .client-carousel-column:hover .client-carousel-track {
+    animation-play-state: paused;
+  }
+
   .testimonial-column {
     height: 760px;
     overflow: hidden;
@@ -420,6 +482,8 @@ h6 {
   }
 
   .team-marquee-track,
+  .client-name-marquee-track,
+  .client-carousel-track,
   .testimonial-column-track {
     animation: none !important;
   }
