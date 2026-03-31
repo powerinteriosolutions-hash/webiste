@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   company,
-  process,
+  processSteps,
   services,
   servicesPageContent,
 } from "@/lib/site-content";
@@ -54,7 +54,7 @@ export default function ServicesPage() {
           {servicesPageContent.process.eyebrow}
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {process.map((step, index) => (
+          {processSteps.map((step, index) => (
             <div key={step.title} className="rounded-[1.5rem] border border-white/12 bg-white/6 p-6">
               <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-soft)]">
                 0{index + 1}

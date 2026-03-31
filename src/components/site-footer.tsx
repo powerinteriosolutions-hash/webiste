@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BriefcaseBusiness, Camera, MessageCircleMore } from "lucide-react";
-import { company, navLinks } from "@/lib/site-content";
+import { company, navLinks, withBasePath } from "@/lib/site-content";
 
 type SocialLinkProps = {
   href: string;
@@ -32,7 +32,7 @@ export function SiteFooter() {
             <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
               <div className="inline-flex rounded-xl bg-white p-3 shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
                 <Image
-                  src={company.logoPath}
+                  src={withBasePath(company.logoPath)}
                   alt={`${company.name} logo`}
                   width={140}
                   height={60}

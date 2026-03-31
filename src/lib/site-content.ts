@@ -6,6 +6,17 @@ import projectsPage from "@/content/projects-page.json";
 import servicesPage from "@/content/services-page.json";
 import sharedSections from "@/content/shared-sections.json";
 
+export const basePath = process.env.NODE_ENV === "production" ? "/webiste" : "";
+
+export const withBasePath = (assetPath: string) => {
+  if (!assetPath || assetPath.startsWith("http")) {
+    return assetPath;
+  }
+
+  const normalized = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
+  return `${basePath}${normalized}`;
+};
+
 export const siteUrl = companyData.siteUrl;
 export const company = companyData.company;
 export const navLinks = companyData.navLinks;
@@ -20,7 +31,7 @@ export const stats = sharedSections.stats;
 export const services = sharedSections.services;
 export const reasons = sharedSections.reasons;
 export const projects = sharedSections.projects;
-export const process = sharedSections.process;
+export const processSteps = sharedSections.process;
 export const testimonials = sharedSections.testimonials;
 export const founders = sharedSections.founders;
 export const team = sharedSections.team;
