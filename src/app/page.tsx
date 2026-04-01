@@ -18,11 +18,6 @@ import {
   withBasePathRoute,
 } from "@/lib/site-content";
 
-const deployedSiteUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://powerinteriosolutions-hash.github.io/webiste"
-    : siteUrl;
-
 export const metadata: Metadata = {
   title: homeContent.meta.title,
   description: homeContent.meta.description,
@@ -32,7 +27,7 @@ const seoSchema = {
   "@context": "https://schema.org",
   "@type": "InteriorDesign",
   name: company.name,
-  url: deployedSiteUrl,
+  url: siteUrl,
   description: company.description,
   areaServed: company.location,
   serviceType: services.map((service) => service.title),
