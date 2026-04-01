@@ -105,9 +105,9 @@ export default function AboutPage() {
                   key={founder.name}
                   className="executive-card profile-shell grid h-full gap-6 rounded-[2rem] border border-[rgba(157,113,69,0.14)] p-6 shadow-[0_20px_65px_rgba(71,52,34,0.08)] xl:grid-cols-[190px_1fr]"
                 >
-                  <div className="executive-photo-frame min-h-[18rem]">
+                  <div className="executive-photo-frame aspect-square w-full xl:aspect-auto xl:min-h-[18rem]">
                     {founderImage ? (
-                      <div className="relative h-full min-h-[18rem] w-full">
+                      <div className="relative h-full w-full xl:min-h-[18rem]">
                         <Image
                           src={founderImage}
                           alt={founder.name}
@@ -117,7 +117,7 @@ export default function AboutPage() {
                         />
                       </div>
                     ) : (
-                      <div className="profile-avatar h-full min-h-[18rem] w-full text-6xl">
+                      <div className="profile-avatar h-full w-full text-6xl xl:min-h-[18rem]">
                         <div className="flex flex-col items-center gap-4">
                           <span>{initials}</span>
                           <span className="executive-photo-slot">Photo Slot</span>
