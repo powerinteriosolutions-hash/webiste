@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Power On Interio | Residential and Commercial Interiors",
-    "description": "Power On Interio designs homes, offices, kitchens, wardrobes, and turnkey interiors with practical planning and refined execution."
+    "title": "Power On Interio | Commercial and Residential Interiors",
+    "description": "Power On Interio designs commercial offices, homes, kitchens, wardrobes, and turnkey interiors with practical planning and refined execution."
   },
   "heroTag": "Design. Build. Deliver.",
   "heroPrimaryCta": "Book a Consultation",
@@ -13,9 +13,16 @@
   ],
   "aboutSection": {
     "eyebrow": "About Power On Interio",
-    "title": "A practical interior design partner for homes, offices, and utility spaces.",
-    "description": "We align layout, material selection, and site execution so the final result feels polished and works well every day.",
+    "title": "A practical interior design partner for commercial spaces, homes, and utility areas.",
+    "description": "We align layout, material selection, and site execution so the final result feels polished and works well every day, especially in busy workspaces.",
     "primaryCta": "Learn About Us",
+    "secondaryCta": "View Projects"
+  },
+  "commercialSection": {
+    "eyebrow": "Commercial Showcase",
+    "title": "Commercial interiors that work hard and look polished.",
+    "description": "Reception areas, workstations, meeting rooms, and collaboration zones designed to support movement, clarity, and a stronger brand presence.",
+    "primaryCta": "Start a Commercial Brief",
     "secondaryCta": "View Projects"
   },
   "servicesSection": {
@@ -42,7 +49,7 @@
   },
   "projectsSection": {
     "eyebrow": "Project Gallery",
-    "title": "Selected interiors across homes, workplaces, and utility spaces.",
+    "title": "Selected commercial and residential interiors.",
     "linkLabel": "View Projects"
   },
   "processSection": {
@@ -64,8 +71,8 @@
     "primaryCta": "Contact Us"
   },
   "projectImages": [
-    "/living-premium.jpg",
     "/commercial/comercial-4.jpeg",
+    "/living-premium.jpg",
     "/residential/residential-kitchen-beige-modern.jpg"
   ]
 }

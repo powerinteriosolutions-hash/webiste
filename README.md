@@ -2,6 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Create a `.env.local` file with the email settings before running the contact form in background mode:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL="Power On Interio <contact@poweroninterio.com>"
+```
+
+`RESEND_FROM_EMAIL` must be a sender you have verified in Resend.
+
 First, run the development server:
 
 ```bash

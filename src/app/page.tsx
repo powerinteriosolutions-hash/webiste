@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { CommercialShowcaseCarousel } from "@/components/commercial-showcase-carousel";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
   company,
@@ -50,39 +51,39 @@ const clientMarqueeItems = [
 const heroSlideIntervalSeconds = 6;
 const heroSlides = [
   {
-    image: "/living-premium.jpg",
-    alt: "Premium living room interior with dining area",
+    image: "/commercial/comercial-4.jpeg",
+    alt: "Commercial office interior with a polished reception and collaboration layout",
     metric: "1500+",
     metricLabel: "Interiors Delivered",
-    caption: "Residential and commercial spaces shaped with turnkey precision.",
-    expertiseTitle: "Living Room Interiors",
+    caption: "Commercial and residential spaces shaped with turnkey precision.",
+    expertiseTitle: "Commercial Office Interiors",
     expertiseDetail:
-      "Bright, comfort-first living spaces planned for everyday use, better flow, and a calm premium finish.",
-    expertiseTags: ["Living Rooms", "Residential", "Turnkey"],
+      "Reception areas, circulation paths, and shared zones planned for a confident first impression and practical daily use.",
+    expertiseTags: ["Commercial Focus", "Office Planning", "Turnkey"],
     palette: {
-      frameFrom: "rgba(31, 24, 19, 0.58)",
-      frameTo: "rgba(31, 24, 19, 0.24)",
-      frameBorder: "rgba(245, 219, 185, 0.52)",
-      title: "#fff0db",
-      body: "rgba(255, 246, 235, 0.96)",
-      tagBg: "rgba(66, 48, 30, 0.48)",
-      tagBorder: "rgba(245, 219, 185, 0.56)",
-      tagText: "#ffe6c7",
-      metric: "#fff0dc",
-      indicator: "rgba(226, 183, 138, 0.92)",
-      shadow: "rgba(13, 10, 8, 0.36)",
+      frameFrom: "rgba(25, 33, 40, 0.58)",
+      frameTo: "rgba(25, 33, 40, 0.24)",
+      frameBorder: "rgba(208, 222, 236, 0.5)",
+      title: "#eef7ff",
+      body: "rgba(239, 247, 255, 0.95)",
+      tagBg: "rgba(49, 68, 86, 0.48)",
+      tagBorder: "rgba(208, 222, 236, 0.56)",
+      tagText: "#e4f1ff",
+      metric: "#eff8ff",
+      indicator: "rgba(187, 203, 218, 0.92)",
+      shadow: "rgba(12, 18, 24, 0.36)",
     },
   },
   {
-    image: "/commercial/comercial-4.jpeg",
-    alt: "Commercial meeting room interior",
+    image: "/commercial/comercial-11.jpeg",
+    alt: "Commercial collaboration space with meeting and team planning zones",
     metric: "10+",
     metricLabel: "Years of Experience",
     caption: "From layout planning to execution, every stage stays coordinated.",
-    expertiseTitle: "Group Discussion & Meeting Zones",
+    expertiseTitle: "Meeting and Collaboration Zones",
     expertiseDetail:
-      "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
-    expertiseTags: ["Group Discussion", "Meeting Rooms", "Acoustic Comfort"],
+      "Discussion tables, huddle areas, and meeting rooms tuned for collaboration, flow, and presentation clarity.",
+    expertiseTags: ["Meeting Rooms", "Collaboration", "Acoustic Comfort"],
     palette: {
       frameFrom: "rgba(25, 33, 40, 0.58)",
       frameTo: "rgba(25, 33, 40, 0.24)",
@@ -127,6 +128,33 @@ const heroSlides = [
 }));
 const heroAnimationDurationSeconds = heroSlides.length * heroSlideIntervalSeconds;
 
+const commercialShowcaseItems = [
+  {
+    image: withBasePath("/commercial/comercial-4.jpeg"),
+    label: "Commercial Office",
+    title: "Reception and Arrival",
+    description: "A clean welcome zone that sets the tone and keeps circulation easy.",
+  },
+  {
+    image: withBasePath("/commercial/comercial-1.jpeg"),
+    label: "Workspace Planning",
+    title: "Open Collaboration Floor",
+    description: "Open desk planning shaped for team flow, visibility, and daily use.",
+  },
+  {
+    image: withBasePath("/commercial/comercial-6.jpeg"),
+    label: "Meeting Zone",
+    title: "Conference Room Flow",
+    description: "A meeting setup built for clear presentations and focused discussion.",
+  },
+  {
+    image: withBasePath("/commercial/comercial-15.jpeg"),
+    label: "Client Lounge",
+    title: "Premium First Impressions",
+    description: "A polished client-facing space that feels calm, premium, and welcoming.",
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="bg-[var(--color-cream)] text-[var(--color-ink)]">
@@ -166,31 +194,11 @@ export default function Home() {
         <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
-        <div className="mx-auto flex min-h-[90vh] max-w-7xl flex-col justify-end px-4 pb-6 pt-12 sm:min-h-[82vh] sm:px-8 sm:py-14 lg:px-12 lg:py-20">
-          <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white">
-              <div className="hero-cinematic-fact-wrap hidden h-[4.1rem] sm:block sm:h-[4.8rem]" aria-hidden>
-                {heroSlides.map((slide, index) => (
-                  <div
-                    key={slide.metric}
-                    className="hero-cinematic-fact"
-                    style={{
-                      animationDelay: `${index * heroSlideIntervalSeconds}s`,
-                      animationDuration: `${heroAnimationDurationSeconds}s`,
-                    }}
-                  >
-                    <p
-                      className="hero-cinematic-fact-value font-serif font-semibold text-[4.79rem] leading-none sm:text-[5.79rem]"
-                      style={{ color: slide.palette.metric }}
-                    >
-                      {slide.metric}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="hero-expertise-card mt-1 rounded-[1.45rem] p-2.5 text-white sm:mt-4 sm:rounded-[2rem] sm:p-6">
-                <p className="text-[0.82rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[1.08rem] sm:tracking-[0.2em]">
+        <div className="flex min-h-[90vh] w-full flex-col justify-end px-4 pb-5 pt-12 sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
+          <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-6 lg:items-end">
+            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[34rem] lg:self-end xl:max-w-[36rem]">
+              <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-6">
+                <p className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[0.92rem] sm:tracking-[0.2em]">
                   Core Expertise
                 </p>
                 <div className="hero-expertise-stage mt-2 sm:mt-5" aria-hidden>
@@ -209,13 +217,13 @@ export default function Home() {
                       }
                     >
                       <h3
-                        className="font-serif font-semibold text-[1.96rem] leading-[1.1] sm:text-[3.6rem]"
+                        className="font-serif font-semibold text-[1.6rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3rem]"
                         style={{ color: slide.palette.title }}
                       >
                         {slide.expertiseTitle}
                       </h3>
                       <p
-                        className="mt-2 hidden text-[1.45rem] leading-9 font-medium sm:block sm:text-[1.55rem] sm:leading-10"
+                        className="mt-2 hidden text-[1.02rem] leading-7 font-medium sm:block sm:text-[1.15rem] sm:leading-8 lg:text-[1.26rem]"
                         style={{ color: slide.palette.body }}
                       >
                         {slide.expertiseDetail}
@@ -224,7 +232,7 @@ export default function Home() {
                         {slide.expertiseTags.map((tag) => (
                           <span
                             key={`${slide.metricLabel}-left-${tag}`}
-                            className="rounded-full border px-3 py-1 text-[0.86rem] font-bold tracking-[0.1em] uppercase sm:text-[0.92rem]"
+                            className="rounded-full border px-2.5 py-1 text-[0.72rem] font-bold tracking-[0.1em] uppercase sm:px-3 sm:text-[0.8rem]"
                             style={{
                               background: slide.palette.tagBg,
                               borderColor: slide.palette.tagBorder,
@@ -266,7 +274,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-stats-shell animate-fade-rise-delay hidden md:block">
+            <div className="hero-stats-shell animate-fade-rise-delay hidden md:block lg:justify-self-end">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
                 {stats.map((item) => (
                   <div
@@ -292,6 +300,44 @@ export default function Home() {
               {item}
             </p>
           ))}
+        </div>
+      </section>
+
+      <section className="section-wash bg-[linear-gradient(180deg,#f7f1ea_0%,#f2ebe2_100%)]">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                {homeContent.commercialSection.eyebrow}
+              </p>
+              <h2 className="mt-4 max-w-3xl font-serif text-[2.2rem] leading-tight sm:text-[3rem]">
+                {homeContent.commercialSection.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-[0.96rem] leading-7 text-[var(--color-muted)] sm:text-[1rem] sm:leading-8">
+                {homeContent.commercialSection.description}
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
+              <Link
+                href={withBasePathRoute("/contact")}
+                className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+              >
+                {homeContent.commercialSection.primaryCta}
+              </Link>
+              <Link
+                href={withBasePathRoute("/projects")}
+                className="btn-premium inline-flex items-center justify-center rounded-full border border-[rgba(31,26,23,0.14)] bg-white/78 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+              >
+                {homeContent.commercialSection.secondaryCta}
+              </Link>
+            </div>
+          </div>
+
+          <CommercialShowcaseCarousel
+            items={commercialShowcaseItems}
+            projectsHref={withBasePathRoute("/projects")}
+          />
         </div>
       </section>
 

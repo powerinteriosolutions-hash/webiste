@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/site-content";
+
 type ContactFormCopy = {
   namePlaceholder: string;
   phonePlaceholder: string;
@@ -8,21 +10,15 @@ type ContactFormCopy = {
 };
 
 type ContactFormProps = {
-  recipientEmail: string;
   copy: ContactFormCopy;
 };
 
-export function ContactForm({ recipientEmail, copy }: ContactFormProps) {
-  const mailtoAction = `mailto:${recipientEmail}?subject=${encodeURIComponent(
-    "Power On Interio project enquiry",
-  )}`;
-
+export function ContactForm({ copy }: ContactFormProps) {
   return (
     <form
       className="mt-8 grid gap-5 md:grid-cols-2"
-      action={mailtoAction}
+      action={withBasePath("/api/contact")}
       method="post"
-      encType="text/plain"
     >
       <input
         name="name"

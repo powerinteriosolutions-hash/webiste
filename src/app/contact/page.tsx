@@ -23,39 +23,47 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid min-w-0 gap-5 md:grid-cols-2">
-          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7">
-            <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
-              {contactPageContent.cards.emailLabel}
-            </p>
-            <a
-              href={`mailto:${company.email}`}
-              className="mt-4 block max-w-full break-all font-serif text-[clamp(1.9rem,2.7vw,3rem)] leading-tight transition hover:text-[var(--color-accent)]"
-            >
-              {company.email}
-            </a>
+        <div className="grid min-w-0 gap-4 sm:gap-5">
+          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white px-6 py-6 sm:px-8 sm:py-7">
+            <div className="flex h-full flex-col items-center justify-center text-center">
+              <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
+                {contactPageContent.cards.emailLabel}
+              </p>
+              <a
+                href={`mailto:${company.email}`}
+                className="mt-4 block w-full font-serif text-[clamp(1.05rem,1.55vw,1.62rem)] leading-[1.18] tracking-[-0.02em] transition [overflow-wrap:anywhere] hover:text-[var(--color-accent)] sm:whitespace-nowrap"
+              >
+                {company.email}
+              </a>
+            </div>
           </div>
 
-          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7">
-            <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
-              {contactPageContent.cards.phoneLabel}
-            </p>
-            <a
-              href={company.phoneHref}
-              className="mt-4 block max-w-full break-words font-serif text-[clamp(1.9rem,2.7vw,3rem)] leading-tight transition hover:text-[var(--color-accent)]"
-            >
-              {company.phone}
-            </a>
+          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white px-6 py-6 sm:px-8 sm:py-7">
+            <div className="flex h-full flex-col items-center justify-center text-center">
+              <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
+                {contactPageContent.cards.phoneLabel}
+              </p>
+              <a
+                href={company.phoneHref}
+                className="mt-4 block max-w-full font-serif text-[clamp(1.75rem,2.3vw,2.4rem)] leading-[1.08] tracking-[-0.02em] transition hover:text-[var(--color-accent)]"
+              >
+                {company.phone}
+              </a>
+            </div>
           </div>
 
-          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7 md:col-span-2">
-            <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
-              {contactPageContent.cards.serviceAreaLabel}
-            </p>
-            <p className="mt-4 font-serif text-3xl leading-tight">{company.location}</p>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)]">
-              {contactPageContent.cards.serviceAreaHelp}
-            </p>
+          <div className="min-w-0 rounded-[1.8rem] border border-[var(--color-line)] bg-white px-6 py-6 sm:px-8 sm:py-7">
+            <div className="flex h-full flex-col items-center justify-center text-center">
+              <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
+                {contactPageContent.cards.serviceAreaLabel}
+              </p>
+              <p className="mt-4 max-w-[24rem] font-serif text-[clamp(1.7rem,2.25vw,2.45rem)] leading-[1.12] tracking-[-0.02em]">
+                {company.location}
+              </p>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
+                {contactPageContent.cards.serviceAreaHelp}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -64,7 +72,7 @@ export default function ContactPage() {
         <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
           {contactPageContent.form.eyebrow}
         </p>
-        <ContactForm recipientEmail={company.email} copy={contactPageContent.form} />
+        <ContactForm copy={contactPageContent.form} />
       </section>
     </main>
   );
