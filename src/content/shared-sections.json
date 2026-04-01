@@ -145,19 +145,19 @@
   "founders": [
     {
       "name": "Shaik Shoiab",
-      "role": "CEO-Founder",
-      "image": "",
-      "vision": "To build Power On Interio into a trusted interior brand known for practical design, premium finishes, and dependable delivery.",
+      "role": "Founder & CEO",
+      "image": "/founders/suheb.jpeg",
+      "vision": "To establish Power On Interio as a trusted interiors partner recognized for thoughtful planning, refined finishes, and dependable project delivery.",
       "email": "poweroninterio@gmail.com",
       "phone": "973-867-7363"
     },
     {
       "name": "Syed Naveed",
       "role": "Co-Founder",
-      "image": "",
-      "vision": "To create residential and commercial spaces that combine strong aesthetics, functional planning, and long-term value.",
-      "email": "poweroninterio@gmail.com",
-      "phone": "973-867-7363"
+      "image": "/founders/Naveed.jpeg",
+      "vision": "To deliver residential and commercial spaces that balance visual refinement, practical functionality, and lasting value.",
+      "email": "",
+      "phone": "6362201648"
     }
   ],
   "team": [
@@ -165,22 +165,22 @@
       "name": "Bakash",
       "role": "Head of Client",
       "image": "",
-      "email": "poweroninterio@gmail.com",
-      "phone": "973-867-7363"
+      "email": "",
+      "phone": ""
     },
     {
       "name": "Shaik Shazill",
       "role": "Head of Marketing",
       "image": "",
-      "email": "poweroninterio@gmail.com",
-      "phone": "973-867-7363"
+      "email": "",
+      "phone": ""
     },
     {
       "name": "Aashik",
       "role": "Tech",
       "image": "",
-      "email": "poweroninterio@gmail.com",
-      "phone": "973-867-7363"
+      "email": "",
+      "phone": ""
     }
   ],
   "faqs": [
