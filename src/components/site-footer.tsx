@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { BriefcaseBusiness, Camera, MessageCircleMore } from "lucide-react";
 import { company, navLinks, withBasePath, withBasePathRoute } from "@/lib/site-content";
@@ -65,13 +66,13 @@ export function SiteFooter() {
               </p>
               <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-[0.76rem] font-semibold tracking-[0.14em] uppercase text-white/72 md:grid-cols-1 md:text-sm">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={withBasePathRoute(link.href)}
                     className="transition hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -4,10 +4,11 @@ import sharp from "sharp";
 
 const publicDir = path.join(process.cwd(), "public");
 const optimizedDir = path.join(publicDir, "optimized");
+const optimizerScriptPath = new URL(import.meta.url);
 const supportedExtensions = new Set([".jpg", ".jpeg"]);
 const outputExtension = ".webp";
-const maxDimension = 1600;
-const webpQuality = 74;
+const maxDimension = 1280;
+const webpQuality = 70;
 const webpEffort = 6;
 
 const walk = async (dir) => {
@@ -40,8 +41,12 @@ const toOptimizedRelativePath = (relativePath) =>
 
 const needsRefresh = async (sourcePath, outputPath) => {
   try {
-    const [sourceStat, outputStat] = await Promise.all([fs.stat(sourcePath), fs.stat(outputPath)]);
-    return sourceStat.mtimeMs > outputStat.mtimeMs;
+    const [sourceStat, outputStat, optimizerStat] = await Promise.all([
+      fs.stat(sourcePath),
+      fs.stat(outputPath),
+      fs.stat(optimizerScriptPath),
+    ]);
+    return sourceStat.mtimeMs > outputStat.mtimeMs || optimizerStat.mtimeMs > outputStat.mtimeMs;
   } catch {
     return true;
   }
@@ -73,7 +78,7 @@ const optimizeImage = async (sourcePath, relativePath) => {
     });
   }
 
-  await pipeline.webp({ quality: webpQuality, effort: webpEffort }).toFile(outputPath);
+  await pipeline.webp({ quality: webpQuality, effort: webpEffort, smartSubsample: true }).toFile(outputPath);
 
   return { status: "optimized", outputRelativePath };
 };

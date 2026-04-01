@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -244,6 +245,9 @@ export default function Home() {
                 alt="Premium interior workspace"
                 fill
                 priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
+                decoding="async"
                 sizes="100vw"
                 className="hero-cinematic-image object-cover object-center"
                 style={{ animationDuration: `${heroAnimationDurationSeconds}s` }}
@@ -329,12 +333,12 @@ export default function Home() {
               </div>
 
               <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-7 sm:flex-row">
-                <a
+                <Link
                   href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.heroPrimaryCta}
-                </a>
+                </Link>
               </div>
 
               <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-6" aria-hidden>
@@ -409,12 +413,12 @@ export default function Home() {
               {company.description} {homeContent.aboutSection.description}
             </p>
             <div className="pt-1">
-                <a
+                <Link
                   href={withBasePathRoute("/about")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.aboutSection.primaryCta}
-                </a>
+                </Link>
             </div>
           </div>
         </div>
@@ -432,12 +436,12 @@ export default function Home() {
                 {homeContent.servicesSection.title}
               </h2>
             </div>
-            <a
+            <Link
               href={withBasePathRoute("/services")}
               className="text-sm font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)] transition hover:text-[var(--color-ink)]"
             >
               {homeContent.servicesSection.linkLabel}
-            </a>
+            </Link>
           </div>
 
           <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5">
@@ -566,12 +570,12 @@ export default function Home() {
                 {homeContent.projectsSection.title}
               </h2>
             </div>
-            <a
+            <Link
               href={withBasePathRoute("/projects")}
               className="text-sm font-semibold tracking-[0.16em] uppercase text-[var(--color-accent-soft)] transition hover:text-white"
             >
               {homeContent.projectsSection.linkLabel}
-            </a>
+            </Link>
           </div>
 
           <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-3">
@@ -798,12 +802,12 @@ export default function Home() {
               {homeContent.contactCtaSection.description}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4 sm:flex-row sm:flex-wrap">
-                <a
+                <Link
                   href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:bg-[var(--color-sand)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.contactCtaSection.primaryCta}
-                </a>
+                </Link>
               <a
                 href={company.phoneHref}
                 className="btn-premium inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition hover:-translate-y-1 hover:bg-white/10 sm:px-7 sm:py-4 sm:text-sm"
