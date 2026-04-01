@@ -64,7 +64,7 @@ export function CommercialShowcaseCarousel({
 
     const intervalId = window.setInterval(() => {
       setActiveIndex((previousIndex) => (previousIndex + 1) % slideCount);
-    }, 4400);
+    }, 6200);
 
     return () => {
       window.clearInterval(intervalId);
@@ -86,7 +86,7 @@ export function CommercialShowcaseCarousel({
   };
 
   return (
-    <div className="mx-auto mt-8 max-w-5xl">
+    <div className="mx-auto mt-8 w-full max-w-5xl">
       <div className="mb-4 flex items-center justify-between gap-4 sm:mb-5">
         <p className="text-[0.7rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-muted)] sm:text-xs">
           {String(currentIndex + 1).padStart(2, "0")} / {String(slideCount).padStart(2, "0")}
@@ -113,7 +113,7 @@ export function CommercialShowcaseCarousel({
 
       <div className="overflow-hidden">
         <div
-          className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="flex transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ transform: `translate3d(-${currentIndex * 100}%, 0, 0)` }}
         >
           {slides.map((slide, slideIndex) => (

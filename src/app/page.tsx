@@ -48,18 +48,20 @@ const clientMarqueeItems = [
   ...homeContent.clientsSection.items,
 ];
 
-const heroSlideIntervalSeconds = 6;
+const heroSlideIntervalSeconds = 8;
 const heroSlides = [
   {
-    image: "/commercial/comercial-4.jpeg",
-    alt: "Commercial office interior with a polished reception and collaboration layout",
+    image: "/commercial/hero-commercial-boardroom.png",
+    alt: "Executive commercial boardroom interior with warm wood finishes and premium lighting",
     metric: "1500+",
     metricLabel: "Interiors Delivered",
-    caption: "Commercial and residential spaces shaped with turnkey precision.",
-    expertiseTitle: "Commercial Office Interiors",
+    caption: "Executive workspaces planned with clarity, restraint, and a premium finish language.",
+    expertiseTitle: "Executive Meeting Room Interiors",
     expertiseDetail:
-      "Reception areas, circulation paths, and shared zones planned for a confident first impression and practical daily use.",
-    expertiseTags: ["Commercial Focus", "Office Planning", "Turnkey"],
+      "Boardrooms, presentation areas, and client-facing meeting suites designed for focus, privacy, and a polished commercial presence.",
+    expertiseTags: ["Boardroom Design", "Commercial Focus", "Turnkey"],
+    mobilePosition: "72% center",
+    desktopPosition: "center center",
     palette: {
       frameFrom: "rgba(25, 33, 40, 0.58)",
       frameTo: "rgba(25, 33, 40, 0.24)",
@@ -75,15 +77,17 @@ const heroSlides = [
     },
   },
   {
-    image: "/commercial/comercial-11.jpeg",
-    alt: "Commercial collaboration space with meeting and team planning zones",
+    image: "/commercial/hero-commercial-reception.png",
+    alt: "Commercial office reception with glass partitions, warm wood textures, and a premium welcome desk",
     metric: "10+",
     metricLabel: "Years of Experience",
-    caption: "From layout planning to execution, every stage stays coordinated.",
-    expertiseTitle: "Meeting and Collaboration Zones",
+    caption: "Reception spaces shaped to feel calm, premium, and ready for every first impression.",
+    expertiseTitle: "Reception and Welcome Desk Interiors",
     expertiseDetail:
-      "Discussion tables, huddle areas, and meeting rooms tuned for collaboration, flow, and presentation clarity.",
-    expertiseTags: ["Meeting Rooms", "Collaboration", "Acoustic Comfort"],
+      "Arrival zones, circulation paths, and visitor-facing fronts planned for openness, brand confidence, and smooth movement.",
+    expertiseTags: ["Reception Design", "Arrival Planning", "Commercial"],
+    mobilePosition: "76% center",
+    desktopPosition: "center center",
     palette: {
       frameFrom: "rgba(25, 33, 40, 0.58)",
       frameTo: "rgba(25, 33, 40, 0.24)",
@@ -108,6 +112,8 @@ const heroSlides = [
     expertiseDetail:
       "Utility-first kitchens with efficient storage, easy movement, and premium finish combinations.",
     expertiseTags: ["Kitchen Planning", "Storage Optimization", "Residential"],
+    mobilePosition: "66% center",
+    desktopPosition: "center center",
     palette: {
       frameFrom: "rgba(48, 36, 24, 0.56)",
       frameTo: "rgba(48, 36, 24, 0.24)",
@@ -185,8 +191,14 @@ export default function Home() {
                 decoding="async"
                 quality={88}
                 sizes="100vw"
-                className="hero-cinematic-image object-cover object-center"
-                style={{ animationDuration: `${heroAnimationDurationSeconds}s` }}
+                className="hero-cinematic-image object-cover"
+                style={
+                  {
+                    animationDuration: `${heroAnimationDurationSeconds}s`,
+                    "--hero-mobile-position": slide.mobilePosition,
+                    "--hero-desktop-position": slide.desktopPosition,
+                  } as CSSProperties
+                }
               />
             </div>
           ))}
@@ -194,7 +206,7 @@ export default function Home() {
         <div className="hero-cinematic-texture absolute inset-0 -z-20" />
         <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
 
-        <div className="flex min-h-[90vh] w-full flex-col justify-end px-4 pb-5 pt-12 sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
+        <div className="flex min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
           <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-6 lg:items-end">
             <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[34rem] lg:self-end xl:max-w-[36rem]">
               <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-6">
