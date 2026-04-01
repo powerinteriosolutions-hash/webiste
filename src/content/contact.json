@@ -21,6 +21,12 @@
     "emailPlaceholder": "Email address",
     "messagePlaceholder": "Tell us about your project",
     "submitLabel": "Send Enquiry",
-    "helperText": "We’ll open your email app with a draft that includes your project details."
+    "helperText": "Send your enquiry directly to our inbox and we’ll reply as soon as possible."
+  },
+  "status": {
+    "successTitle": "Enquiry sent",
+    "successMessage": "Thanks for reaching out. Your message has been sent to our team and we’ll get back to you soon.",
+    "errorTitle": "Something went wrong",
+    "errorMessage": "We couldn’t send your enquiry just now. Please try again or email us directly."
   }
 }

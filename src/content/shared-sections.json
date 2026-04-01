@@ -7,12 +7,12 @@
   ],
   "services": [
     {
-      "title": "Residential Interiors",
-      "description": "Living rooms, bedrooms, kitchens, and wardrobes planned around comfort, storage, and daily use."
-    },
-    {
       "title": "Commercial Office Interiors",
       "description": "Office layouts, receptions, workstations, and meeting areas shaped for function and a polished brand presence."
+    },
+    {
+      "title": "Residential Interiors",
+      "description": "Living rooms, bedrooms, kitchens, and wardrobes planned around comfort, storage, and daily use."
     },
     {
       "title": "Interior Consultation",
@@ -31,14 +31,14 @@
   ],
   "projects": [
     {
-      "name": "Living Rooms",
-      "category": "Residential interior",
-      "description": "Comfort-led living spaces with thoughtful layouts, clean detailing, and a polished finish."
-    },
-    {
       "name": "Commercial Offices",
       "category": "Commercial workspace",
       "description": "Workspaces with clearer zoning, better circulation, and a more confident brand presence."
+    },
+    {
+      "name": "Living Rooms",
+      "category": "Residential interior",
+      "description": "Comfort-led living spaces with thoughtful layouts, clean detailing, and a polished finish."
     },
     {
       "name": "Kitchens and Wardrobes",
