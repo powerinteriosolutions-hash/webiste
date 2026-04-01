@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { BriefcaseBusiness, Camera, MessageCircleMore } from "lucide-react";
-import { company, navLinks, withBasePath } from "@/lib/site-content";
+import { company, navLinks, withBasePath, withBasePathRoute } from "@/lib/site-content";
 
 type SocialLinkProps = {
   href: string;
@@ -66,9 +65,13 @@ export function SiteFooter() {
               </p>
               <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-[0.76rem] font-semibold tracking-[0.14em] uppercase text-white/72 md:grid-cols-1 md:text-sm">
                 {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="transition hover:text-white">
+                  <a
+                    key={link.href}
+                    href={withBasePathRoute(link.href)}
+                    className="transition hover:text-white"
+                  >
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

@@ -27,6 +27,27 @@ export const withBasePath = (assetPath: string) => {
   return `${basePath}${withOptimizedAssetPath(normalized)}`;
 };
 
+export const withBasePathRoute = (href: string) => {
+  if (
+    !href ||
+    href.startsWith("http") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:") ||
+    href.startsWith("#")
+  ) {
+    return href;
+  }
+
+  const [pathWithQuery, hash = ""] = href.split("#");
+  const [pathname, query = ""] = pathWithQuery.split("?");
+  const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const routePath = normalized === "/" ? "/" : `${normalized.replace(/\/+$/, "")}/`;
+  const querySuffix = query ? `?${query}` : "";
+  const hashSuffix = hash ? `#${hash}` : "";
+
+  return `${basePath}${routePath}${querySuffix}${hashSuffix}`;
+};
+
 export const siteUrl = companyData.siteUrl;
 export const company = companyData.company;
 export const navLinks = companyData.navLinks;

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
@@ -15,6 +14,7 @@ import {
   stats,
   testimonials,
   withBasePath,
+  withBasePathRoute,
 } from "@/lib/site-content";
 
 const deployedSiteUrl =
@@ -329,12 +329,12 @@ export default function Home() {
               </div>
 
               <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-7 sm:flex-row">
-                <Link
-                  href="/contact"
+                <a
+                  href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.heroPrimaryCta}
-                </Link>
+                </a>
               </div>
 
               <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-6" aria-hidden>
@@ -409,12 +409,12 @@ export default function Home() {
               {company.description} {homeContent.aboutSection.description}
             </p>
             <div className="pt-1">
-                <Link
-                  href="/about"
+                <a
+                  href={withBasePathRoute("/about")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.aboutSection.primaryCta}
-                </Link>
+                </a>
             </div>
           </div>
         </div>
@@ -432,12 +432,12 @@ export default function Home() {
                 {homeContent.servicesSection.title}
               </h2>
             </div>
-            <Link
-              href="/services"
+            <a
+              href={withBasePathRoute("/services")}
               className="text-sm font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)] transition hover:text-[var(--color-ink)]"
             >
               {homeContent.servicesSection.linkLabel}
-            </Link>
+            </a>
           </div>
 
           <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5">
@@ -566,12 +566,12 @@ export default function Home() {
                 {homeContent.projectsSection.title}
               </h2>
             </div>
-            <Link
-              href="/projects"
+            <a
+              href={withBasePathRoute("/projects")}
               className="text-sm font-semibold tracking-[0.16em] uppercase text-[var(--color-accent-soft)] transition hover:text-white"
             >
               {homeContent.projectsSection.linkLabel}
-            </Link>
+            </a>
           </div>
 
           <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-3">
@@ -798,12 +798,12 @@ export default function Home() {
               {homeContent.contactCtaSection.description}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4 sm:flex-row sm:flex-wrap">
-                <Link
-                  href="/contact"
+                <a
+                  href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:bg-[var(--color-sand)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.contactCtaSection.primaryCta}
-                </Link>
+                </a>
               <a
                 href={company.phoneHref}
                 className="btn-premium inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition hover:-translate-y-1 hover:bg-white/10 sm:px-7 sm:py-4 sm:text-sm"

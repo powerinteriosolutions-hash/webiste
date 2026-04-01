@@ -2,9 +2,8 @@
 
 import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { company, navLinks, withBasePath } from "@/lib/site-content";
+import { company, navLinks, withBasePath, withBasePathRoute } from "@/lib/site-content";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,8 +46,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(248,242,234,0.88)] backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between gap-4">
-          <Link
-            href="/"
+          <a
+            href={withBasePathRoute("/")}
             className="group flex min-w-0 items-center gap-3"
             onClick={() => handleSamePageLinkClick("/")}
           >
@@ -65,7 +64,7 @@ export function SiteHeader() {
             <span className="hidden text-[0.68rem] font-semibold tracking-[0.14em] uppercase text-[var(--color-muted)] sm:inline-block lg:text-xs">
               Interior Design Company
             </span>
-          </Link>
+          </a>
 
           <button
             type="button"
@@ -98,10 +97,9 @@ export function SiteHeader() {
               const isActive = isLinkActive(link.href);
 
               return (
-                <Link
+                <a
                   key={link.href}
-                  href={link.href}
-                  prefetch
+                  href={withBasePathRoute(link.href)}
                   aria-current={isActive ? "page" : undefined}
                   className={`rounded-full px-3 py-1.5 transition-[color,background-color,transform] duration-200 ${
                     isActive
@@ -110,7 +108,7 @@ export function SiteHeader() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               );
             })}
           </nav>
@@ -133,7 +131,7 @@ export function SiteHeader() {
                 return (
                   <a
                     key={link.href}
-                    href={withBasePath(link.href)}
+                    href={withBasePathRoute(link.href)}
                     onClick={(event) => handleMobileNavLinkClick(event, link.href)}
                     aria-current={isActive ? "page" : undefined}
                     className={`rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.14em] uppercase transition-[color,background-color] duration-200 ${
