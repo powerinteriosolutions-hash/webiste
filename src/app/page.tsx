@@ -78,7 +78,7 @@ const heroSlides = [
     alt: "Commercial meeting room interior",
     metric: "10+",
     metricLabel: "Years of Experience",
-    caption: "From design direction to execution, every step stays client-first.",
+    caption: "From layout planning to execution, every stage stays coordinated.",
     expertiseTitle: "Group Discussion & Meeting Zones",
     expertiseDetail:
       "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
@@ -360,7 +360,7 @@ export default function Home() {
                 className="interactive-card rounded-[1.45rem] border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-5 shadow-[0_18px_50px_rgba(110,82,54,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(110,82,54,0.1)] sm:rounded-[1.8rem] sm:p-7"
               >
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.22em]">
-                  {company.name}
+                  Interior Service
                 </p>
                 <h3 className="mt-3 font-serif text-[1.9rem] leading-tight sm:mt-4 sm:text-3xl">{service.title}</h3>
                 <p className="mt-3 text-[0.96rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">
@@ -557,11 +557,10 @@ export default function Home() {
                 {homeContent.testimonialsSection.eyebrow}
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-                Over 100+ people trust our interior work
+                {homeContent.testimonialsSection.title}
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
-                Real client experiences that highlight the service, satisfaction,
-                and happiness behind every Power On Interio project.
+                Short client notes on planning, communication, and finish quality.
               </p>
             </div>
 
@@ -688,8 +687,7 @@ export default function Home() {
               {homeContent.faqSection.title}
             </h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Quick answers for the questions most customers ask before starting
-              their interior project in Bangalore, Chennai, or Hyderabad.
+              Answers to the questions most clients ask before starting a project in Bangalore, Chennai, or Hyderabad.
             </p>
           </div>
 

@@ -1,24 +1,24 @@
 {
   "meta": {
     "title": "Contact",
-    "description": "Contact Power On Interio for office interiors, residential design, and turnkey interior execution."
+    "description": "Contact Power On Interio to discuss residential interiors, commercial offices, and turnkey execution."
   },
   "hero": {
     "eyebrow": "Contact",
-    "title": "Start the conversation for your next interior project.",
-    "description": "Reach out to Power On Interio to discuss homes, offices, and commercial interiors."
+    "title": "Tell us about your space.",
+    "description": "Share your project details, and we’ll recommend the right next step."
   },
   "cards": {
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "serviceAreaLabel": "Service Area",
-    "serviceAreaHelp": "Add your exact studio address, Google Maps embed, and business hours here next for stronger local trust and local SEO."
+    "serviceAreaHelp": "We currently serve Bangalore, Chennai, and Hyderabad. For projects outside these cities, contact us and we’ll confirm availability."
   },
   "form": {
-    "eyebrow": "Enquiry Form Layout",
-    "namePlaceholder": "Full Name",
-    "phonePlaceholder": "Phone Number",
-    "emailPlaceholder": "Email Address",
+    "eyebrow": "Project Enquiry",
+    "namePlaceholder": "Your name",
+    "phonePlaceholder": "Phone number",
+    "emailPlaceholder": "Email address",
     "messagePlaceholder": "Tell us about your project"
   }
 }

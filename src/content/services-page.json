@@ -1,17 +1,17 @@
 {
   "meta": {
     "title": "Services",
-    "description": "Explore Power On Interio services including office interiors, residential interiors, consultation, and turnkey execution."
+    "description": "Explore Power On Interio services for residential interiors, commercial offices, design consultation, and turnkey execution."
   },
   "hero": {
     "eyebrow": "Services",
-    "title": "Interior design services for homes, workplaces, and turnkey projects.",
-    "description": "is positioned as a company, not just a project gallery. These service pages create stronger intent signals for search and make it easier for visitors to understand what you actually offer."
+    "title": "Interior services for homes, offices, and turnkey projects.",
+    "description": "We help clients plan, design, and deliver spaces that are practical, polished, and ready to use."
   },
   "process": {
-    "eyebrow": "Process"
+    "eyebrow": "How We Work"
   },
   "cta": {
-    "label": "Discuss Your Project"
+    "label": "Start Your Project"
   }
 }

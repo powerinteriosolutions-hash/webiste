@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, MapPin, Ruler, Sparkles } from "lucide-react";
-import { projects, projectsPageContent, withBasePath } from "@/lib/site-content";
+import { projectsPageContent, withBasePath } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: projectsPageContent.meta.title,
@@ -40,67 +40,67 @@ const locationCycle = ["Bengaluru", "Hyderabad", "Chennai"];
 const sizeCycle: GalleryItem["size"][] = ["wide", "standard", "tall", "standard", "wide"];
 
 const residentialTitles = [
-  projects[0].name,
-  "Master Bedroom Marble Wall",
+  "Living Room With Dining",
+  "Primary Bedroom",
   "Soft Neutral Bedroom",
   "Upholstered Headboard Suite",
-  "Compact Kitchen Reset",
-  "Living TV Unit Styling",
-  "Wardrobe Corner Storage",
-  "Wardrobe Entry View",
-  projects[2].name,
+  "Modular Kitchen",
+  "TV Unit and Wall Panelling",
+  "Corner Wardrobe Storage",
+  "Entry Wardrobe Layout",
+  "White Panel Wardrobe",
 ];
 
 const residentialDescriptions = [
-  "Residential details layered around comfort, with warm textures and elegant wall treatment.",
-  "A statement bedroom wall concept that adds depth while keeping the palette calm and cohesive.",
-  "Soft residential styling designed for restful ambience, balanced lighting, and practical upkeep.",
-  "A premium bedroom headboard treatment that combines hotel-like comfort with daily durability.",
-  "Kitchen planning focused on movement, countertop utility, and optimized cabinet workflow.",
-  "Media wall and storage composition shaped for clean cable management and visual balance.",
-  "Corner wardrobe design that unlocks hard-to-use zones with stronger storage efficiency.",
-  "Entry wardrobe arrangement with better circulation and practical day-to-day access.",
-  "Storage-focused wardrobe planning with clean paneling and modular organization logic.",
+  "A warm living space with clean circulation, layered seating, and a calm premium finish.",
+  "A balanced bedroom layout with refined wall treatment and practical storage.",
+  "A softer palette designed for rest, with simple detailing and easy maintenance.",
+  "A bedroom concept shaped for comfort, hotel-like polish, and daily durability.",
+  "A functional kitchen layout focused on movement, storage, and easy work zones.",
+  "A media wall setup that keeps the room clean, organised, and visually balanced.",
+  "A corner wardrobe plan that uses difficult areas more effectively.",
+  "An entry wardrobe solution that improves access without crowding the room.",
+  "A clean wardrobe elevation with modular storage and a neat front finish.",
 ];
 
 const residentialStyles = [
-  "Warm Minimal",
-  "Marble Accent",
+  "Warm Living",
+  "Primary Bedroom",
   "Soft Contemporary",
-  "Hospitality Home",
-  "Functional Premium",
-  "Modern Media Wall",
-  "Smart Utility",
-  "Clean Entry Layout",
-  "Storage First",
+  "Comfort Focused",
+  "Kitchen Utility",
+  "Media Wall",
+  "Smart Storage",
+  "Entry Planning",
+  "Clean Finish",
 ];
 
 const commercialTitles = [
-  "Shared Workspace Deck",
-  "Open Collaboration Zone",
-  "Coworking Desk Cluster",
-  "Group Discussion Table",
-  "Townhall Presentation Hall",
-  "Interactive Event Floor",
-  "Creative Dot Wall Studio",
-  "Casual Discussion Lounge",
+  "Shared Workspace",
+  "Collaboration Zone",
+  "Desk Cluster",
+  "Meeting Table",
+  "Townhall Room",
+  "Event Floor",
+  "Creative Studio",
+  "Discussion Lounge",
   "Executive Meeting Room",
   "Open Office Benching",
-  "Business Café Seating",
-  "Startup Green Collaboration Bay",
-  "Executive Cabin Refresh",
-  "Conference Table Suite",
-  "Reception + Waiting",
-  projects[1].name,
+  "Pantry Seating",
+  "Startup Collaboration Bay",
+  "Executive Cabin",
+  "Conference Room",
+  "Reception Lounge",
+  "Commercial Office",
 ];
 
 const commercialDescriptions = [
-  "Shared work areas planned for better movement, cleaner zoning, and stronger team interaction.",
-  "Layouts designed for group collaboration with practical desk clusters and meeting touchpoints.",
-  "Workspace interiors balancing density, visibility, and productivity for daily operations.",
-  "Discussion-first zones with table arrangements optimized for quick team decision-making.",
-  "Multi-use spaces built for presentations, internal events, and structured knowledge sessions.",
-  "Commercial interiors combining brand expression with durable finishes and easier maintenance.",
+  "Open work areas planned for movement, visibility, and better team interaction.",
+  "Flexible collaboration zones that make meetings and quick check-ins easier.",
+  "Desk layouts shaped for productivity, circulation, and a cleaner office rhythm.",
+  "A meeting space designed for quick decisions, presentations, and daily use.",
+  "Multi-use room planning for talks, team updates, and in-house presentations.",
+  "A lighter social floor that supports events, relaxed breaks, and brand visibility.",
 ];
 
 const commercialStyles = [
@@ -137,8 +137,6 @@ const commercialItems: GalleryItem[] = commercialGalleryImages.map((image, index
 const galleryItems: GalleryItem[] = [...residentialItems, ...commercialItems];
 
 const stripItems = [...galleryItems, ...galleryItems];
-const heroDescription =
-  "Browse 25 curated residential and commercial frames, including kitchens, shared workspaces, and discussion-focused interiors.";
 
 export default function ProjectsPage() {
   return (
@@ -154,18 +152,18 @@ export default function ProjectsPage() {
               {projectsPageContent.hero.eyebrow}
             </p>
             <h1 className="mt-4 max-w-lg font-serif text-[2.65rem] leading-[1.04] sm:text-6xl">
-              Curated Interiors That Feel Alive
+              {projectsPageContent.hero.title}
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:text-lg sm:leading-8">
-              {heroDescription}
+              {projectsPageContent.hero.description}
             </p>
           </div>
 
           <article className="project-feature-card animate-fade-rise-delay">
             <div className="project-feature-image-wrap">
               <Image
-                src={withBasePath("/commercial/comercial-13.jpeg")}
-                alt="Feature project interior with premium office styling"
+                src={withBasePath("/office-premium.jpg")}
+                alt="Premium commercial office interior with warm finishes"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -227,9 +225,9 @@ export default function ProjectsPage() {
 
       <section className="mx-auto max-w-7xl px-5 pt-8 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="font-serif text-[2.25rem] leading-tight sm:text-5xl">Project Story Gallery</h2>
+          <h2 className="font-serif text-[2.25rem] leading-tight sm:text-5xl">Selected Project Frames</h2>
           <p className="max-w-xl text-sm leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
-            Hover through each frame to reveal contextual details around style, scale, and location.
+            Each card highlights the room type, approximate area, and the design direction behind the space.
           </p>
         </div>
 
