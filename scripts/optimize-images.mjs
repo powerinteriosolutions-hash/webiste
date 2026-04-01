@@ -6,8 +6,8 @@ const publicDir = path.join(process.cwd(), "public");
 const optimizedDir = path.join(publicDir, "optimized");
 const supportedExtensions = new Set([".jpg", ".jpeg"]);
 const outputExtension = ".webp";
-const maxDimension = 1600;
-const webpQuality = 74;
+const maxDimension = 1280;
+const webpQuality = 70;
 const webpEffort = 6;
 
 const walk = async (dir) => {
@@ -73,7 +73,7 @@ const optimizeImage = async (sourcePath, relativePath) => {
     });
   }
 
-  await pipeline.webp({ quality: webpQuality, effort: webpEffort }).toFile(outputPath);
+  await pipeline.webp({ quality: webpQuality, effort: webpEffort, smartSubsample: true }).toFile(outputPath);
 
   return { status: "optimized", outputRelativePath };
 };

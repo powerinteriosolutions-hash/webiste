@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   company,
   processSteps,
@@ -67,12 +68,12 @@ export default function ServicesPage() {
       </section>
 
       <section className="mt-16">
-        <a
+        <Link
           href={withBasePathRoute("/contact")}
           className="inline-flex rounded-full bg-[var(--color-accent)] px-7 py-4 text-sm font-semibold tracking-[0.16em] uppercase text-white transition hover:bg-[#b9824b]"
         >
           {servicesPageContent.cta.label}
-        </a>
+        </Link>
       </section>
     </main>
   );
