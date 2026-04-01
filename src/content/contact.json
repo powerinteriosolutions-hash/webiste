@@ -19,6 +19,8 @@
     "namePlaceholder": "Your name",
     "phonePlaceholder": "Phone number",
     "emailPlaceholder": "Email address",
-    "messagePlaceholder": "Tell us about your project"
+    "messagePlaceholder": "Tell us about your project",
+    "submitLabel": "Send Enquiry",
+    "helperText": "We’ll open your email app with a draft that includes your project details."
   }
 }

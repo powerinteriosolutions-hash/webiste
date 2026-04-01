@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact-form";
 import { company, contactPageContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -63,24 +64,7 @@ export default function ContactPage() {
         <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
           {contactPageContent.form.eyebrow}
         </p>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <input
-            className="rounded-[1rem] border border-[var(--color-line)] bg-white px-4 py-4 outline-none"
-            placeholder={contactPageContent.form.namePlaceholder}
-          />
-          <input
-            className="rounded-[1rem] border border-[var(--color-line)] bg-white px-4 py-4 outline-none"
-            placeholder={contactPageContent.form.phonePlaceholder}
-          />
-          <input
-            className="rounded-[1rem] border border-[var(--color-line)] bg-white px-4 py-4 outline-none md:col-span-2"
-            placeholder={contactPageContent.form.emailPlaceholder}
-          />
-          <textarea
-            className="min-h-40 rounded-[1rem] border border-[var(--color-line)] bg-white px-4 py-4 outline-none md:col-span-2"
-            placeholder={contactPageContent.form.messagePlaceholder}
-          />
-        </div>
+        <ContactForm recipientEmail={company.email} copy={contactPageContent.form} />
       </section>
     </main>
   );
