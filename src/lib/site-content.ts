@@ -6,7 +6,17 @@ import projectsPage from "@/content/projects-page.json";
 import servicesPage from "@/content/services-page.json";
 import sharedSections from "@/content/shared-sections.json";
 
-export const basePath = process.env.NODE_ENV === "production" ? "/webiste" : "";
+const normalizePathPrefix = (value: string) => {
+  if (!value || value === "/") {
+    return "";
+  }
+
+  return `/${value.replace(/^\/+|\/+$/g, "")}`;
+};
+
+const normalizeSiteUrl = (value: string) => value.replace(/\/+$/, "");
+
+export const basePath = normalizePathPrefix(process.env.NEXT_PUBLIC_BASE_PATH ?? "");
 const optimizedAssetRoot = "/optimized";
 const localJpegPattern = /\.(jpe?g)$/i;
 
@@ -45,10 +55,48 @@ export const withBasePathRoute = (href: string) => {
   const querySuffix = query ? `?${query}` : "";
   const hashSuffix = hash ? `#${hash}` : "";
 
-  return `${basePath}${routePath}${querySuffix}${hashSuffix}`;
+  return `${routePath}${querySuffix}${hashSuffix}`;
 };
 
-export const siteUrl = companyData.siteUrl;
+export const withAbsoluteBasePathRoute = (href: string) => {
+  const routePath = withBasePathRoute(href);
+
+  if (
+    !routePath ||
+    routePath.startsWith("http") ||
+    routePath.startsWith("mailto:") ||
+    routePath.startsWith("tel:") ||
+    routePath.startsWith("#")
+  ) {
+    return routePath;
+  }
+
+  return `${basePath}${routePath}`;
+};
+
+export const toAbsoluteSiteUrl = (href: string = "/") => {
+  if (!href || href.startsWith("http")) {
+    return href || `${siteUrl}/`;
+  }
+
+  const [pathWithQuery, hash = ""] = href.split("#");
+  const [pathname, query = ""] = pathWithQuery.split("?");
+  const normalizedPath = pathname === "/" ? "" : pathname.replace(/^\/+/, "").replace(/\/+$/, "");
+  const routePath = normalizedPath ? `${normalizedPath}/` : "./";
+  const url = new URL(routePath, `${siteUrl}/`);
+
+  if (query) {
+    url.search = query;
+  }
+
+  if (hash) {
+    url.hash = hash;
+  }
+
+  return url.toString();
+};
+
+export const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? companyData.siteUrl);
 export const company = companyData.company;
 export const navLinks = companyData.navLinks;
 
