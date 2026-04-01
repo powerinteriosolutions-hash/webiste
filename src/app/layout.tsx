@@ -2,17 +2,16 @@ import type { Metadata } from "next";
 import { MotionFallback } from "@/components/motion-fallback";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { siteUrl } from "@/lib/site-content";
+import { company, siteUrl } from "@/lib/site-content";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Power On Interio | Interior Design Company",
+    default: "Power On Interio | Residential and Commercial Interiors",
     template: "%s | Power On Interio",
   },
-  description:
-    "Power On Interio designs residential and commercial interiors with a client-first approach, creative planning, and end-to-end execution.",
+  description: company.description,
   keywords: [
     "Power On Interio",
     "Poweroninterio",
@@ -34,17 +33,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Power On Interio | Interior Design Company",
-    description:
-      "Residential and commercial interior design presented in a premium, SEO-ready company website.",
+    title: "Power On Interio | Residential and Commercial Interiors",
+    description: company.description,
     siteName: "Power On Interio",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Power On Interio | Interior Design Company",
-    description:
-      "Interior design company website with real brand details, premium positioning, and conversion-focused structure.",
+    title: "Power On Interio | Residential and Commercial Interiors",
+    description: company.description,
   },
   robots: {
     index: true,

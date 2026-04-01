@@ -34,6 +34,7 @@ const seoSchema = {
 };
 
 const projectImages = homeContent.projectImages.map((imagePath) => withBasePath(imagePath));
+const aboutFeatureImage = projectImages[0];
 const mobileTestimonials = testimonials.slice(0, 4);
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
@@ -49,14 +50,15 @@ const clientMarqueeItems = [
 const heroSlideIntervalSeconds = 6;
 const heroSlides = [
   {
-    image: "/commercial/comercial-3.jpeg",
+    image: "/living-premium.jpg",
+    alt: "Premium living room interior with dining area",
     metric: "1500+",
     metricLabel: "Interiors Delivered",
     caption: "Residential and commercial spaces shaped with turnkey precision.",
-    expertiseTitle: company.heroTitle,
+    expertiseTitle: "Living Room Interiors",
     expertiseDetail:
-      "Shared workspace planning with cleaner zoning, brighter circulation paths, and better team comfort.",
-    expertiseTags: ["Shared Workspace", "Commercial", "Turnkey"],
+      "Bright, comfort-first living spaces planned for everyday use, better flow, and a calm premium finish.",
+    expertiseTags: ["Living Rooms", "Residential", "Turnkey"],
     palette: {
       frameFrom: "rgba(31, 24, 19, 0.58)",
       frameTo: "rgba(31, 24, 19, 0.24)",
@@ -73,9 +75,10 @@ const heroSlides = [
   },
   {
     image: "/commercial/comercial-4.jpeg",
+    alt: "Commercial meeting room interior",
     metric: "10+",
     metricLabel: "Years of Experience",
-    caption: "From design direction to execution, every step stays client-first.",
+    caption: "From layout planning to execution, every stage stays coordinated.",
     expertiseTitle: "Group Discussion & Meeting Zones",
     expertiseDetail:
       "Discussion tables, huddle areas, and meeting rooms tuned for collaboration and presentation clarity.",
@@ -96,6 +99,7 @@ const heroSlides = [
   },
   {
     image: "/residential/residential-kitchen-beige-modern.jpg",
+    alt: "Modern modular kitchen interior with beige cabinets",
     metric: "24/7",
     metricLabel: "Support Availability",
     caption: "Continuous updates and proactive support from brief to handover.",
@@ -115,98 +119,6 @@ const heroSlides = [
       metric: "#fff1de",
       indicator: "rgba(229, 199, 160, 0.92)",
       shadow: "rgba(20, 14, 9, 0.36)",
-    },
-  },
-  {
-    image: "/commercial/comercial-9.jpeg",
-    metric: "320+",
-    metricLabel: "Office Zones",
-    caption: "Executive meeting spaces built for comfort, focus, and presentation quality.",
-    expertiseTitle: "Executive Meeting Interiors",
-    expertiseDetail:
-      "Boardroom and client-facing spaces with better acoustics, polished finishes, and cleaner circulation.",
-    expertiseTags: ["Meeting Room", "Executive", "Commercial"],
-    palette: {
-      frameFrom: "rgba(26, 33, 41, 0.58)",
-      frameTo: "rgba(26, 33, 41, 0.24)",
-      frameBorder: "rgba(208, 221, 236, 0.52)",
-      title: "#eef7ff",
-      body: "rgba(240, 247, 255, 0.96)",
-      tagBg: "rgba(50, 69, 88, 0.48)",
-      tagBorder: "rgba(208, 221, 236, 0.56)",
-      tagText: "#e5f2ff",
-      metric: "#eff8ff",
-      indicator: "rgba(191, 206, 220, 0.92)",
-      shadow: "rgba(12, 18, 25, 0.36)",
-    },
-  },
-  {
-    image: "/commercial/comercial-12.jpeg",
-    metric: "48hr",
-    metricLabel: "Concept Previews",
-    caption: "Fast concept iterations with practical layout thinking and execution clarity.",
-    expertiseTitle: "Startup Collaboration Bays",
-    expertiseDetail:
-      "Dynamic team zones designed for brainstorming, standups, and rapid ideation without visual clutter.",
-    expertiseTags: ["Startup", "Collaboration", "Office"],
-    palette: {
-      frameFrom: "rgba(30, 38, 31, 0.58)",
-      frameTo: "rgba(30, 38, 31, 0.24)",
-      frameBorder: "rgba(207, 226, 201, 0.5)",
-      title: "#ebffe6",
-      body: "rgba(239, 252, 235, 0.95)",
-      tagBg: "rgba(57, 82, 50, 0.48)",
-      tagBorder: "rgba(207, 226, 201, 0.56)",
-      tagText: "#deffd6",
-      metric: "#ecffe8",
-      indicator: "rgba(181, 214, 172, 0.92)",
-      shadow: "rgba(15, 24, 15, 0.34)",
-    },
-  },
-  {
-    image: "/residential/residential-bedroom-soft-neutral.jpg",
-    metric: "900+",
-    metricLabel: "Bedrooms Crafted",
-    caption: "Calm bedroom concepts with layered lighting and restful color palettes.",
-    expertiseTitle: "Premium Bedroom Styling",
-    expertiseDetail:
-      "Soft-tone bedroom interiors balancing elegance, storage practicality, and day-to-night comfort.",
-    expertiseTags: ["Bedroom", "Residential", "Soft Luxury"],
-    palette: {
-      frameFrom: "rgba(45, 35, 29, 0.56)",
-      frameTo: "rgba(45, 35, 29, 0.24)",
-      frameBorder: "rgba(242, 224, 204, 0.54)",
-      title: "#fff2e5",
-      body: "rgba(255, 246, 238, 0.96)",
-      tagBg: "rgba(86, 63, 48, 0.48)",
-      tagBorder: "rgba(242, 224, 204, 0.56)",
-      tagText: "#ffe8d2",
-      metric: "#fff0e1",
-      indicator: "rgba(231, 204, 174, 0.92)",
-      shadow: "rgba(20, 14, 10, 0.34)",
-    },
-  },
-  {
-    image: "/residential/residential-wardrobe-white-panel.jpg",
-    metric: "1:1",
-    metricLabel: "Storage Planning",
-    caption: "Wardrobe systems shaped around real daily routines and clean organization.",
-    expertiseTitle: "Smart Wardrobe Utility",
-    expertiseDetail:
-      "Custom wardrobe layouts with optimized shelves, hanging zones, and long-term storage efficiency.",
-    expertiseTags: ["Wardrobe", "Utility", "Storage"],
-    palette: {
-      frameFrom: "rgba(34, 36, 39, 0.56)",
-      frameTo: "rgba(34, 36, 39, 0.24)",
-      frameBorder: "rgba(223, 229, 237, 0.52)",
-      title: "#f2f6fc",
-      body: "rgba(241, 246, 252, 0.95)",
-      tagBg: "rgba(62, 70, 82, 0.48)",
-      tagBorder: "rgba(223, 229, 237, 0.56)",
-      tagText: "#e7eef7",
-      metric: "#f3f7fd",
-      indicator: "rgba(202, 214, 228, 0.92)",
-      shadow: "rgba(16, 18, 22, 0.34)",
     },
   },
 ].map((slide) => ({
@@ -237,12 +149,13 @@ export default function Home() {
             >
               <Image
                 src={slide.image}
-                alt="Premium interior workspace"
+                alt={slide.alt}
                 fill
                 priority={index === 0}
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "low"}
+                loading="eager"
+                fetchPriority={index === 0 ? "high" : "auto"}
                 decoding="async"
+                quality={88}
                 sizes="100vw"
                 className="hero-cinematic-image object-cover object-center"
                 style={{ animationDuration: `${heroAnimationDurationSeconds}s` }}
@@ -397,9 +310,10 @@ export default function Home() {
           <div className="interactive-card grid max-w-2xl gap-4 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-5 sm:rounded-[2rem] sm:p-7">
             <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
-                src={withBasePath("/residential/residential-bedroom-upholstered-headboard.jpg")}
-                alt="Premium residential bedroom interior"
+                src={aboutFeatureImage}
+                alt="Signature Power On Interio interior project"
                 fill
+                quality={88}
                 sizes="(max-width: 640px) 100vw, 50vw"
                 className="object-cover object-center"
               />
@@ -446,7 +360,7 @@ export default function Home() {
                 className="interactive-card rounded-[1.45rem] border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-5 shadow-[0_18px_50px_rgba(110,82,54,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(110,82,54,0.1)] sm:rounded-[1.8rem] sm:p-7"
               >
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.22em]">
-                  {company.name}
+                  Interior Service
                 </p>
                 <h3 className="mt-3 font-serif text-[1.9rem] leading-tight sm:mt-4 sm:text-3xl">{service.title}</h3>
                 <p className="mt-3 text-[0.96rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">
@@ -584,6 +498,7 @@ export default function Home() {
                     src={projectImages[index]}
                     alt={project.name}
                     fill
+                    quality={88}
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover object-center"
                   />
@@ -642,11 +557,10 @@ export default function Home() {
                 {homeContent.testimonialsSection.eyebrow}
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-                Over 100+ people trust our interior work
+                {homeContent.testimonialsSection.title}
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
-                Real client experiences that highlight the service, satisfaction,
-                and happiness behind every Power On Interio project.
+                Short client notes on planning, communication, and finish quality.
               </p>
             </div>
 
@@ -773,8 +687,7 @@ export default function Home() {
               {homeContent.faqSection.title}
             </h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Quick answers for the questions most customers ask before starting
-              their interior project in Bangalore, Chennai, or Hyderabad.
+              Answers to the questions most clients ask before starting a project in Bangalore, Chennai, or Hyderabad.
             </p>
           </div>
 

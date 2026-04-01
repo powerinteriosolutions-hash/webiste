@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  company,
   processSteps,
   services,
   servicesPageContent,
@@ -28,7 +27,7 @@ export default function ServicesPage() {
 
         <div>
           <p className="max-w-3xl text-lg leading-8 text-[var(--color-muted)]">
-            {company.name} {servicesPageContent.hero.description}
+            {servicesPageContent.hero.description}
           </p>
         </div>
       </section>
@@ -40,7 +39,7 @@ export default function ServicesPage() {
             className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7 shadow-[0_18px_50px_rgba(71,52,34,0.06)]"
           >
             <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
-              {company.name}
+              Interior Service
             </p>
             <h2 className="mt-4 font-serif text-3xl leading-tight">{service.title}</h2>
             <p className="mt-4 text-base leading-7 text-[var(--color-muted)]">

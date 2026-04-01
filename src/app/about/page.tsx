@@ -129,7 +129,7 @@ export default function AboutPage() {
                   <div className="flex h-full flex-col gap-4">
                     <div>
                       <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
-                        Executive Profile
+                        Leadership Profile
                       </p>
                       <p className="font-serif text-3xl text-[var(--color-ink)]">
                         {founder.name}
@@ -165,13 +165,11 @@ export default function AboutPage() {
           <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ink)] px-5 py-6 text-white sm:px-6">
             <div className="mb-6">
               <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)]">
-                Team Profiles
+                Team
               </p>
-              <h3 className="mt-2 font-serif text-3xl">
-                Meet the wider Power On Interio team
-              </h3>
+              <h3 className="mt-2 font-serif text-3xl">Meet the wider Power On Interio team</h3>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">
-                A static profile grid keeps every team member visible and easy to scan.
+                A concise profile grid keeps the team roles and contact details easy to review.
               </p>
             </div>
 

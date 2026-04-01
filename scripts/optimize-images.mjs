@@ -7,8 +7,8 @@ const optimizedDir = path.join(publicDir, "optimized");
 const optimizerScriptPath = new URL(import.meta.url);
 const supportedExtensions = new Set([".jpg", ".jpeg"]);
 const outputExtension = ".webp";
-const maxDimension = 1280;
-const webpQuality = 70;
+const maxDimension = 1600;
+const webpQuality = 82;
 const webpEffort = 6;
 
 const walk = async (dir) => {
@@ -70,12 +70,14 @@ const optimizeImage = async (sourcePath, relativePath) => {
     (metadata.width && metadata.width > maxDimension) ||
     (metadata.height && metadata.height > maxDimension)
   ) {
-    pipeline = pipeline.resize({
-      width: maxDimension,
-      height: maxDimension,
-      fit: "inside",
-      withoutEnlargement: true,
-    });
+    pipeline = pipeline
+      .resize({
+        width: maxDimension,
+        height: maxDimension,
+        fit: "inside",
+        withoutEnlargement: true,
+      })
+      .sharpen();
   }
 
   await pipeline.webp({ quality: webpQuality, effort: webpEffort, smartSubsample: true }).toFile(outputPath);

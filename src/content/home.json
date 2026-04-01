@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Interior Design Company",
-    "description": "Power On Interio is an interior design company crafting residential and commercial interiors with client-first execution."
+    "title": "Power On Interio | Residential and Commercial Interiors",
+    "description": "Power On Interio designs homes, offices, kitchens, wardrobes, and turnkey interiors with practical planning and refined execution."
   },
   "heroTag": "Design. Build. Deliver.",
   "heroPrimaryCta": "Book a Consultation",
@@ -9,63 +9,63 @@
   "trustStrip": [
     "Commercial Offices",
     "Residential Interiors",
-    "Turnkey Design and Build"
+    "Turnkey Delivery"
   ],
   "aboutSection": {
-    "eyebrow": "About Poweroninterio",
-    "title": "A company profile designed to feel established, premium, and trustworthy.",
-    "description": "This foundation gives you a stronger brand story than a simple portfolio and creates room for SEO-driven service and city pages later.",
+    "eyebrow": "About Power On Interio",
+    "title": "A practical interior design partner for homes, offices, and utility spaces.",
+    "description": "We align layout, material selection, and site execution so the final result feels polished and works well every day.",
     "primaryCta": "Learn About Us",
-    "secondaryCta": "View Project Gallery"
+    "secondaryCta": "View Projects"
   },
   "servicesSection": {
-    "eyebrow": "Our Services",
-    "title": "Service-led content shaped around the real Power On Interio business.",
-    "linkLabel": "See all services"
+    "eyebrow": "Services",
+    "title": "Design, consultation, and turnkey execution tailored to each space.",
+    "linkLabel": "See Services"
   },
   "clientsSection": {
-    "eyebrow": "Our Clients",
-    "title": "Trusted by interior, design, and construction-focused brands.",
-    "description": "A stronger client list section builds instant trust and gives the homepage more commercial credibility.",
+    "eyebrow": "Clients",
+    "title": "Trusted by interior, construction, and workspace-led teams.",
+    "description": "We work with brands that need clear planning, practical layouts, and dependable delivery.",
     "items": [
-      "Flipspace Pvt Ltd",
+      "Flipspaces",
       "M&M Construction",
-      "Live Space",
-      "The Ripple Studio",
+      "Livspace",
+      "Ripple Studio",
       "Trends Works",
       "Falcon Spaces"
     ]
   },
   "whySection": {
     "eyebrow": "Why Choose Us",
-    "title": "The same client-first strengths highlighted on your original company website."
+    "title": "Clear planning, steady communication, and reliable delivery."
   },
   "projectsSection": {
     "eyebrow": "Project Gallery",
-    "title": "Showcase residential and commercial work with a stronger company narrative.",
-    "linkLabel": "Explore projects"
+    "title": "Selected interiors across homes, workplaces, and utility spaces.",
+    "linkLabel": "View Projects"
   },
   "processSection": {
     "eyebrow": "Process",
-    "title": "A simple and credible design journey from brief to handover."
+    "title": "A simple path from brief to handover."
   },
   "testimonialsSection": {
-    "eyebrow": "Testimonials",
-    "title": "Trust signals that make the company feel more established online."
+    "eyebrow": "Client Feedback",
+    "title": "What clients value after the project is complete."
   },
   "faqSection": {
     "eyebrow": "Frequently Asked Questions",
-    "title": "Helpful for users now, and useful for search visibility later."
+    "title": "Clear answers before the project begins."
   },
   "contactCtaSection": {
     "eyebrow": "Contact",
-    "title": "Ready to connect with Power On Interio?",
-    "description": "Reach out to discuss your dream interiors for homes, offices, and commercial spaces.",
-    "primaryCta": "Contact Page"
+    "title": "Ready to discuss your space?",
+    "description": "Share the site, scope, and timeline, and we’ll help you define the next step.",
+    "primaryCta": "Contact Us"
   },
   "projectImages": [
-    "/residential/residential-kitchen-beige-modern.jpg",
-    "/commercial/comercial-3.jpeg",
-    "/commercial/comercial-4.jpeg"
+    "/living-premium.jpg",
+    "/commercial/comercial-4.jpeg",
+    "/residential/residential-kitchen-beige-modern.jpg"
   ]
 }
