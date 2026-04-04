@@ -683,10 +683,6 @@ h6 {
   will-change: transform;
 }
 
-.client-name-marquee:hover .client-name-marquee-track {
-  animation-play-state: paused;
-}
-
 @media (max-width: 640px) {
   .client-name-marquee {
     overflow: hidden;
@@ -701,12 +697,6 @@ h6 {
   .client-name-marquee-track {
     animation: marqueeLeft 58s linear infinite;
     padding-right: 0;
-  }
-
-  .client-name-marquee:hover .client-name-marquee-track,
-  .client-name-marquee:active .client-name-marquee-track,
-  .client-name-marquee:focus-within .client-name-marquee-track {
-    animation-play-state: paused;
   }
 }
 
@@ -968,6 +958,7 @@ h6 {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
+  align-items: stretch;
 }
 
 .project-gallery-card {
@@ -1114,29 +1105,12 @@ h6 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.2rem;
   }
-
-  .project-gallery-card-wide {
-    grid-column: span 2 / span 2;
-  }
 }
 
 @media (min-width: 1200px) {
   .project-gallery-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
-  }
-
-  .project-gallery-card-standard {
-    grid-column: span 4 / span 4;
-  }
-
-  .project-gallery-card-wide {
-    grid-column: span 8 / span 8;
-  }
-
-  .project-gallery-card-tall {
-    grid-column: span 4 / span 4;
-    min-height: 100%;
   }
 }
 
@@ -1216,10 +1190,6 @@ h6 {
 
   .client-carousel-track-reverse {
     animation-name: clientColumnDown;
-  }
-
-  .client-carousel-column:hover .client-carousel-track {
-    animation-play-state: paused;
   }
 
   .testimonial-column {

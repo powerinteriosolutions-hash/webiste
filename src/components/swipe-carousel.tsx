@@ -36,6 +36,7 @@ export function SwipeCarousel({
   const activePointerIdRef = useRef<number | null>(null);
   const dragStartXRef = useRef(0);
   const dragStartScrollLeftRef = useRef(0);
+  const dragAutoStopTriggeredRef = useRef(false);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -116,8 +117,6 @@ export function SwipeCarousel({
   };
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    stopAutoPlay();
-
     if (event.pointerType !== "mouse" || event.button !== 0) {
       return;
     }
@@ -131,6 +130,7 @@ export function SwipeCarousel({
     activePointerIdRef.current = event.pointerId;
     dragStartXRef.current = event.clientX;
     dragStartScrollLeftRef.current = viewport.scrollLeft;
+    dragAutoStopTriggeredRef.current = false;
     viewport.setPointerCapture(event.pointerId);
     setIsDragging(true);
   };
@@ -143,6 +143,12 @@ export function SwipeCarousel({
     }
 
     const deltaX = event.clientX - dragStartXRef.current;
+
+    if (!dragAutoStopTriggeredRef.current && Math.abs(deltaX) > 6) {
+      stopAutoPlay();
+      dragAutoStopTriggeredRef.current = true;
+    }
+
     viewport.scrollLeft = dragStartScrollLeftRef.current - deltaX;
   };
 
@@ -158,6 +164,7 @@ export function SwipeCarousel({
     }
 
     activePointerIdRef.current = null;
+    dragAutoStopTriggeredRef.current = false;
     setIsDragging(false);
   };
 

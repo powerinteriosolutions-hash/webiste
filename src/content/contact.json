@@ -12,7 +12,7 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "serviceAreaLabel": "Service Area",
-    "serviceAreaHelp": "We currently serve Bangalore, Chennai, and Hyderabad. For projects outside these cities, contact us and we’ll confirm availability."
+    "serviceAreaHelp": "We handle interior projects across India, including Bengaluru, Hyderabad, Chennai, Mumbai, Pune, Delhi NCR, Ahmedabad, Kolkata, Jaipur, Kochi, and Coimbatore. If your city is not listed, contact us and we’ll confirm the next step."
   },
   "form": {
     "eyebrow": "Project Enquiry",
@@ -25,8 +25,8 @@
   },
   "status": {
     "successTitle": "Enquiry sent",
-    "successMessage": "Thanks for reaching out. Your message has been sent to our team and we’ll get back to you soon.",
+    "successMessage": "Thanks for reaching out. Your enquiry is now with our team, and we’ll connect with you shortly by phone or email.",
     "errorTitle": "Something went wrong",
-    "errorMessage": "We couldn’t send your enquiry just now. Please try again or email us directly."
+    "errorMessage": "We couldn’t send your enquiry just now. Please try again in a moment, or email us directly and we’ll assist you manually."
   }
 }
