@@ -6,6 +6,10 @@ import { ArrowRight } from "lucide-react";
 import { CommercialShowcaseCarousel } from "@/components/commercial-showcase-carousel";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { HomeLeadForm } from "@/components/home-lead-form";
+import {
+  HomeProjectGallery,
+  type HomeProjectGalleryItem,
+} from "@/components/home-project-gallery";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import {
   company,
@@ -161,6 +165,47 @@ const commercialShowcaseItems = [
     description: "A polished client-facing space that feels calm, premium, and welcoming.",
   },
 ] as const;
+
+const homeProjectGalleryMeta = [
+  {
+    location: "Bengaluru",
+    area: "4,200 sq ft",
+    styleNote: "Commercial workspace planning",
+  },
+  {
+    location: "Hyderabad",
+    area: "2,850 sq ft",
+    styleNote: "Warm residential social spaces",
+  },
+  {
+    location: "Chennai",
+    area: "1,640 sq ft",
+    styleNote: "Utility-led kitchen systems",
+  },
+  {
+    location: "Bengaluru",
+    area: "3,100 sq ft",
+    styleNote: "Reception and lounge experience",
+  },
+  {
+    location: "Chennai",
+    area: "1,980 sq ft",
+    styleNote: "Calm bedroom suite detailing",
+  },
+  {
+    location: "Hyderabad",
+    area: "2,460 sq ft",
+    styleNote: "Meeting and collaboration focus",
+  },
+] as const;
+
+const homeProjectGalleryItems: HomeProjectGalleryItem[] = projects.map((project, index) => ({
+  ...project,
+  image: projectImages[index],
+  location: homeProjectGalleryMeta[index]?.location ?? "Bengaluru",
+  area: homeProjectGalleryMeta[index]?.area ?? "2,000 sq ft",
+  styleNote: homeProjectGalleryMeta[index]?.styleNote ?? project.category,
+}));
 
 export default function Home() {
   return (
@@ -486,61 +531,57 @@ export default function Home() {
             </div>
 
             <div className="min-w-0">
-              <div className="lg:hidden">
-                <SwipeCarousel
-                  ariaLabel="client partners"
-                  viewportClassName="mx-[-1rem] px-4"
-                  trackClassName="gap-4"
-                  continuousAutoScrollPxPerSecond={32}
-                  loop
-                  stopAutoPlayOnInteraction
-                  snap={false}
-                >
-                  {clientLoopItems.map((client, index) => (
-                    <article
-                      key={`${client}-mobile-${index}`}
-                      className="interactive-card home-surface-card-compact group snap-start shrink-0 w-[15rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-4"
-                    >
-                      <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
-                        Client Partner
-                      </p>
-                      <h3 className="mt-3.5 font-serif text-[1.42rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
-                        {client}
-                      </h3>
-                    </article>
-                  ))}
-                </SwipeCarousel>
-              </div>
-
-              <div className="hidden gap-4 lg:grid lg:grid-cols-3">
-                {clientColumns.map((column, columnIndex) => (
-                  <div
-                    key={`client-column-${columnIndex}`}
-                    className="client-carousel-column"
-                  >
-                    <div
-                      className={`client-carousel-track ${
-                        columnIndex === 1 ? "client-carousel-track-reverse" : ""
-                      }`}
-                    >
-                      {[...column, ...column].map((client, index) => (
-                        <article
-                          key={`${client}-${columnIndex}-${index}`}
-                          className="interactive-card home-surface-card-compact group border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-5"
-                        >
-                          <div className="flex h-full min-h-24 flex-col justify-between">
-                            <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
-                              Client Partner
-                            </p>
-                            <h3 className="mt-6 font-serif text-[1.9rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
-                              {client}
-                            </h3>
-                          </div>
-                        </article>
-                      ))}
+              <div className="rounded-[1.7rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,250,244,0.95)_0%,rgba(240,234,226,0.98)_100%)] p-3 shadow-[0_18px_50px_rgba(77,55,34,0.08)] sm:p-4 lg:rounded-[2rem] lg:p-5">
+                <div className="lg:hidden">
+                  <div className="client-name-marquee px-1">
+                    <div className="client-name-marquee-track">
+                    {clientLoopItems.map((client, index) => (
+                      <article
+                        key={`${client}-mobile-${index}`}
+                        className="interactive-card home-surface-card-compact group shrink-0 w-[15rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f7f4ef_100%)] p-4 shadow-[0_10px_28px_rgba(77,55,34,0.06)]"
+                      >
+                        <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
+                          Client Partner
+                        </p>
+                        <h3 className="mt-3.5 font-serif text-[1.42rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                          {client}
+                        </h3>
+                      </article>
+                    ))}
                     </div>
                   </div>
-                ))}
+                </div>
+
+                <div className="hidden gap-4 lg:grid lg:grid-cols-3">
+                  {clientColumns.map((column, columnIndex) => (
+                    <div
+                      key={`client-column-${columnIndex}`}
+                      className="client-carousel-column"
+                    >
+                      <div
+                        className={`client-carousel-track ${
+                          columnIndex === 1 ? "client-carousel-track-reverse" : ""
+                        }`}
+                      >
+                        {[...column, ...column].map((client, index) => (
+                          <article
+                            key={`${client}-${columnIndex}-${index}`}
+                            className="interactive-card home-surface-card-compact group border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f7f4ef_100%)] p-5 shadow-[0_10px_28px_rgba(77,55,34,0.06)]"
+                          >
+                            <div className="flex h-full min-h-24 flex-col justify-between">
+                              <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
+                                Client Partner
+                              </p>
+                              <h3 className="mt-6 font-serif text-[1.9rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                                {client}
+                              </h3>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -595,72 +636,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-6 lg:hidden">
-            <SwipeCarousel
-              ariaLabel="project gallery"
-              stepRatio={1}
-              viewportClassName="mx-[-1rem]"
-              trackClassName="gap-4 px-4"
-            >
-              {projects.map((project, index) => (
-                <article
-                  key={`${project.name}-carousel`}
-                  className="interactive-card-dark home-surface-card-dark snap-center shrink-0 overflow-hidden border border-white/12 bg-white/6 w-[calc(100vw-2rem)] max-w-none"
-                >
-                  <div className="relative h-[17.5rem] overflow-hidden bg-[#16120f]">
-                    <Image
-                      src={projectImages[index]}
-                      alt={project.name}
-                      fill
-                      quality={88}
-                      sizes="(max-width: 1024px) calc(100vw - 2rem), 33vw"
-                      className="object-contain object-center"
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent-soft)]">
-                      0{index + 1} / {project.category}
-                    </p>
-                    <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight">{project.name}</h3>
-                    <p className="mt-2.5 text-[0.86rem] leading-5 text-white/72">
-                      {project.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </SwipeCarousel>
-          </div>
-
-          <div className="mt-8 hidden gap-4 sm:mt-10 sm:gap-6 lg:grid lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <article
-                key={project.name}
-                className="interactive-card-dark home-surface-card-dark overflow-hidden border border-white/12 bg-white/6 transition hover:-translate-y-1 hover:bg-white/8"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={projectImages[index]}
-                    alt={project.name}
-                    fill
-                    quality={88}
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
-                </div>
-                <div className="p-5 sm:p-7">
-                  <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.25em]">
-                    0{index + 1} / {project.category}
-                  </p>
-                  <h3 className="mt-3 font-serif text-[1.9rem] sm:mt-4 sm:text-3xl">{project.name}</h3>
-                  <p className="mt-3 text-[0.96rem] leading-6 text-white/72 sm:mt-4 sm:text-base sm:leading-7">
-                    {project.description}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <HomeProjectGallery items={homeProjectGalleryItems} />
         </div>
       </section>
 
@@ -712,13 +688,13 @@ export default function Home() {
             <div className="mt-6 lg:hidden">
               <SwipeCarousel
                 ariaLabel="client feedback"
-                viewportClassName="mx-[-1rem] px-4"
-                trackClassName="pr-4"
+                viewportClassName="mx-[-1rem]"
+                trackClassName="gap-4 px-4"
               >
                 {testimonials.map((item, index) => (
                   <blockquote
                     key={`${item.name}-mobile-${index}`}
-                    className="testimonial-card-dark home-surface-card-dark snap-start shrink-0 border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 w-[85vw] max-w-[21rem]"
+                    className="testimonial-card-dark home-surface-card-dark snap-center shrink-0 border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 w-[calc(100vw-2rem)]"
                   >
                     <div className="testimonial-review-shell">
                       <div className="flex items-start justify-between gap-3">
@@ -842,7 +818,7 @@ export default function Home() {
               {homeContent.faqSection.title}
             </h2>
             <p className="mt-3 max-w-2xl text-[0.92rem] leading-6 text-[var(--color-muted)] sm:mt-5 sm:text-lg sm:leading-8">
-              Answers to the questions most clients ask before starting a project in Bangalore, Chennai, or Hyderabad.
+              Answers to the questions most clients ask before starting an interior project across major cities in India.
             </p>
           </div>
 

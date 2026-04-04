@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, MapPin, Ruler, X } from "lucide-react";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 
-export type ProjectGalleryItem = {
+export type HomeProjectGalleryItem = {
   name: string;
   category: string;
   description: string;
@@ -13,14 +14,13 @@ export type ProjectGalleryItem = {
   location: string;
   area: string;
   styleNote: string;
-  size: "standard" | "wide" | "tall";
 };
 
-type ProjectGalleryGridProps = {
-  items: ProjectGalleryItem[];
+type HomeProjectGalleryProps = {
+  items: HomeProjectGalleryItem[];
 };
 
-export function ProjectGalleryGrid({ items }: ProjectGalleryGridProps) {
+export function HomeProjectGallery({ items }: HomeProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const activeItem = activeIndex === null ? null : items[activeIndex];
   const activePosition = activeIndex === null ? null : activeIndex + 1;
@@ -174,42 +174,86 @@ export function ProjectGalleryGrid({ items }: ProjectGalleryGridProps) {
 
   return (
     <>
-      <div className="project-gallery-grid mt-8 sm:mt-10">
+      <div className="mt-6 lg:hidden">
+        <SwipeCarousel
+          ariaLabel="project gallery"
+          stepRatio={1}
+          viewportClassName="mx-[-1rem]"
+          trackClassName="gap-4 px-4"
+        >
+          {items.map((item, index) => (
+            <article
+              key={`${item.name}-carousel`}
+              className="interactive-card-dark home-surface-card-dark snap-center shrink-0 overflow-hidden border border-white/12 bg-white/6 w-[calc(100vw-2rem)] max-w-none"
+            >
+              <button
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Open ${item.name} image`}
+                aria-haspopup="dialog"
+                className="group block w-full cursor-zoom-in touch-manipulation text-left"
+              >
+                <div className="relative h-[17.5rem] overflow-hidden bg-[#16120f]">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    quality={88}
+                    sizes="(max-width: 1024px) calc(100vw - 2rem), 33vw"
+                    className="object-contain object-center transition duration-500 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
+                </div>
+                <div className="p-4">
+                  <p className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent-soft)]">
+                    0{index + 1} / {item.category}
+                  </p>
+                  <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight">{item.name}</h3>
+                  <p className="mt-2.5 text-[0.86rem] leading-5 text-white/72">{item.description}</p>
+                  <p className="mt-3 text-[0.68rem] font-semibold tracking-[0.14em] uppercase text-white/48">
+                    Tap To View Details
+                  </p>
+                </div>
+              </button>
+            </article>
+          ))}
+        </SwipeCarousel>
+      </div>
+
+      <div className="mt-8 hidden gap-4 sm:mt-10 sm:gap-6 lg:grid lg:grid-cols-3">
         {items.map((item, index) => (
           <article
-            key={`${item.name}-${item.location}`}
-            className="overflow-hidden rounded-[1.45rem] border border-[rgba(52,36,22,0.08)] bg-[linear-gradient(180deg,#fffdf9_0%,#f5ede3_100%)] shadow-[0_18px_54px_rgba(32,22,14,0.08)]"
-            style={{ animationDelay: `${index * 95}ms` }}
+            key={item.name}
+            className="interactive-card-dark home-surface-card-dark overflow-hidden border border-white/12 bg-white/6 transition hover:-translate-y-1 hover:bg-white/8"
           >
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Open ${item.name} image`}
               aria-haspopup="dialog"
-              className="group flex h-full w-full flex-col text-left"
+              className="group block w-full cursor-zoom-in touch-manipulation text-left"
             >
-              <div className="relative h-[18rem] overflow-hidden bg-[#e9decf] sm:h-[20rem] xl:h-[18rem]">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={item.image}
-                  alt={`${item.name} by Power On Interio`}
+                  alt={item.name}
                   fill
-                  sizes="(max-width: 767px) 50vw, (max-width: 1199px) 50vw, 33vw"
-                  className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                  quality={88}
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition duration-500 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(12,9,8,0.12)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
               </div>
-
-              <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
-                <div>
-                <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
-                  {item.category}
+              <div className="p-5 sm:p-7">
+                <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.25em]">
+                  0{index + 1} / {item.category}
                 </p>
-                <h3 className="mt-2 font-serif text-[1.3rem] leading-tight text-[var(--color-ink)] sm:text-[1.55rem]">
-                  {item.name}
-                </h3>
-                </div>
-                <p className="mt-2 text-[0.74rem] font-semibold tracking-[0.14em] uppercase text-[var(--color-muted)]">
-                  Tap To View Details
+                <h3 className="mt-3 font-serif text-[1.9rem] sm:mt-4 sm:text-3xl">{item.name}</h3>
+                <p className="mt-3 text-[0.96rem] leading-6 text-white/72 sm:mt-4 sm:text-base sm:leading-7">
+                  {item.description}
+                </p>
+                <p className="mt-4 text-[0.72rem] font-semibold tracking-[0.16em] uppercase text-white/48">
+                  Click To View Details
                 </p>
               </div>
             </button>

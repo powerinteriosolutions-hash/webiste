@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { company, withBasePathRoute } from "@/lib/site-content";
+import { company, contactPageContent, withBasePathRoute } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Unable to Send Enquiry",
-  description: "The contact form could not be sent right now.",
+  title: contactPageContent.status.errorTitle,
+  description: contactPageContent.status.errorMessage,
 };
 
 export default function ContactErrorPage() {
@@ -12,14 +12,14 @@ export default function ContactErrorPage() {
     <main className="mx-auto max-w-4xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       <section className="rounded-[2.25rem] border border-[rgba(170,78,56,0.18)] bg-[linear-gradient(180deg,#fff8f4_0%,#f7ebe6_100%)] p-7 shadow-[0_22px_70px_rgba(71,52,34,0.08)] sm:p-10">
         <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[rgba(170,78,56,0.9)]">
-          Something Went Wrong
+          {contactPageContent.status.errorTitle}
         </p>
         <h1 className="mt-4 max-w-2xl font-serif text-5xl leading-tight sm:text-6xl">
           We couldn’t send your enquiry.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-          Please try again in a moment. If it still fails, the Resend sender may still need
-          verification. You can email us directly at {company.email} while we sort it out.
+          {contactPageContent.status.errorMessage} You can email us directly at {company.email} while
+          we sort it out.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
