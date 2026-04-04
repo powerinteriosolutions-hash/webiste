@@ -1,3 +1,7 @@
+"use client";
+
+import { type FormEvent, useState } from "react";
+import { LoaderCircle } from "lucide-react";
 import { withBasePath } from "@/lib/site-content";
 
 type ContactFormCopy = {
@@ -14,11 +18,23 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ copy }: ContactFormProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    if (isSubmitting) {
+      event.preventDefault();
+      return;
+    }
+
+    setIsSubmitting(true);
+  };
+
   return (
     <form
       className="mt-8 grid gap-5 md:grid-cols-2"
       action={withBasePath("/api/contact")}
       method="post"
+      aria-busy={isSubmitting}
+      onSubmit={handleSubmit}
     >
       <input
         name="name"
@@ -58,9 +74,17 @@ export function ContactForm({ copy }: ContactFormProps) {
         </p>
         <button
           type="submit"
-          className="btn-premium inline-flex w-full items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:w-auto sm:px-7 sm:py-4 sm:text-sm"
+          disabled={isSubmitting}
+          className="btn-premium inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] disabled:translate-y-0 disabled:cursor-wait disabled:bg-[var(--color-ink)]/90 disabled:text-white/90 sm:w-auto sm:px-7 sm:py-4 sm:text-sm"
         >
-          {copy.submitLabel}
+          {isSubmitting ? (
+            <>
+              <LoaderCircle className="h-4 w-4 animate-spin" strokeWidth={2.1} />
+              Sending...
+            </>
+          ) : (
+            copy.submitLabel
+          )}
         </button>
       </div>
     </form>

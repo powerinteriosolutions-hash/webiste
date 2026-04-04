@@ -38,7 +38,7 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
         return (
           <article
             key={item.question}
-            className={`faq-item rounded-[1.5rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#fffefa_0%,#f7f1e6_100%)] px-5 shadow-[0_14px_35px_rgba(96,76,52,0.05)] ${
+            className={`faq-item home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#fffefa_0%,#f7f1e6_100%)] px-5 ${
               isOpen ? "faq-item-open" : ""
             }`}
           >

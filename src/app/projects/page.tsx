@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight, MapPin, Ruler, Sparkles } from "lucide-react";
+import {
+  ProjectGalleryGrid,
+  type ProjectGalleryItem,
+} from "@/components/project-gallery-grid";
 import { projectsPageContent, withBasePath } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: projectsPageContent.meta.title,
   description: projectsPageContent.meta.description,
-};
-
-type GalleryItem = {
-  name: string;
-  category: string;
-  description: string;
-  image: string;
-  location: string;
-  area: string;
-  styleNote: string;
-  size: "standard" | "wide" | "tall";
 };
 
 const residentialGalleryImages = [
@@ -37,7 +29,7 @@ const commercialGalleryImages = Array.from(
 );
 
 const locationCycle = ["Bengaluru", "Hyderabad", "Chennai"];
-const sizeCycle: GalleryItem["size"][] = ["wide", "standard", "tall", "standard", "wide"];
+const sizeCycle: ProjectGalleryItem["size"][] = ["wide", "standard", "tall", "standard", "wide"];
 
 const residentialTitles = [
   "Living Room With Dining",
@@ -112,7 +104,7 @@ const commercialStyles = [
   "Brand Forward",
 ];
 
-const residentialItems: GalleryItem[] = residentialGalleryImages.map((image, index) => ({
+const residentialItems: ProjectGalleryItem[] = residentialGalleryImages.map((image, index) => ({
   name: residentialTitles[index],
   category: index === 4 || index === 8 ? "Storage and utility" : "Residential interior",
   description: residentialDescriptions[index],
@@ -123,7 +115,7 @@ const residentialItems: GalleryItem[] = residentialGalleryImages.map((image, ind
   size: sizeCycle[index % sizeCycle.length],
 }));
 
-const commercialItems: GalleryItem[] = commercialGalleryImages.map((image, index) => ({
+const commercialItems: ProjectGalleryItem[] = commercialGalleryImages.map((image, index) => ({
   name: commercialTitles[index],
   category: "Commercial workspace",
   description: commercialDescriptions[index % commercialDescriptions.length],
@@ -134,7 +126,7 @@ const commercialItems: GalleryItem[] = commercialGalleryImages.map((image, index
   size: sizeCycle[(index + 2) % sizeCycle.length],
 }));
 
-const galleryItems: GalleryItem[] = [...residentialItems, ...commercialItems];
+const galleryItems: ProjectGalleryItem[] = [...residentialItems, ...commercialItems];
 
 const stripItems = [...galleryItems, ...galleryItems];
 
@@ -147,8 +139,7 @@ export default function ProjectsPage() {
       <section className="relative mx-auto max-w-7xl px-5 pb-8 pt-14 sm:px-8 lg:px-12 lg:pt-20">
         <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
           <div className="animate-fade-rise">
-            <p className="inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
-              <Sparkles className="h-4 w-4" aria-hidden />
+            <p className="text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
               {projectsPageContent.hero.eyebrow}
             </p>
             <h1 className="mt-4 max-w-lg font-serif text-[2.65rem] leading-[1.04] sm:text-6xl">
@@ -216,7 +207,6 @@ export default function ProjectsPage() {
                   </p>
                   <p className="truncate font-serif text-[1.02rem] text-[var(--color-ink)]">{item.name}</p>
                 </div>
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-[var(--color-accent)]" aria-hidden />
               </article>
             ))}
           </div>
@@ -227,51 +217,11 @@ export default function ProjectsPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="font-serif text-[2.25rem] leading-tight sm:text-5xl">Selected Project Frames</h2>
           <p className="max-w-xl text-sm leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
-            Each card highlights the room type, approximate area, and the design direction behind the space.
+            Browse the gallery and tap any frame to open the image with clearer project details.
           </p>
         </div>
 
-        <div className="project-gallery-grid mt-8 sm:mt-10">
-          {galleryItems.map((item, index) => (
-            <article
-              key={`${item.name}-${item.location}`}
-              className={`project-gallery-card project-gallery-card-${item.size}`}
-              style={{ animationDelay: `${index * 95}ms` }}
-            >
-              <div className="project-gallery-image-wrap">
-                <Image
-                  src={item.image}
-                  alt={`${item.name} by Power On Interio`}
-                  fill
-                  sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
-                  className="project-gallery-image object-cover object-center"
-                />
-                <div className="project-gallery-overlay" />
-              </div>
-
-              <div className="project-gallery-content">
-                <p className="project-gallery-tag">{item.category}</p>
-                <h3 className="mt-3 font-serif text-[1.85rem] leading-tight sm:text-[2.1rem]">{item.name}</h3>
-                <p className="mt-3 max-w-[52ch] text-sm leading-6 text-white/78 sm:text-base sm:leading-7">
-                  {item.description}
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-2.5">
-                  <span className="project-meta-pill">
-                    <MapPin className="h-3.5 w-3.5" aria-hidden />
-                    {item.location}
-                  </span>
-                  <span className="project-meta-pill">
-                    <Ruler className="h-3.5 w-3.5" aria-hidden />
-                    {item.area}
-                  </span>
-                  <span className="project-meta-pill">{item.styleNote}</span>
-                </div>
-              </div>
-
-            </article>
-          ))}
-        </div>
+        <ProjectGalleryGrid items={galleryItems} />
       </section>
     </main>
   );

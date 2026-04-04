@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { ArrowRight } from "lucide-react";
 import { CommercialShowcaseCarousel } from "@/components/commercial-showcase-carousel";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { HomeLeadForm } from "@/components/home-lead-form";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import {
   company,
+  contactPageContent,
   faqs,
   homeContent,
   processSteps,
@@ -36,23 +40,20 @@ const seoSchema = {
 
 const projectImages = homeContent.projectImages.map((imagePath) => withBasePath(imagePath));
 const aboutFeatureImage = projectImages[0];
-const mobileTestimonials = testimonials.slice(0, 4);
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
 );
 const clientColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   homeContent.clientsSection.items.filter((_, index) => index % 3 === columnIndex),
 );
-const clientMarqueeItems = [
-  ...homeContent.clientsSection.items,
-  ...homeContent.clientsSection.items,
-];
+const clientLoopItems = [...homeContent.clientsSection.items, ...homeContent.clientsSection.items];
+const mobileHeroLabels = projects.slice(0, 3).map((project) => project.name);
 
 const heroSlideIntervalSeconds = 8;
 const heroSlides = [
   {
-    image: "/commercial/hero-commercial-boardroom.png",
-    alt: "Executive commercial boardroom interior with warm wood finishes and premium lighting",
+    image: "/commercial/commericalLandingPageFirstImage.png",
+    alt: "Commercial office interior hero image with premium finishes and a refined workspace layout",
     metric: "1500+",
     metricLabel: "Interiors Delivered",
     caption: "Executive workspaces planned with clarity, restraint, and a premium finish language.",
@@ -170,7 +171,7 @@ export default function Home() {
       />
 
       <section className="relative isolate overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,_rgba(20,17,14,0.12)_0%,_rgba(20,17,14,0.34)_100%)]" />
+        <div className="absolute inset-0 -z-20 hidden bg-[linear-gradient(180deg,_rgba(20,17,14,0.12)_0%,_rgba(20,17,14,0.34)_100%)] sm:block" />
         <div className="hero-cinematic-backdrop absolute inset-0 -z-30">
           {heroSlides.map((slide, index) => (
             <div
@@ -203,10 +204,34 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="hero-cinematic-texture absolute inset-0 -z-20" />
-        <div className="drift-glow absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)]" />
+        <div className="hero-cinematic-texture absolute inset-0 -z-20 hidden sm:block" />
+        <div className="drift-glow absolute inset-0 -z-10 hidden bg-[radial-gradient(circle_at_top_left,_rgba(201,161,112,0.18),_transparent_30%)] sm:block" />
+        <div className="absolute inset-0 -z-10 sm:hidden bg-[linear-gradient(180deg,rgba(10,9,8,0.22)_0%,rgba(10,9,8,0.06)_22%,rgba(10,9,8,0)_56%,rgba(10,9,8,0.18)_100%)]" />
 
-        <div className="flex min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
+        <div className="sm:hidden">
+          <div className="flex min-h-[78svh] flex-col justify-between px-4 pb-6 pt-5">
+            <div className="gradient-ring-badge max-w-fit">
+              <span className="gradient-ring-badge__inner text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-white/88">
+                {homeContent.heroTag}
+              </span>
+            </div>
+
+            <div className="max-w-[18.5rem]">
+              <div className="flex flex-wrap gap-2.5">
+                {mobileHeroLabels.map((label) => (
+                  <span
+                    key={label}
+                    className="rounded-full border border-white/16 bg-[rgba(19,16,13,0.14)] px-3.5 py-2 text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-white/92 backdrop-blur-sm"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
           <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-6 lg:items-end">
             <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[34rem] lg:self-end xl:max-w-[36rem]">
               <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-6">
@@ -291,7 +316,7 @@ export default function Home() {
                 {stats.map((item) => (
                   <div
                     key={item.label}
-                    className="interactive-card-dark rounded-[1.2rem] border border-white/15 bg-white/10 p-3.5 text-white backdrop-blur transition hover:bg-white/14 sm:rounded-[1.5rem] sm:p-4"
+                    className="interactive-card-dark home-surface-card-compact border border-white/15 bg-white/10 p-3.5 text-white backdrop-blur transition hover:bg-white/14 sm:p-4"
                   >
                     <p className="font-serif text-[1.9rem] sm:text-4xl">{item.value}</p>
                     <p className="mt-1.5 text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-white/72 sm:mt-2 sm:text-xs sm:tracking-[0.14em]">
@@ -305,6 +330,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="sm:hidden bg-[linear-gradient(180deg,#f8f2ea_0%,#f1e8dc_100%)] px-4 py-5">
+        <HomeLeadForm
+          action={withBasePath("/api/contact")}
+          eyebrow="Free Consultation"
+          title="Get A Free Quote"
+          description={"Share your details and we'll call you back shortly."}
+          namePlaceholder={contactPageContent.form.namePlaceholder}
+          phonePlaceholder="+91 | Phone Number*"
+          emailPlaceholder="Email Address*"
+          submitLabel={homeContent.heroPrimaryCta}
+          loadingLabel="Sending..."
+          message="I would like a free consultation for my interior project. Please contact me from the home page."
+        />
+      </section>
+
       <section className="border-y border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))]">
         <div className="mx-auto grid max-w-7xl gap-3 px-4 py-5 text-center text-[0.68rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-muted)] sm:grid-cols-3 sm:gap-4 sm:px-8 sm:py-6 sm:text-sm sm:tracking-[0.22em] lg:px-12">
           {homeContent.trustStrip.map((item) => (
@@ -316,16 +356,16 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f1ea_0%,#f2ebe2_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.commercialSection.eyebrow}
               </p>
-              <h2 className="mt-4 max-w-3xl font-serif text-[2.2rem] leading-tight sm:text-[3rem]">
+              <h2 className="mt-3 max-w-3xl font-serif text-[1.98rem] leading-[1.08] sm:mt-4 sm:text-[3rem]">
                 {homeContent.commercialSection.title}
               </h2>
-              <p className="mt-4 max-w-2xl text-[0.96rem] leading-7 text-[var(--color-muted)] sm:text-[1rem] sm:leading-8">
+              <p className="mt-3 max-w-2xl text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-[1rem] sm:leading-8">
                 {homeContent.commercialSection.description}
               </p>
             </div>
@@ -354,19 +394,19 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f8f2ea_0%,#f4ede4_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-        <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-10">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+        <div className="grid items-start gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-10">
           <div>
             <p className="text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
               {homeContent.aboutSection.eyebrow}
             </p>
-            <h2 className="mt-3 max-w-md font-serif text-[2.4rem] leading-[1.04] sm:mt-4 sm:max-w-lg sm:text-5xl">
+            <h2 className="mt-2.5 max-w-md font-serif text-[2.08rem] leading-[1.04] sm:mt-4 sm:max-w-lg sm:text-5xl">
               {homeContent.aboutSection.title}
             </h2>
           </div>
 
-          <div className="interactive-card grid max-w-2xl gap-4 rounded-[1.7rem] border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-5 shadow-[0_18px_60px_rgba(98,70,42,0.06)] sm:gap-5 sm:rounded-[2rem] sm:p-7">
-            <div className="relative h-52 overflow-hidden rounded-[1.3rem] sm:h-72 sm:rounded-[1.6rem]">
+          <div className="interactive-card home-surface-card grid max-w-2xl gap-3 border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-4 sm:gap-5 sm:p-7">
+            <div className="relative h-48 overflow-hidden rounded-[1.2rem] sm:h-72 sm:rounded-[1.6rem]">
               <Image
                 src={aboutFeatureImage}
                 alt="Signature Power On Interio interior project"
@@ -376,8 +416,8 @@ export default function Home() {
                 className="object-cover object-center"
               />
             </div>
-            <p className="text-base leading-7 text-[var(--color-muted)] sm:text-lg sm:leading-8">
-              {company.description} {homeContent.aboutSection.description}
+            <p className="text-[0.94rem] leading-6 text-[var(--color-muted)] sm:text-lg sm:leading-8">
+              {homeContent.aboutSection.description}
             </p>
             <div className="pt-1">
                 <Link
@@ -393,13 +433,13 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f3ece4_0%,#f8f2ea_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.servicesSection.eyebrow}
               </p>
-              <h2 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
+              <h2 className="mt-3 max-w-2xl font-serif text-[2.02rem] leading-[1.08] sm:mt-4 sm:text-5xl">
                 {homeContent.servicesSection.title}
               </h2>
             </div>
@@ -411,17 +451,17 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5">
+          <div className="mt-6 grid gap-3 sm:mt-10 md:grid-cols-2 md:gap-5">
             {services.map((service) => (
               <article
                 key={service.title}
-                className="interactive-card rounded-[1.45rem] border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-5 shadow-[0_18px_50px_rgba(110,82,54,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(110,82,54,0.1)] sm:rounded-[1.8rem] sm:p-7"
+                className="interactive-card home-surface-card border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-4 sm:p-7"
               >
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.22em]">
                   Interior Service
                 </p>
-                <h3 className="mt-3 font-serif text-[1.9rem] leading-tight sm:mt-4 sm:text-3xl">{service.title}</h3>
-                <p className="mt-3 text-[0.96rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">
+                <h3 className="mt-2.5 font-serif text-[1.58rem] leading-tight sm:mt-4 sm:text-3xl">{service.title}</h3>
+                <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">
                   {service.description}
                 </p>
               </article>
@@ -431,37 +471,45 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f2f1ee_0%,#f8f7f4_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+          <div className="grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
             <div className="min-w-0 lg:pt-2">
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.clientsSection.eyebrow}
               </p>
-              <h2 className="mt-4 w-full max-w-full pr-1 font-serif text-[1.82rem] leading-[1.12] sm:max-w-xl sm:text-5xl sm:leading-tight">
+              <h2 className="mt-3 w-full max-w-full pr-1 font-serif text-[1.62rem] leading-[1.08] sm:mt-4 sm:max-w-xl sm:text-5xl sm:leading-tight">
                 {homeContent.clientsSection.title}
               </h2>
-              <p className="mt-5 max-w-lg text-base leading-7 text-[var(--color-muted)] sm:mt-6 sm:text-lg sm:leading-8">
+              <p className="mt-3.5 max-w-lg text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-6 sm:text-lg sm:leading-8">
                 {homeContent.clientsSection.description}
               </p>
             </div>
 
             <div className="min-w-0">
-              <div className="client-name-marquee lg:hidden">
-                <div className="client-name-marquee-track">
-                  {clientMarqueeItems.map((client, index) => (
+              <div className="lg:hidden">
+                <SwipeCarousel
+                  ariaLabel="client partners"
+                  viewportClassName="mx-[-1rem] px-4"
+                  trackClassName="gap-4"
+                  continuousAutoScrollPxPerSecond={32}
+                  loop
+                  stopAutoPlayOnInteraction
+                  snap={false}
+                >
+                  {clientLoopItems.map((client, index) => (
                     <article
                       key={`${client}-mobile-${index}`}
-                      className="interactive-card group min-w-[13.2rem] rounded-[1.25rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-4 shadow-[0_12px_30px_rgba(55,45,34,0.04)]"
+                      className="interactive-card home-surface-card-compact group snap-start shrink-0 w-[15rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-4"
                     >
                       <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
                         Client Partner
                       </p>
-                      <h3 className="mt-4 font-serif text-[1.55rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                      <h3 className="mt-3.5 font-serif text-[1.42rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
                         {client}
                       </h3>
                     </article>
                   ))}
-                </div>
+                </SwipeCarousel>
               </div>
 
               <div className="hidden gap-4 lg:grid lg:grid-cols-3">
@@ -478,7 +526,7 @@ export default function Home() {
                       {[...column, ...column].map((client, index) => (
                         <article
                           key={`${client}-${columnIndex}-${index}`}
-                          className="interactive-card group rounded-[1.45rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-5 shadow-[0_16px_40px_rgba(55,45,34,0.05)]"
+                          className="interactive-card home-surface-card-compact group border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f5f4f1_100%)] p-5"
                         >
                           <div className="flex h-full min-h-24 flex-col justify-between">
                             <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
@@ -500,13 +548,13 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f6f3ed_0%,#efede7_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-        <div className="grid gap-7 sm:gap-10 lg:grid-cols-[1fr_1fr]">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+        <div className="grid gap-5 sm:gap-10 lg:grid-cols-[1fr_1fr]">
           <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
               {homeContent.whySection.eyebrow}
             </p>
-            <h2 className="mt-4 max-w-lg font-serif text-4xl leading-tight sm:text-5xl">
+            <h2 className="mt-3 max-w-lg font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
               {homeContent.whySection.title}
             </h2>
           </div>
@@ -515,10 +563,10 @@ export default function Home() {
             {reasons.map((reason) => (
               <div
                 key={reason}
-                className="interactive-card flex items-start gap-3 rounded-[1.3rem] border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f6f4ef_100%)] px-4 py-4 shadow-[0_12px_30px_rgba(71,52,34,0.04)] sm:gap-4 sm:rounded-[1.5rem] sm:px-5 sm:py-5"
+                className="interactive-card home-surface-card-compact flex items-start gap-3 border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f6f4ef_100%)] px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-5"
               >
                 <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-[var(--color-accent)]" />
-                <p className="text-[0.96rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">{reason}</p>
+                <p className="text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">{reason}</p>
               </div>
             ))}
           </div>
@@ -527,13 +575,13 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#1f1a17_0%,#171210_100%)] text-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent-soft)]">
                 {homeContent.projectsSection.eyebrow}
               </p>
-              <h2 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
+              <h2 className="mt-2.5 max-w-2xl font-serif text-[1.9rem] leading-[1.06] sm:mt-4 sm:text-5xl">
                 {homeContent.projectsSection.title}
               </h2>
             </div>
@@ -545,11 +593,48 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-3">
+          <div className="mt-6 lg:hidden">
+            <SwipeCarousel
+              ariaLabel="project gallery"
+              stepRatio={1}
+              viewportClassName="mx-[-1rem]"
+              trackClassName="gap-4 px-4"
+            >
+              {projects.map((project, index) => (
+                <article
+                  key={`${project.name}-carousel`}
+                  className="interactive-card-dark home-surface-card-dark snap-center shrink-0 overflow-hidden border border-white/12 bg-white/6 w-[calc(100vw-2rem)] max-w-none"
+                >
+                  <div className="relative h-[17.5rem] overflow-hidden bg-[#16120f]">
+                    <Image
+                      src={projectImages[index]}
+                      alt={project.name}
+                      fill
+                      quality={88}
+                      sizes="(max-width: 1024px) calc(100vw - 2rem), 33vw"
+                      className="object-contain object-center"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent-soft)]">
+                      0{index + 1} / {project.category}
+                    </p>
+                    <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight">{project.name}</h3>
+                    <p className="mt-2.5 text-[0.86rem] leading-5 text-white/72">
+                      {project.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </SwipeCarousel>
+          </div>
+
+          <div className="mt-8 hidden gap-4 sm:mt-10 sm:gap-6 lg:grid lg:grid-cols-3">
             {projects.map((project, index) => (
               <article
                 key={project.name}
-                className="interactive-card-dark overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/6 shadow-[0_20px_55px_rgba(0,0,0,0.16)] transition hover:-translate-y-1 hover:bg-white/8 sm:rounded-[2rem]"
+                className="interactive-card-dark home-surface-card-dark overflow-hidden border border-white/12 bg-white/6 transition hover:-translate-y-1 hover:bg-white/8"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -578,28 +663,28 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f2eb_0%,#f1ebe6_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-        <div className="grid gap-7 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+        <div className="grid gap-5 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
               {homeContent.processSection.eyebrow}
             </p>
-            <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
+            <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
               {homeContent.processSection.title}
             </h2>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+          <div className="grid gap-3 md:grid-cols-3 md:gap-5">
             {processSteps.map((step, index) => (
               <article
                 key={step.title}
-                className="interactive-card rounded-[1.45rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-5 shadow-[0_18px_50px_rgba(86,64,44,0.05)] sm:rounded-[1.8rem] sm:p-7"
+                className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-4 sm:p-7"
               >
                 <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
                   0{index + 1}
                 </p>
-                <h3 className="mt-3 font-serif text-[1.9rem] sm:mt-4 sm:text-3xl">{step.title}</h3>
-                <p className="mt-3 text-[0.96rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
+                <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight sm:mt-4 sm:text-3xl">{step.title}</h3>
+                <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
               </article>
             ))}
           </div>
@@ -608,68 +693,74 @@ export default function Home() {
       </section>
 
       <section className="bg-[linear-gradient(180deg,#f5efe7_0%,#efe7dd_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="overflow-hidden rounded-[1.7rem] border border-white/8 bg-[linear-gradient(180deg,#12100e_0%,#1a1613_100%)] px-4 py-8 text-white shadow-[0_28px_90px_rgba(24,17,12,0.28)] sm:rounded-[2.2rem] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[#c49059]">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+          <div className="home-surface-panel-dark overflow-hidden border border-white/8 bg-[linear-gradient(180deg,#12100e_0%,#1a1613_100%)] px-4 py-7 text-white sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <div className="max-w-[34rem] text-left">
+              <p className="text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-[#c49059] sm:text-sm sm:tracking-[0.28em]">
                 {homeContent.testimonialsSection.eyebrow}
               </p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
+              <h2 className="mt-2 font-serif text-[1.72rem] leading-[1.06] text-white sm:mt-4 sm:text-5xl">
                 {homeContent.testimonialsSection.title}
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
+              <p className="mt-3 max-w-xl text-[0.82rem] leading-[1.35rem] text-white/68 sm:mt-5 sm:text-lg sm:leading-8">
                 Short client notes on planning, communication, and finish quality.
               </p>
             </div>
 
-            <div className="mt-8 grid gap-4 lg:hidden">
-              {mobileTestimonials.map((item, index) => (
-                <blockquote
-                  key={`${item.name}-mobile-${index}`}
-                  className="testimonial-card-dark rounded-[1.3rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="max-w-[11rem] text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
-                      {item.service}
-                    </p>
-                    <p className="shrink-0 text-xs font-semibold text-[#f0c35a]">
-                      {"★".repeat(item.rating)}
-                      <span className="text-white/24">
-                        {"☆".repeat(5 - item.rating)}
-                      </span>
-                    </p>
-                  </div>
-
-                  <p className="mt-3 text-[0.96rem] leading-7 text-white/78">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-
-                  <div className="mt-4 rounded-[1rem] border border-[#6e5338]/40 bg-[#201a15] px-3.5 py-3">
-                    <p className="text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
-                      Happiness Highlight
-                    </p>
-                    <p className="mt-1.5 text-[0.86rem] leading-6 text-white/68">
-                      {item.happiness}
-                    </p>
-                  </div>
-
-                  <footer className="mt-4 flex items-center gap-3 border-t border-white/8 pt-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#7c5f40] bg-[linear-gradient(135deg,#d0a06e_0%,#8f6843_100%)] font-serif text-sm text-white">
-                      {item.name
-                        .split(" ")
-                        .slice(0, 2)
-                        .map((part) => part[0])
-                        .join("")}
-                    </div>
-                    <div>
-                      <p className="font-serif text-lg text-white">{item.name}</p>
-                      <p className="mt-0.5 text-[0.62rem] font-semibold tracking-[0.15em] uppercase text-white/50">
-                        {item.role}
+            <div className="mt-6 lg:hidden">
+              <SwipeCarousel
+                ariaLabel="client feedback"
+                viewportClassName="mx-[-1rem] px-4"
+                trackClassName="pr-4"
+              >
+                {testimonials.map((item, index) => (
+                  <blockquote
+                    key={`${item.name}-mobile-${index}`}
+                    className="testimonial-card-dark home-surface-card-dark snap-start shrink-0 border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 w-[85vw] max-w-[21rem]"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="max-w-[11rem] text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
+                        {item.service}
+                      </p>
+                      <p className="shrink-0 text-xs font-semibold text-[#f0c35a]">
+                        {"★".repeat(item.rating)}
+                        <span className="text-white/24">
+                          {"☆".repeat(5 - item.rating)}
+                        </span>
                       </p>
                     </div>
-                  </footer>
-                </blockquote>
-              ))}
+
+                    <p className="mt-3 text-[0.96rem] leading-7 text-white/78">
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+
+                    <div className="mt-4 rounded-[1rem] border border-[#6e5338]/40 bg-[#201a15] px-3.5 py-3">
+                      <p className="text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
+                        Happiness Highlight
+                      </p>
+                      <p className="mt-1.5 text-[0.86rem] leading-6 text-white/68">
+                        {item.happiness}
+                      </p>
+                    </div>
+
+                    <footer className="mt-4 flex items-center gap-3 border-t border-white/8 pt-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#7c5f40] bg-[linear-gradient(135deg,#d0a06e_0%,#8f6843_100%)] font-serif text-sm text-white">
+                        {item.name
+                          .split(" ")
+                          .slice(0, 2)
+                          .map((part) => part[0])
+                          .join("")}
+                      </div>
+                      <div>
+                        <p className="font-serif text-lg text-white">{item.name}</p>
+                        <p className="mt-0.5 text-[0.62rem] font-semibold tracking-[0.15em] uppercase text-white/50">
+                          {item.role}
+                        </p>
+                      </div>
+                    </footer>
+                  </blockquote>
+                ))}
+              </SwipeCarousel>
             </div>
 
             <div className="mt-10 hidden gap-5 lg:grid lg:grid-cols-3">
@@ -683,7 +774,7 @@ export default function Home() {
                     {[...column, ...column].map((item, index) => (
                       <blockquote
                         key={`${item.name}-${columnIndex}-${index}`}
-                        className="testimonial-card-dark rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                        className="testimonial-card-dark home-surface-card-dark border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <p className="max-w-[12rem] text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#d0a06e]">
@@ -736,38 +827,38 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f3eb_0%,#f2ede2_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
               {homeContent.faqSection.eyebrow}
             </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
+            <h2 className="mt-3 font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
               {homeContent.faqSection.title}
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
+            <p className="mt-3 max-w-2xl text-[0.92rem] leading-6 text-[var(--color-muted)] sm:mt-5 sm:text-lg sm:leading-8">
               Answers to the questions most clients ask before starting a project in Bangalore, Chennai, or Hyderabad.
             </p>
           </div>
 
-          <div className="mt-8 sm:mt-10">
+          <div className="mt-6 sm:mt-10">
             <FaqAccordion items={faqs} />
           </div>
         </div>
       </section>
 
-      <section className="pb-12 pt-12 sm:pb-20 sm:pt-20 sm:pt-22">
+      <section className="pb-9 pt-9 sm:pb-20 sm:pt-20 sm:pt-22">
         <div className="mx-auto max-w-5xl px-4 sm:px-8">
-          <div className="rounded-[1.7rem] bg-[linear-gradient(135deg,_#d7b78f_0%,_#7f6143_100%)] px-5 py-8 text-white shadow-[0_24px_90px_rgba(71,52,34,0.18)] sm:rounded-[2.25rem] sm:px-10 sm:py-12">
+          <div className="home-surface-panel-accent bg-[linear-gradient(135deg,_#d7b78f_0%,_#7f6143_100%)] px-4 py-7 text-white sm:px-10 sm:py-12">
             <p className="text-sm font-semibold tracking-[0.28em] uppercase text-white/78">
               {homeContent.contactCtaSection.eyebrow}
             </p>
-            <h2 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-[1.94rem] leading-[1.08] sm:mt-4 sm:text-5xl">
               {homeContent.contactCtaSection.title}
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+            <p className="mt-3.5 max-w-2xl text-[0.92rem] leading-6 text-white/80 sm:mt-6 sm:text-lg sm:leading-8">
               {homeContent.contactCtaSection.description}
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4 sm:flex-row sm:flex-wrap">
+            <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:gap-4 sm:flex-row sm:flex-wrap">
                 <Link
                   href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:bg-[var(--color-sand)] sm:px-7 sm:py-4 sm:text-sm"
