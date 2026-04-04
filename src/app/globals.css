@@ -476,6 +476,29 @@ h6 {
   box-shadow: var(--surface-shadow-panel-accent);
 }
 
+.home-section-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(157, 113, 69, 0.18) 16%,
+    rgba(217, 180, 140, 0.54) 50%,
+    rgba(157, 113, 69, 0.18) 84%,
+    transparent 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.home-section-divider::before {
+  content: "";
+  position: absolute;
+  inset: -18px 12% auto;
+  height: 36px;
+  background: radial-gradient(circle, rgba(217, 180, 140, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
 @media (min-width: 640px) {
   .home-surface-card,
   .home-surface-card-dark {
@@ -736,6 +759,42 @@ h6 {
 
 .testimonial-card-dark:hover::before {
   opacity: 1;
+}
+
+.testimonial-review-shell {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  padding: 1rem;
+}
+
+.testimonial-highlight-box {
+  border-radius: 1rem;
+  border: 1px solid rgba(208, 160, 110, 0.24);
+  background: linear-gradient(180deg, rgba(83, 56, 34, 0.36), rgba(44, 30, 20, 0.46));
+}
+
+.testimonial-reviewer-shell {
+  margin-top: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(208, 160, 110, 0.16);
+  background: linear-gradient(180deg, rgba(208, 160, 110, 0.14), rgba(23, 18, 14, 0.82));
+  padding: 0.9rem 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .testimonial-review-shell {
+    border-radius: 1.2rem;
+    padding: 1.15rem;
+  }
+
+  .testimonial-reviewer-shell {
+    border-radius: 1.15rem;
+    padding: 1rem 1.05rem;
+  }
 }
 
 @keyframes galleryAmbientFloat {

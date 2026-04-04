@@ -544,10 +544,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className="home-section-divider mt-8 sm:mt-10" aria-hidden />
         </div>
       </section>
 
-      <section className="section-wash bg-[linear-gradient(180deg,#f6f3ed_0%,#efede7_100%)]">
+      <section className="section-wash bg-[linear-gradient(180deg,#f5eee5_0%,#ece3d6_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
         <div className="grid gap-5 sm:gap-10 lg:grid-cols-[1fr_1fr]">
           <div>
@@ -718,32 +720,34 @@ export default function Home() {
                     key={`${item.name}-mobile-${index}`}
                     className="testimonial-card-dark home-surface-card-dark snap-start shrink-0 border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 w-[85vw] max-w-[21rem]"
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="max-w-[11rem] text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
-                        {item.service}
+                    <div className="testimonial-review-shell">
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="max-w-[11rem] text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
+                          {item.service}
+                        </p>
+                        <p className="shrink-0 text-xs font-semibold text-[#f0c35a]">
+                          {"★".repeat(item.rating)}
+                          <span className="text-white/24">
+                            {"☆".repeat(5 - item.rating)}
+                          </span>
+                        </p>
+                      </div>
+
+                      <p className="mt-3 text-[0.96rem] leading-7 text-white/82">
+                        &ldquo;{item.quote}&rdquo;
                       </p>
-                      <p className="shrink-0 text-xs font-semibold text-[#f0c35a]">
-                        {"★".repeat(item.rating)}
-                        <span className="text-white/24">
-                          {"☆".repeat(5 - item.rating)}
-                        </span>
-                      </p>
+
+                      <div className="testimonial-highlight-box mt-4 px-3.5 py-3">
+                        <p className="text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-[#d8ab72]">
+                          Happiness Highlight
+                        </p>
+                        <p className="mt-1.5 text-[0.86rem] leading-6 text-white/72">
+                          {item.happiness}
+                        </p>
+                      </div>
                     </div>
 
-                    <p className="mt-3 text-[0.96rem] leading-7 text-white/78">
-                      &ldquo;{item.quote}&rdquo;
-                    </p>
-
-                    <div className="mt-4 rounded-[1rem] border border-[#6e5338]/40 bg-[#201a15] px-3.5 py-3">
-                      <p className="text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-[#d0a06e]">
-                        Happiness Highlight
-                      </p>
-                      <p className="mt-1.5 text-[0.86rem] leading-6 text-white/68">
-                        {item.happiness}
-                      </p>
-                    </div>
-
-                    <footer className="mt-4 flex items-center gap-3 border-t border-white/8 pt-3">
+                    <footer className="testimonial-reviewer-shell">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#7c5f40] bg-[linear-gradient(135deg,#d0a06e_0%,#8f6843_100%)] font-serif text-sm text-white">
                         {item.name
                           .split(" ")
@@ -754,7 +758,7 @@ export default function Home() {
                       <div>
                         <p className="font-serif text-lg text-white">{item.name}</p>
                         <p className="mt-0.5 text-[0.62rem] font-semibold tracking-[0.15em] uppercase text-white/50">
-                          {item.role}
+                        {item.role}
                         </p>
                       </div>
                     </footer>
@@ -776,32 +780,34 @@ export default function Home() {
                         key={`${item.name}-${columnIndex}-${index}`}
                         className="testimonial-card-dark home-surface-card-dark border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5"
                       >
-                        <div className="flex items-start justify-between gap-4">
-                          <p className="max-w-[12rem] text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#d0a06e]">
-                            {item.service}
+                        <div className="testimonial-review-shell">
+                          <div className="flex items-start justify-between gap-4">
+                            <p className="max-w-[12rem] text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#d0a06e]">
+                              {item.service}
+                            </p>
+                            <p className="shrink-0 text-sm font-semibold text-[#f0c35a]">
+                              {"★".repeat(item.rating)}
+                              <span className="text-white/24">
+                                {"☆".repeat(5 - item.rating)}
+                              </span>
+                            </p>
+                          </div>
+
+                          <p className="mt-4 text-[1.02rem] leading-8 text-white/82">
+                            &ldquo;{item.quote}&rdquo;
                           </p>
-                          <p className="shrink-0 text-sm font-semibold text-[#f0c35a]">
-                            {"★".repeat(item.rating)}
-                            <span className="text-white/24">
-                              {"☆".repeat(5 - item.rating)}
-                            </span>
-                          </p>
+
+                          <div className="testimonial-highlight-box mt-5 px-4 py-3">
+                            <p className="text-[0.7rem] font-semibold tracking-[0.18em] uppercase text-[#d8ab72]">
+                              Happiness Highlight
+                            </p>
+                            <p className="mt-2 text-sm leading-6 text-white/72">
+                              {item.happiness}
+                            </p>
+                          </div>
                         </div>
 
-                        <p className="mt-4 text-[1.02rem] leading-8 text-white/78">
-                          &ldquo;{item.quote}&rdquo;
-                        </p>
-
-                        <div className="mt-5 rounded-[1.15rem] border border-[#6e5338]/40 bg-[#201a15] px-4 py-3">
-                          <p className="text-[0.7rem] font-semibold tracking-[0.18em] uppercase text-[#d0a06e]">
-                            Happiness Highlight
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-white/68">
-                            {item.happiness}
-                          </p>
-                        </div>
-
-                        <footer className="mt-5 flex items-center gap-3 border-t border-white/8 pt-4">
+                        <footer className="testimonial-reviewer-shell">
                           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#7c5f40] bg-[linear-gradient(135deg,#d0a06e_0%,#8f6843_100%)] font-serif text-base text-white">
                             {item.name
                               .split(" ")
@@ -812,7 +818,7 @@ export default function Home() {
                           <div>
                             <p className="font-serif text-xl text-white">{item.name}</p>
                             <p className="mt-1 text-xs font-semibold tracking-[0.18em] uppercase text-white/50">
-                              {item.role}
+                            {item.role}
                             </p>
                           </div>
                         </footer>
