@@ -11,6 +11,15 @@
   --color-accent-soft: #d9b48c;
   --color-line: rgba(77, 55, 34, 0.12);
   --color-line-strong: rgba(77, 55, 34, 0.2);
+  --surface-radius-card: 1.4rem;
+  --surface-radius-card-sm: 1.18rem;
+  --surface-radius-panel: 1.58rem;
+  --surface-shadow-soft: 0 18px 46px rgba(83, 61, 39, 0.075);
+  --surface-shadow-soft-hover: 0 24px 62px rgba(83, 61, 39, 0.12);
+  --surface-shadow-dark: 0 22px 58px rgba(0, 0, 0, 0.2);
+  --surface-shadow-dark-hover: 0 28px 72px rgba(0, 0, 0, 0.28);
+  --surface-shadow-panel-dark: 0 30px 90px rgba(24, 17, 12, 0.28);
+  --surface-shadow-panel-accent: 0 26px 82px rgba(71, 52, 34, 0.2);
 }
 
 @theme inline {
@@ -197,6 +206,15 @@ h6 {
   }
 }
 
+@keyframes gradientRingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .hero-cinematic-backdrop {
   position: absolute;
   inset: 0;
@@ -342,6 +360,7 @@ h6 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: linear-gradient(180deg, rgba(19, 16, 13, 0.18), rgba(19, 16, 13, 0.62));
     backdrop-filter: blur(8px);
+    box-shadow: 0 22px 54px rgba(7, 5, 4, 0.24);
     padding: 0.7rem;
   }
 
@@ -364,6 +383,115 @@ h6 {
   }
 }
 
+.gradient-ring-badge {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 1.5px;
+  isolation: isolate;
+  box-shadow:
+    0 18px 42px rgba(8, 6, 5, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.gradient-ring-badge::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(
+    from 0deg,
+    #ff3b30 0deg,
+    #ff7a00 46deg,
+    #ffd60a 98deg,
+    #34c759 164deg,
+    #0a84ff 240deg,
+    #5856d6 302deg,
+    #ff3b30 360deg
+  );
+  animation: gradientRingSpin 7.2s linear infinite;
+  filter: saturate(1.18) brightness(1.08);
+}
+
+.gradient-ring-badge__inner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(14, 12, 10, 0.74), rgba(14, 12, 10, 0.9));
+  padding: 0.54rem 0.94rem;
+  backdrop-filter: blur(10px) saturate(112%);
+}
+
+.home-surface-card,
+.home-surface-card-compact,
+.home-surface-card-dark,
+.home-surface-panel-dark,
+.home-surface-panel-accent {
+  transition:
+    border-color 220ms ease,
+    box-shadow 240ms ease,
+    transform 220ms ease;
+}
+
+.home-surface-card {
+  border-radius: var(--surface-radius-card);
+  box-shadow: var(--surface-shadow-soft);
+}
+
+.home-surface-card:hover {
+  border-color: rgba(157, 113, 69, 0.2);
+  box-shadow: var(--surface-shadow-soft-hover);
+}
+
+.home-surface-card-compact {
+  border-radius: var(--surface-radius-card-sm);
+  box-shadow: 0 14px 34px rgba(83, 61, 39, 0.06);
+}
+
+.home-surface-card-compact:hover {
+  border-color: rgba(157, 113, 69, 0.18);
+  box-shadow: 0 20px 42px rgba(83, 61, 39, 0.1);
+}
+
+.home-surface-card-dark {
+  border-radius: var(--surface-radius-card);
+  box-shadow: var(--surface-shadow-dark);
+}
+
+.home-surface-card-dark:hover {
+  border-color: rgba(217, 180, 140, 0.24);
+  box-shadow: var(--surface-shadow-dark-hover);
+}
+
+.home-surface-panel-dark {
+  border-radius: var(--surface-radius-panel);
+  box-shadow: var(--surface-shadow-panel-dark);
+}
+
+.home-surface-panel-accent {
+  border-radius: var(--surface-radius-panel);
+  box-shadow: var(--surface-shadow-panel-accent);
+}
+
+@media (min-width: 640px) {
+  .home-surface-card,
+  .home-surface-card-dark {
+    border-radius: 1.85rem;
+  }
+
+  .home-surface-card-compact {
+    border-radius: 1.45rem;
+  }
+
+  .home-surface-panel-dark,
+  .home-surface-panel-accent {
+    border-radius: 2.18rem;
+  }
+}
+
 .interactive-card {
   position: relative;
   overflow: hidden;
@@ -381,6 +509,7 @@ h6 {
 
 .interactive-card:hover {
   transform: translateY(-6px);
+  border-color: rgba(157, 113, 69, 0.16);
 }
 
 .interactive-card:hover::before {
@@ -404,6 +533,7 @@ h6 {
 
 .interactive-card-dark:hover {
   transform: translateY(-6px);
+  border-color: rgba(217, 180, 140, 0.22);
 }
 
 .interactive-card-dark:hover::before {

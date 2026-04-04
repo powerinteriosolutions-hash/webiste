@@ -44,6 +44,21 @@
       "name": "Kitchens and Wardrobes",
       "category": "Storage and utility",
       "description": "Utility-focused interiors with efficient storage, easy movement, and everyday usability."
+    },
+    {
+      "name": "Reception and Lounges",
+      "category": "Commercial arrival",
+      "description": "Client-facing spaces shaped to feel calm, polished, and easy to move through."
+    },
+    {
+      "name": "Bedrooms and Suites",
+      "category": "Residential interior",
+      "description": "Restful bedroom layouts with cleaner storage, softer finishes, and balanced detailing."
+    },
+    {
+      "name": "Meeting and Collaboration Zones",
+      "category": "Commercial planning",
+      "description": "Discussion rooms and shared work areas planned for focus, flow, and daily team use."
     }
   ],
   "process": [
@@ -154,7 +169,7 @@
     {
       "name": "Syed Naveed",
       "role": "Co-Founder",
-      "image": "/founders/Naveed.jpeg",
+      "image": "/founders/Naveed.png",
       "vision": "To deliver residential and commercial spaces that balance visual refinement, practical functionality, and lasting value.",
       "email": "",
       "phone": "6362201648"

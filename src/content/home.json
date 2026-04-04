@@ -14,14 +14,14 @@
   "aboutSection": {
     "eyebrow": "About Power On Interio",
     "title": "A practical interior design partner for commercial spaces, homes, and utility areas.",
-    "description": "We align layout, material selection, and site execution so the final result feels polished and works well every day, especially in busy workspaces.",
+    "description": "We align layout, materials, and site execution so each space feels polished and works smoothly every day.",
     "primaryCta": "Learn About Us",
     "secondaryCta": "View Projects"
   },
   "commercialSection": {
     "eyebrow": "Commercial Showcase",
     "title": "Commercial interiors that work hard and look polished.",
-    "description": "Reception areas, workstations, meeting rooms, and collaboration zones designed to support movement, clarity, and a stronger brand presence.",
+    "description": "Reception areas, workstations, and meeting rooms planned for easier movement and a sharper brand presence.",
     "primaryCta": "Start a Commercial Brief",
     "secondaryCta": "View Projects"
   },
@@ -33,7 +33,7 @@
   "clientsSection": {
     "eyebrow": "Clients",
     "title": "Trusted by interior, construction, and workspace-led teams.",
-    "description": "We work with brands that need clear planning, practical layouts, and dependable delivery.",
+    "description": "Chosen by teams that value clear planning and dependable delivery.",
     "items": [
       "Flipspaces",
       "M&M Construction",
@@ -54,11 +54,11 @@
   },
   "processSection": {
     "eyebrow": "Process",
-    "title": "A simple path from brief to handover."
+    "title": "From brief to handover."
   },
   "testimonialsSection": {
     "eyebrow": "Client Feedback",
-    "title": "What clients value after the project is complete."
+    "title": "What clients value after completion."
   },
   "faqSection": {
     "eyebrow": "Frequently Asked Questions",
@@ -73,6 +73,9 @@
   "projectImages": [
     "/commercial/comercial-4.jpeg",
     "/living-premium.jpg",
-    "/residential/residential-kitchen-beige-modern.jpg"
+    "/residential/residential-kitchen-beige-modern.jpg",
+    "/commercial/comercial-15.jpeg",
+    "/residential/residential-bedroom-marble-headboard.jpg",
+    "/commercial/comercial-6.jpeg"
   ]
 }
