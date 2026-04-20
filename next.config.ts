@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const defaultSiteUrl = "https://poweroninterio.com";
+const defaultSiteUrl = "https://poweroninterio.vercel.app";
 const defaultGitHubPagesSiteUrl = "https://powerinteriosolutions-hash.github.io";
 
 type DeployTarget = "local" | "github-pages" | "vercel";
@@ -52,19 +52,21 @@ const detectDeployTarget = (): DeployTarget => {
 
 const deployTarget = detectDeployTarget();
 const isGitHubPages = deployTarget === "github-pages";
-const vercelSiteUrl = toAbsoluteUrl(
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ??
-    process.env.VERCEL_BRANCH_URL ??
-    process.env.VERCEL_URL,
-);
+const vercelProjectProductionUrl = toAbsoluteUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL);
+const vercelDeploymentUrl = toAbsoluteUrl(process.env.VERCEL_BRANCH_URL ?? process.env.VERCEL_URL);
+const explicitlyConfiguredSiteUrl = toAbsoluteUrl(process.env.SITE_URL);
+const legacyPublicSiteUrl = toAbsoluteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 const configuredSiteUrl =
-  process.env.SITE_URL ??
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (isGitHubPages
+  isGitHubPages
     ? defaultGitHubPagesSiteUrl
     : deployTarget === "vercel"
-      ? vercelSiteUrl ?? defaultSiteUrl
-      : "http://localhost:3000");
+      ? explicitlyConfiguredSiteUrl ??
+        // Prefer Vercel's stable production hostname so stale env vars do not leak old aliases.
+        vercelProjectProductionUrl ??
+        legacyPublicSiteUrl ??
+        vercelDeploymentUrl ??
+        defaultSiteUrl
+      : explicitlyConfiguredSiteUrl ?? legacyPublicSiteUrl ?? "http://localhost:3000";
 const publicSiteUrl = normalizeSiteUrl(
   toAbsoluteUrl(configuredSiteUrl) ?? defaultGitHubPagesSiteUrl,
 );
