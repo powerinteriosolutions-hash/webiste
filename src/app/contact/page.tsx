@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-18">
-      <section className="grid gap-10 lg:grid-cols-[0.78fr_minmax(0,1.22fr)]">
+    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-14">
+      <section className="grid gap-10 lg:grid-cols-[0.78fr_minmax(0,1.22fr)] lg:gap-8">
         <div>
           <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
             {contactPageContent.hero.eyebrow}
@@ -68,7 +68,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mt-16 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-sand)]/35 p-7 sm:p-8">
+      <section className="mt-16 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-sand)]/35 p-7 sm:p-8 lg:mt-14 lg:p-7">
         <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
           {contactPageContent.form.eyebrow}
         </p>

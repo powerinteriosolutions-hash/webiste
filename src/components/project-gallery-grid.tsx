@@ -174,7 +174,7 @@ export function ProjectGalleryGrid({ items }: ProjectGalleryGridProps) {
 
   return (
     <>
-      <div className="project-gallery-grid mt-8 sm:mt-10">
+      <div className="project-gallery-grid mt-7 sm:mt-8 lg:mt-7">
         {items.map((item, index) => (
           <article
             key={`${item.name}-${item.location}`}
@@ -188,7 +188,7 @@ export function ProjectGalleryGrid({ items }: ProjectGalleryGridProps) {
               aria-haspopup="dialog"
               className="group flex h-full w-full flex-col text-left"
             >
-              <div className="relative h-[18rem] overflow-hidden bg-[#e9decf] sm:h-[20rem] xl:h-[18rem]">
+              <div className="relative h-[17rem] overflow-hidden bg-[#e9decf] sm:h-[18rem] xl:h-[16.75rem]">
                 <Image
                   src={item.image}
                   alt={`${item.name} by Power On Interio`}
@@ -199,14 +199,14 @@ export function ProjectGalleryGrid({ items }: ProjectGalleryGridProps) {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(12,9,8,0.12)_100%)]" />
               </div>
 
-              <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
+              <div className="flex flex-1 flex-col justify-between p-4 sm:p-5 lg:p-4">
                 <div>
-                <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
-                  {item.category}
-                </p>
-                <h3 className="mt-2 font-serif text-[1.3rem] leading-tight text-[var(--color-ink)] sm:text-[1.55rem]">
-                  {item.name}
-                </h3>
+                  <p className="text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
+                    {item.category}
+                  </p>
+                  <h3 className="mt-2 font-serif text-[1.3rem] leading-tight text-[var(--color-ink)] sm:text-[1.55rem]">
+                    {item.name}
+                  </h3>
                 </div>
                 <p className="mt-2 text-[0.74rem] font-semibold tracking-[0.14em] uppercase text-[var(--color-muted)]">
                   Tap To View Details

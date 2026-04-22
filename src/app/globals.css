@@ -25,8 +25,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Avenir Next", "Segoe UI", sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Garamond, serif;
+  --font-sans: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-serif: "Times New Roman", Times, Georgia, serif;
 }
 
 * {
@@ -51,7 +51,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
@@ -350,7 +350,7 @@ h6 {
   }
 
   .hero-expertise-stage {
-    min-height: 18.8rem;
+    min-height: 17.8rem;
   }
 }
 
@@ -870,7 +870,7 @@ h6 {
 
 .project-feature-image-wrap {
   position: relative;
-  min-height: 280px;
+  min-height: 248px;
   overflow: hidden;
   border-radius: 1.35rem;
   margin: 1rem 1rem 0;
@@ -1077,7 +1077,7 @@ h6 {
 
 @media (min-width: 640px) {
   .project-feature-image-wrap {
-    min-height: 320px;
+    min-height: 280px;
     margin: 1.2rem 1.2rem 0;
   }
 
@@ -1178,7 +1178,7 @@ h6 {
 
 @media (min-width: 1024px) {
   .client-carousel-column {
-    height: 460px;
+    height: 400px;
     overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
   }
@@ -1193,7 +1193,7 @@ h6 {
   }
 
   .testimonial-column {
-    height: 760px;
+    height: 640px;
     overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
   }
@@ -1237,7 +1237,7 @@ h6 {
   justify-content: center;
   background: linear-gradient(135deg, #d7b78f 0%, #8d6845 100%);
   color: white;
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Garamond, serif;
+  font-family: "Times New Roman", Times, Georgia, serif;
 }
 
 .executive-card {

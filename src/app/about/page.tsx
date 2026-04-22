@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-18">
-      <section className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-14">
+      <section className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-8">
         <div>
           <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
             {aboutContent.hero.eyebrow}
@@ -38,7 +38,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {stats.map((item) => (
           <div key={item.label} className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-6">
             <p className="font-serif text-4xl">{item.value}</p>
@@ -49,7 +49,7 @@ export default function AboutPage() {
         ))}
       </section>
 
-      <section className="mt-16 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="mt-16 grid gap-10 lg:mt-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-8">
         <div>
           <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
             {aboutContent.approach.eyebrow}
@@ -72,7 +72,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-10">
+      <section className="mt-16 grid gap-10 lg:mt-14 lg:gap-8">
         <div>
           <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
             {aboutContent.leadership.eyebrow}
@@ -82,7 +82,7 @@ export default function AboutPage() {
           </h2>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 lg:gap-5">
           <div className="grid gap-5 md:grid-cols-2">
             {founders.map((founder) => {
               const initials = founder.name
@@ -103,11 +103,11 @@ export default function AboutPage() {
               return (
                 <article
                   key={founder.name}
-                  className="executive-card profile-shell grid h-full gap-6 rounded-[2rem] border border-[rgba(157,113,69,0.14)] p-6 shadow-[0_20px_65px_rgba(71,52,34,0.08)] xl:grid-cols-[190px_1fr]"
+                  className="executive-card profile-shell grid h-full gap-5 rounded-[2rem] border border-[rgba(157,113,69,0.14)] p-5 shadow-[0_20px_65px_rgba(71,52,34,0.08)] xl:grid-cols-[176px_1fr]"
                 >
-                  <div className="executive-photo-frame aspect-square w-full xl:aspect-auto xl:min-h-[18rem]">
+                  <div className="executive-photo-frame aspect-square w-full xl:aspect-auto xl:min-h-[16rem]">
                     {founderImage ? (
-                      <div className="relative h-full w-full xl:min-h-[18rem]">
+                      <div className="relative h-full w-full xl:min-h-[16rem]">
                         <Image
                           src={founderImage}
                           alt={founder.name}
@@ -117,7 +117,7 @@ export default function AboutPage() {
                         />
                       </div>
                     ) : (
-                      <div className="profile-avatar h-full w-full text-6xl xl:min-h-[18rem]">
+                      <div className="profile-avatar h-full w-full text-6xl xl:min-h-[16rem]">
                         <div className="flex flex-col items-center gap-4">
                           <span>{initials}</span>
                           <span className="executive-photo-slot">Photo Slot</span>
@@ -162,18 +162,15 @@ export default function AboutPage() {
             })}
           </div>
 
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ink)] px-5 py-6 text-white sm:px-6">
-            <div className="mb-6">
+          <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ink)] px-5 py-6 text-white sm:px-6 lg:px-7 lg:py-5">
+            <div className="mb-5">
               <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)]">
                 Team
               </p>
               <h3 className="mt-2 font-serif text-3xl">Meet the wider Power On Interio team</h3>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">
-                A concise profile grid keeps the team roles and contact details easy to review.
-              </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-4">
               {team.map((member) => {
                 const initials = member.name
                   .split(" ")
@@ -193,7 +190,7 @@ export default function AboutPage() {
                 return (
                   <article
                     key={member.name}
-                    className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04))] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.14)]"
+                    className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04))] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)]"
                   >
                     <div className="flex flex-col items-center text-center">
                       <div className="mb-4 overflow-hidden rounded-full border-4 border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
@@ -219,7 +216,7 @@ export default function AboutPage() {
                         {member.role}
                       </p>
 
-                      <div className="mt-5 grid w-full gap-2 text-sm text-white/72">
+                      <div className="mt-4 grid w-full gap-2 text-sm text-white/72">
                         <a
                           href={`mailto:${memberEmail}`}
                           className="break-all rounded-full border border-white/10 bg-white/5 px-4 py-2 hover:bg-white/10 hover:text-white"

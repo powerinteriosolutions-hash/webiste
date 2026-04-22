@@ -136,8 +136,8 @@ export default function ProjectsPage() {
       <div className="project-gallery-ambient project-gallery-ambient-one" />
       <div className="project-gallery-ambient project-gallery-ambient-two" />
 
-      <section className="relative mx-auto max-w-7xl px-5 pb-8 pt-14 sm:px-8 lg:px-12 lg:pt-20">
-        <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+      <section className="relative mx-auto max-w-7xl px-5 pb-8 pt-14 sm:px-8 lg:px-12 lg:pt-16">
+        <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-7">
           <div className="animate-fade-rise">
             <p className="text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
               {projectsPageContent.hero.eyebrow}
@@ -163,7 +163,7 @@ export default function ProjectsPage() {
               <span className="project-feature-badge">Featured Transformation</span>
             </div>
 
-            <div className="grid gap-4 p-5 sm:grid-cols-3 sm:gap-5 sm:p-6">
+            <div className="grid gap-4 p-5 sm:grid-cols-3 sm:gap-4 sm:p-5">
               <div>
                 <p className="text-[0.62rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-[0.67rem]">
                   Category
@@ -213,7 +213,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pt-8 sm:px-8 lg:px-12">
+      <section className="mx-auto max-w-7xl px-5 pt-8 sm:px-8 lg:px-12 lg:pt-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="font-serif text-[2.25rem] leading-tight sm:text-5xl">Selected Project Frames</h2>
           <p className="max-w-xl text-sm leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">

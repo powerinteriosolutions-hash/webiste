@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-18">
-      <section className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+    <main className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-14">
+      <section className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8">
         <div>
           <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
             {servicesPageContent.hero.eyebrow}
@@ -32,11 +32,11 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-5 md:grid-cols-2">
+      <section className="mt-16 grid gap-5 md:grid-cols-2 lg:mt-14">
         {services.map((service) => (
           <article
             key={service.title}
-            className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7 shadow-[0_18px_50px_rgba(71,52,34,0.06)]"
+            className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-7 shadow-[0_18px_50px_rgba(71,52,34,0.06)] lg:p-6"
           >
             <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
               Interior Service
@@ -49,13 +49,13 @@ export default function ServicesPage() {
         ))}
       </section>
 
-      <section className="mt-16 rounded-[2rem] bg-[var(--color-ink)] px-6 py-10 text-white sm:px-8">
+      <section className="mt-16 rounded-[2rem] bg-[var(--color-ink)] px-6 py-10 text-white sm:px-8 lg:mt-14 lg:px-7 lg:py-8">
         <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent-soft)]">
           {servicesPageContent.process.eyebrow}
         </p>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-3 lg:mt-6 lg:gap-4">
           {processSteps.map((step, index) => (
-            <div key={step.title} className="rounded-[1.5rem] border border-white/12 bg-white/6 p-6">
+            <div key={step.title} className="rounded-[1.5rem] border border-white/12 bg-white/6 p-6 lg:p-5">
               <p className="text-sm font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-soft)]">
                 0{index + 1}
               </p>
@@ -66,7 +66,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16 lg:mt-14">
         <Link
           href={withBasePathRoute("/contact")}
           className="inline-flex rounded-full bg-[var(--color-accent)] px-7 py-4 text-sm font-semibold tracking-[0.16em] uppercase text-white transition hover:bg-[#b9824b]"

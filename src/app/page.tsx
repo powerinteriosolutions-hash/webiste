@@ -353,14 +353,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
-          <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-6 lg:items-end">
-            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[38rem] lg:self-end xl:max-w-[42rem]">
+        <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:min-h-[70vh] lg:px-10 lg:pb-6 lg:pt-12 xl:min-h-[72vh] xl:px-12">
+          <div className="grid flex-1 items-end gap-4 sm:gap-8 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-5 lg:items-end">
+            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[36rem] lg:self-end xl:max-w-[39rem]">
               <div className="max-w-3xl">
                 <p className="text-[0.78rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
                   {homeContent.heroLocationLabel}
                 </p>
-                <h1 className="mt-4 font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.7rem]">
+                <h1 className="mt-4 font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem]">
                   {homeContent.heroHeadline}
                 </h1>
                 <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/82 sm:text-[1.12rem] sm:leading-8">
@@ -368,11 +368,11 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-6">
+              <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-5 lg:p-4">
                 <p className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[0.92rem] sm:tracking-[0.2em]">
                   Core Expertise
                 </p>
-                <div className="hero-expertise-stage mt-2 sm:mt-5" aria-hidden>
+                <div className="hero-expertise-stage mt-2 sm:mt-4" aria-hidden>
                   {heroSlides.map((slide, index) => (
                     <article
                       key={`expertise-left-${slide.metricLabel}`}
@@ -419,7 +419,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+              <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-6 sm:flex-row">
                 <Link
                   href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
@@ -428,7 +428,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-6" aria-hidden>
+              <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-5" aria-hidden>
                 {heroSlides.map((slide, index) => (
                   <span
                     key={`indicator-${slide.metric}`}
@@ -446,7 +446,7 @@ export default function Home() {
             </div>
 
             <div className="hero-stats-shell animate-fade-rise-delay hidden md:block lg:justify-self-end">
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
                 {stats.map((item) => (
                   <div
                     key={item.label}
@@ -490,8 +490,8 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f1ea_0%,#f2ebe2_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.commercialSection.eyebrow}
@@ -528,47 +528,47 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f8f2ea_0%,#f4ede4_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-        <div className="grid items-start gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-10">
-          <div>
-            <p className="text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
-              {homeContent.aboutSection.eyebrow}
-            </p>
-            <h2 className="mt-2.5 max-w-md font-serif text-[2.08rem] leading-[1.04] sm:mt-4 sm:max-w-lg sm:text-5xl">
-              {homeContent.aboutSection.title}
-            </h2>
-          </div>
-
-          <div className="interactive-card home-surface-card grid max-w-2xl gap-3 border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-4 sm:gap-5 sm:p-7">
-            <div className="relative h-48 overflow-hidden rounded-[1.2rem] sm:h-72 sm:rounded-[1.6rem]">
-              <Image
-                src={aboutFeatureImage}
-                alt="Signature Power On Interio interior project"
-                fill
-                quality={88}
-                sizes="(max-width: 640px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="grid items-start gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-8">
+            <div>
+              <p className="text-[0.72rem] font-semibold tracking-[0.24em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.28em]">
+                {homeContent.aboutSection.eyebrow}
+              </p>
+              <h2 className="mt-2.5 max-w-md font-serif text-[2.08rem] leading-[1.04] sm:mt-4 sm:max-w-lg sm:text-5xl">
+                {homeContent.aboutSection.title}
+              </h2>
             </div>
-            <p className="text-[0.94rem] leading-6 text-[var(--color-muted)] sm:text-lg sm:leading-8">
-              {homeContent.aboutSection.description}
-            </p>
-            <div className="pt-1">
+
+            <div className="interactive-card home-surface-card grid max-w-2xl gap-3 border border-[rgba(157,113,69,0.14)] bg-[rgba(255,250,245,0.82)] p-4 sm:gap-5 sm:p-6">
+              <div className="relative h-48 overflow-hidden rounded-[1.2rem] sm:h-72 sm:rounded-[1.6rem] lg:h-64">
+                <Image
+                  src={aboutFeatureImage}
+                  alt="Signature Power On Interio interior project"
+                  fill
+                  quality={88}
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+              </div>
+              <p className="text-[0.94rem] leading-6 text-[var(--color-muted)] sm:text-lg sm:leading-8">
+                {homeContent.aboutSection.description}
+              </p>
+              <div className="pt-1">
                 <Link
                   href={withBasePathRoute("/about")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
                 >
                   {homeContent.aboutSection.primaryCta}
                 </Link>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f3ece4_0%,#f8f2ea_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
             <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.servicesSection.eyebrow}
@@ -585,11 +585,11 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:mt-10 md:grid-cols-2 md:gap-5">
+          <div className="mt-6 grid gap-3 sm:mt-8 md:grid-cols-2 md:gap-4">
             {services.map((service) => (
               <article
                 key={service.title}
-                className="interactive-card home-surface-card border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-4 sm:p-7"
+                className="interactive-card home-surface-card border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdfb_0%,#f8f1e8_100%)] p-4 sm:p-6"
               >
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.22em]">
                   Interior Service
@@ -605,8 +605,8 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f2f1ee_0%,#f8f7f4_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-8">
             <div className="min-w-0 lg:pt-2">
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
                 {homeContent.clientsSection.eyebrow}
@@ -620,7 +620,7 @@ export default function Home() {
             </div>
 
             <div className="min-w-0">
-              <div className="rounded-[1.7rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,250,244,0.95)_0%,rgba(240,234,226,0.98)_100%)] p-3 shadow-[0_18px_50px_rgba(77,55,34,0.08)] sm:p-4 lg:rounded-[2rem] lg:p-5">
+              <div className="rounded-[1.7rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,250,244,0.95)_0%,rgba(240,234,226,0.98)_100%)] p-3 shadow-[0_18px_50px_rgba(77,55,34,0.08)] sm:p-4 lg:rounded-[2rem] lg:p-4">
                 <div className="lg:hidden">
                   <div className="client-name-marquee px-1">
                     <div className="client-name-marquee-track">
@@ -655,13 +655,13 @@ export default function Home() {
                         {[...column, ...column].map((client, index) => (
                           <article
                             key={`${client}-${columnIndex}-${index}`}
-                            className="interactive-card home-surface-card-compact group border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f7f4ef_100%)] p-5 shadow-[0_10px_28px_rgba(77,55,34,0.06)]"
+                            className="interactive-card home-surface-card-compact group border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f7f4ef_100%)] p-4 shadow-[0_10px_28px_rgba(77,55,34,0.06)]"
                           >
-                            <div className="flex h-full min-h-24 flex-col justify-between">
+                            <div className="flex h-full min-h-20 flex-col justify-between">
                               <p className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-accent)]">
                                 Client Partner
                               </p>
-                              <h3 className="mt-6 font-serif text-[1.9rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
+                              <h3 className="mt-4 font-serif text-[1.7rem] leading-tight text-[var(--color-ink)] transition group-hover:text-[var(--color-accent)]">
                                 {client}
                               </h3>
                             </div>
@@ -675,40 +675,40 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="home-section-divider mt-8 sm:mt-10" aria-hidden />
+          <div className="home-section-divider mt-8 sm:mt-10 lg:mt-8" aria-hidden />
         </div>
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f5eee5_0%,#ece3d6_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-        <div className="grid gap-5 sm:gap-10 lg:grid-cols-[1fr_1fr]">
-          <div>
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="grid gap-5 sm:gap-8 lg:grid-cols-[1fr_1fr] lg:gap-8">
+            <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-              {homeContent.whySection.eyebrow}
-            </p>
-            <h2 className="mt-3 max-w-lg font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
-              {homeContent.whySection.title}
-            </h2>
-          </div>
+                {homeContent.whySection.eyebrow}
+              </p>
+              <h2 className="mt-3 max-w-lg font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
+                {homeContent.whySection.title}
+              </h2>
+            </div>
 
-          <div className="grid gap-3 sm:gap-4">
-            {reasons.map((reason) => (
-              <div
-                key={reason}
-                className="interactive-card home-surface-card-compact flex items-start gap-3 border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f6f4ef_100%)] px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-5"
-              >
-                <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-[var(--color-accent)]" />
-                <p className="text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">{reason}</p>
-              </div>
-            ))}
+            <div className="grid gap-3 sm:gap-4">
+              {reasons.map((reason) => (
+                <div
+                  key={reason}
+                  className="interactive-card home-surface-card-compact flex items-start gap-3 border border-[rgba(31,26,23,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f6f4ef_100%)] px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-4"
+                >
+                  <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-[var(--color-accent)]" />
+                  <p className="text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">{reason}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#1f1a17_0%,#171210_100%)] text-white">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
             <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent-soft)]">
                 {homeContent.projectsSection.eyebrow}
@@ -730,38 +730,38 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f2eb_0%,#f1ebe6_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-        <div className="grid gap-5 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="grid gap-5 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+            <div>
               <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-              {homeContent.processSection.eyebrow}
-            </p>
-            <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
-              {homeContent.processSection.title}
-            </h2>
-          </div>
+                {homeContent.processSection.eyebrow}
+              </p>
+              <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
+                {homeContent.processSection.title}
+              </h2>
+            </div>
 
-          <div className="grid gap-3 md:grid-cols-3 md:gap-5">
-            {processSteps.map((step, index) => (
-              <article
-                key={step.title}
-                className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-4 sm:p-7"
-              >
-                <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
-                  0{index + 1}
-                </p>
-                <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight sm:mt-4 sm:text-3xl">{step.title}</h3>
-                <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
-              </article>
-            ))}
+            <div className="grid gap-3 md:grid-cols-3 md:gap-4">
+              {processSteps.map((step, index) => (
+                <article
+                  key={step.title}
+                  className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-4 sm:p-6"
+                >
+                  <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
+                    0{index + 1}
+                  </p>
+                  <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight sm:mt-4 sm:text-3xl">{step.title}</h3>
+                  <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
       <section className="bg-[linear-gradient(180deg,#f5efe7_0%,#efe7dd_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
-          <div className="home-surface-panel-dark overflow-hidden border border-white/8 bg-[linear-gradient(180deg,#12100e_0%,#1a1613_100%)] px-4 py-7 text-white sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
+          <div className="home-surface-panel-dark overflow-hidden border border-white/8 bg-[linear-gradient(180deg,#12100e_0%,#1a1613_100%)] px-4 py-7 text-white sm:px-8 sm:py-10 lg:px-8 lg:py-10">
             <div className="max-w-[34rem] text-left">
               <p className="text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-[#c49059] sm:text-sm sm:tracking-[0.28em]">
                 {homeContent.testimonialsSection.eyebrow}
@@ -832,7 +832,7 @@ export default function Home() {
               </SwipeCarousel>
             </div>
 
-            <div className="mt-10 hidden gap-5 lg:grid lg:grid-cols-3">
+            <div className="mt-8 hidden gap-4 lg:grid lg:grid-cols-3">
               {testimonialColumns.map((column, columnIndex) => (
                 <div key={`testimonial-column-${columnIndex}`} className="testimonial-column">
                   <div
@@ -843,7 +843,7 @@ export default function Home() {
                     {[...column, ...column].map((item, index) => (
                       <blockquote
                         key={`${item.name}-${columnIndex}-${index}`}
-                        className="testimonial-card-dark home-surface-card-dark border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5"
+                        className="testimonial-card-dark home-surface-card-dark border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4"
                       >
                         <div className="testimonial-review-shell">
                           <div className="flex items-start justify-between gap-4">
@@ -898,7 +898,7 @@ export default function Home() {
       </section>
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f3eb_0%,#f2ede2_100%)]">
-        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
               {homeContent.faqSection.eyebrow}
@@ -911,15 +911,15 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-6 sm:mt-10">
+          <div className="mt-6 sm:mt-8">
             <FaqAccordion items={faqs} />
           </div>
         </div>
       </section>
 
-      <section className="pb-9 pt-9 sm:pb-20 sm:pt-20 sm:pt-22">
+      <section className="pb-9 pt-9 sm:pb-20 sm:pt-20 lg:pb-16 lg:pt-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-8">
-          <div className="home-surface-panel-accent bg-[linear-gradient(135deg,_#d7b78f_0%,_#7f6143_100%)] px-4 py-7 text-white sm:px-10 sm:py-12">
+          <div className="home-surface-panel-accent bg-[linear-gradient(135deg,_#d7b78f_0%,_#7f6143_100%)] px-4 py-7 text-white sm:px-10 sm:py-12 lg:px-8 lg:py-10">
             <p className="text-sm font-semibold tracking-[0.28em] uppercase text-white/78">
               {homeContent.contactCtaSection.eyebrow}
             </p>
@@ -929,7 +929,7 @@ export default function Home() {
             <p className="mt-3.5 max-w-2xl text-[0.92rem] leading-6 text-white/80 sm:mt-6 sm:text-lg sm:leading-8">
               {homeContent.contactCtaSection.description}
             </p>
-            <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:gap-4 sm:flex-row sm:flex-wrap">
+            <div className="mt-5 flex flex-col gap-3 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   href={withBasePathRoute("/contact")}
                   className="btn-premium inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:bg-[var(--color-sand)] sm:px-7 sm:py-4 sm:text-sm"
