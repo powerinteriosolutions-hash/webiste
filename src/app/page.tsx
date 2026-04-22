@@ -491,32 +491,51 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f1ea_0%,#f2ebe2_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-                {homeContent.commercialSection.eyebrow}
-              </p>
-              <h2 className="mt-3 max-w-3xl font-serif text-[1.98rem] leading-[1.08] sm:mt-4 sm:text-[3rem]">
-                {homeContent.commercialSection.title}
-              </h2>
-              <p className="mt-3 max-w-2xl text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-[1rem] sm:leading-8">
-                {homeContent.commercialSection.description}
-              </p>
-            </div>
+          <div className="rounded-[2rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,253,250,0.92)_0%,rgba(244,236,226,0.82)_100%)] p-5 shadow-[0_18px_54px_rgba(77,55,34,0.08)] sm:p-7 lg:p-8">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div className="max-w-3xl">
+                <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                  {homeContent.commercialSection.eyebrow}
+                </p>
+                <h2 className="mt-3 max-w-3xl font-serif text-[1.98rem] leading-[1.04] sm:mt-4 sm:text-[3rem]">
+                  {homeContent.commercialSection.title}
+                </h2>
+                <p className="mt-6 max-w-2xl text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-[1rem] sm:leading-7">
+                  {homeContent.commercialSection.description}
+                </p>
+              </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
-              <Link
-                href={withBasePathRoute("/contact")}
-                className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
-              >
-                {homeContent.commercialSection.primaryCta}
-              </Link>
-              <Link
-                href={withBasePathRoute("/projects")}
-                className="btn-premium inline-flex items-center justify-center rounded-full border border-[rgba(31,26,23,0.14)] bg-white/78 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
-              >
-                {homeContent.commercialSection.secondaryCta}
-              </Link>
+              <div className="flex flex-col gap-6 lg:items-end">
+                <div className="grid grid-cols-2 gap-2 text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-muted)] sm:text-[0.68rem] sm:gap-3">
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Reception Planning
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Workstations
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Meeting Rooms
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Turnkey Fit-Outs
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <Link
+                    href={withBasePathRoute("/contact")}
+                    className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+                  >
+                    {homeContent.commercialSection.primaryCta}
+                  </Link>
+                  <Link
+                    href={withBasePathRoute("/projects")}
+                    className="btn-premium inline-flex items-center justify-center rounded-full border border-[rgba(31,26,23,0.14)] bg-white/78 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+                  >
+                    {homeContent.commercialSection.secondaryCta}
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -731,27 +750,56 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f2eb_0%,#f1ebe6_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
-          <div className="grid gap-5 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-                {homeContent.processSection.eyebrow}
-              </p>
-              <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
-                {homeContent.processSection.title}
-              </h2>
+          <div className="home-surface-panel-accent border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(135deg,rgba(255,252,248,0.92)_0%,rgba(244,235,224,0.86)_100%)] p-5 text-[var(--color-ink)] sm:p-7 lg:p-8">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-xl">
+                <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                  {homeContent.processSection.eyebrow}
+                </p>
+                <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.02] sm:mt-4 sm:text-[3.3rem]">
+                  {homeContent.processSection.title}
+                </h2>
+                <p className="mt-3 max-w-lg text-[0.92rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
+                  Clear brief alignment first, approvals before execution, and a handover that stays organised.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 text-[0.62rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-muted)] sm:text-[0.68rem]">
+                {["Brief", "Approval", "Handover"].map((label) => (
+                  <span
+                    key={label}
+                    className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3 md:gap-4">
+            <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
               {processSteps.map((step, index) => (
                 <article
                   key={step.title}
-                  className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-4 sm:p-6"
+                  className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(250,244,237,0.92)_100%)] p-4 sm:p-5"
                 >
-                  <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
-                    0{index + 1}
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
+                      0{index + 1}
+                    </p>
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]/70" />
+                  </div>
+                  <h3 className="mt-3 font-serif text-[1.45rem] leading-tight sm:text-[1.9rem]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2.5 text-[0.88rem] leading-6 text-[var(--color-muted)] sm:text-[0.96rem] sm:leading-7">
+                    {step.text}
                   </p>
-                  <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight sm:mt-4 sm:text-3xl">{step.title}</h3>
-                  <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
+                  <div className="mt-4 h-1.5 rounded-full bg-[rgba(157,113,69,0.12)]">
+                    <div
+                      className="h-full rounded-full bg-[linear-gradient(90deg,#9d7145_0%,#d9b48c_100%)]"
+                      style={{ width: `${72 + index * 14}%` }}
+                    />
+                  </div>
                 </article>
               ))}
             </div>
