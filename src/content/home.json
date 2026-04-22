@@ -1,9 +1,12 @@
 {
   "meta": {
-    "title": "Power On Interio | Commercial and Residential Interiors",
-    "description": "Power On Interio designs commercial offices, homes, kitchens, wardrobes, and turnkey interiors with practical planning and refined execution."
+    "title": "Power On Interio | Interior Design Company for Homes & Offices Across India",
+    "description": "Power On Interio plans and delivers residential, commercial office, kitchen, wardrobe, and turnkey interiors across India, including Bengaluru, Hyderabad, Chennai, Mumbai, Pune, and other major cities."
   },
   "heroTag": "Design. Build. Deliver.",
+  "heroLocationLabel": "Serving Clients Across India",
+  "heroHeadline": "Power On Interio designs homes, offices, and turnkey spaces across India.",
+  "heroDescription": "Power On Interio plans and delivers residential and commercial interiors across India, with practical layouts, refined finishes, and dependable site execution in Bengaluru, Hyderabad, Chennai, Mumbai, Pune, Delhi NCR, and other major cities.",
   "heroPrimaryCta": "Book a Consultation",
   "heroSecondaryCta": "Explore Services",
   "trustStrip": [
@@ -13,8 +16,8 @@
   ],
   "aboutSection": {
     "eyebrow": "About Power On Interio",
-    "title": "A practical interior design partner for commercial spaces, homes, and utility areas.",
-    "description": "We align layout, materials, and site execution so each space feels polished and works smoothly every day.",
+    "title": "A practical interior design partner for homes, offices, and utility areas across India.",
+    "description": "We align layout, materials, and site execution so interiors across India feel polished and work smoothly every day.",
     "primaryCta": "Learn About Us",
     "secondaryCta": "View Projects"
   },
@@ -27,7 +30,7 @@
   },
   "servicesSection": {
     "eyebrow": "Services",
-    "title": "Design, consultation, and turnkey execution tailored to each space.",
+    "title": "Interior design, consultation, and turnkey execution across India.",
     "linkLabel": "See Services"
   },
   "clientsSection": {
@@ -49,7 +52,7 @@
   },
   "projectsSection": {
     "eyebrow": "Project Gallery",
-    "title": "Selected commercial and residential interiors.",
+    "title": "Selected interiors across homes, offices, and workplaces in India.",
     "linkLabel": "View Projects"
   },
   "processSection": {
@@ -66,16 +69,16 @@
   },
   "contactCtaSection": {
     "eyebrow": "Contact",
-    "title": "Ready to discuss your space?",
-    "description": "Share the site, scope, and timeline, and we’ll help you define the next step.",
+    "title": "Ready to discuss your interior project?",
+    "description": "Share the site, scope, and timeline, and we’ll help you define the right next step for your home, office, or turnkey fit-out anywhere in India.",
     "primaryCta": "Contact Us"
   },
   "projectImages": [
-    "/commercial/comercial-4.jpeg",
+    "/office-premium.jpg",
     "/living-premium.jpg",
-    "/residential/residential-kitchen-beige-modern.jpg",
-    "/commercial/comercial-15.jpeg",
+    "/residential/residential-wardrobe-entry-view.jpg",
+    "/commercial/comercial-10.jpeg",
     "/residential/residential-bedroom-marble-headboard.jpg",
-    "/commercial/comercial-6.jpeg"
+    "/commercial/comercial-12.jpeg"
   ]
 }

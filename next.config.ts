@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const defaultSiteUrl = "https://poweroninterio.vercel.app";
+const defaultSiteUrl = "https://www.poweroninterios.com";
 const defaultGitHubPagesSiteUrl = "https://powerinteriosolutions-hash.github.io";
 
 type DeployTarget = "local" | "github-pages" | "vercel";

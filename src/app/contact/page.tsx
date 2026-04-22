@@ -58,7 +58,7 @@ export default function ContactPage() {
                 {contactPageContent.cards.serviceAreaLabel}
               </p>
               <p className="mt-4 max-w-[24rem] font-serif text-[clamp(1.7rem,2.25vw,2.45rem)] leading-[1.12] tracking-[-0.02em]">
-                {company.location}
+                {company.serviceAreaSummary ?? company.location}
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
                 {contactPageContent.cards.serviceAreaHelp}
