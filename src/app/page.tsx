@@ -343,11 +343,11 @@ export default function Home() {
             </span>
           </div>
 
-          {/* <div className="max-w-2xl">
+          <div className="max-w-2xl">
             <h1 className="font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem] text-white">
               {homeContent.heroHeadline}
             </h1>
-          </div> */}
+          </div>
 
           <div className="hero-animated-caption-wrapper absolute bottom-8 left-4 right-4 sm:left-8 sm:bottom-8 lg:left-10 lg:bottom-8 xl:left-12 max-w-3xl">
             {heroSlides.map((slide, index) => (
