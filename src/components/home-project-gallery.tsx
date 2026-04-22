@@ -220,7 +220,7 @@ export function HomeProjectGallery({ items }: HomeProjectGalleryProps) {
         </SwipeCarousel>
       </div>
 
-      <div className="mt-8 hidden gap-4 sm:mt-10 sm:gap-6 lg:grid lg:grid-cols-3">
+      <div className="mt-8 hidden gap-4 sm:mt-10 sm:gap-5 lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-4">
         {items.map((item, index) => (
           <article
             key={item.name}
@@ -233,7 +233,7 @@ export function HomeProjectGallery({ items }: HomeProjectGalleryProps) {
               aria-haspopup="dialog"
               className="group block w-full cursor-zoom-in touch-manipulation text-left"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-60 overflow-hidden xl:h-56">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -244,7 +244,7 @@ export function HomeProjectGallery({ items }: HomeProjectGalleryProps) {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(20,17,14,0.18)_100%)]" />
               </div>
-              <div className="p-5 sm:p-7">
+              <div className="p-5 sm:p-6 lg:p-5">
                 <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-soft)] sm:text-sm sm:tracking-[0.25em]">
                   0{index + 1} / {item.category}
                 </p>

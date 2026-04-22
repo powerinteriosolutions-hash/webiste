@@ -33,6 +33,15 @@ export const metadata: Metadata = {
   creator: "Power On Interio",
   publisher: "Power On Interio",
   category: "Interior Design",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   alternates: {
     canonical: "/",
   },
