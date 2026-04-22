@@ -326,140 +326,63 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="max-w-[19rem]">
-              <p className="text-[0.66rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
-                {homeContent.heroLocationLabel}
-              </p>
-              <h1 className="mt-3 font-serif text-[2.35rem] leading-[0.96] text-white">
+            {/* <div className="max-w-[19rem]">
+              <h1 className="font-serif text-[2.35rem] leading-[0.96] text-white">
                 {homeContent.heroHeadline}
               </h1>
-              <p className="mt-3 text-[0.95rem] leading-6 text-white/82">
-                {homeContent.heroDescription}
-              </p>
-            </div>
+            </div> */}
 
-            <div className="max-w-[18.5rem]">
-              <div className="flex flex-wrap gap-2.5">
-                {mobileHeroLabels.map((label) => (
-                  <span
-                    key={label}
-                    className="rounded-full border border-white/16 bg-[rgba(19,16,13,0.14)] px-3.5 py-2 text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-white/92 backdrop-blur-sm"
-                  >
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <div className="h-8" />
           </div>
         </div>
 
-        <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:min-h-[70vh] lg:px-10 lg:pb-6 lg:pt-12 xl:min-h-[72vh] xl:px-12">
-          <div className="grid flex-1 items-end gap-4 sm:gap-8 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-5 lg:items-end">
-            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[36rem] lg:self-end xl:max-w-[39rem]">
-              <div className="max-w-3xl">
-                <p className="text-[0.78rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
-                  {homeContent.heroLocationLabel}
-                </p>
-                <h1 className="mt-4 font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem]">
-                  {homeContent.heroHeadline}
-                </h1>
-                <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/82 sm:text-[1.12rem] sm:leading-8">
-                  {homeContent.heroDescription}
-                </p>
-              </div>
+        <div className="hidden min-h-[76svh] w-full flex-col justify-between px-4 pb-8 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-24 sm:pt-14 lg:min-h-[70vh] lg:px-10 lg:pb-24 lg:pt-12 xl:min-h-[72vh] xl:px-12">
+          <div className="gradient-ring-badge max-w-fit">
+            <span className="gradient-ring-badge__inner text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-white/88">
+              {homeContent.heroTag}
+            </span>
+          </div>
 
-              <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-5 lg:p-4">
-                <p className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[0.92rem] sm:tracking-[0.2em]">
-                  Core Expertise
-                </p>
-                <div className="hero-expertise-stage mt-2 sm:mt-4" aria-hidden>
-                  {heroSlides.map((slide, index) => (
-                    <article
-                      key={`expertise-left-${slide.metricLabel}`}
-                      className="hero-expertise-frame rounded-[1rem] border p-2.5 backdrop-blur-[2px] flex flex-col items-center justify-center text-center sm:items-start sm:justify-start sm:text-left sm:rounded-[1.2rem] sm:p-4"
-                      style={
-                        {
-                          animationDelay: `${index * heroSlideIntervalSeconds}s`,
-                          animationDuration: `${heroAnimationDurationSeconds}s`,
-                          background: `linear-gradient(158deg, ${slide.palette.frameFrom} 0%, ${slide.palette.frameTo} 100%)`,
-                          borderColor: slide.palette.frameBorder,
-                          boxShadow: `0 20px 48px ${slide.palette.shadow}`,
-                        } as CSSProperties
-                      }
-                    >
-                      <h3
-                        className="font-serif font-semibold text-[1.6rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3rem]"
-                        style={{ color: slide.palette.title }}
-                      >
-                        {slide.expertiseTitle}
-                      </h3>
-                      <p
-                        className="mt-2 hidden text-[1.02rem] leading-7 font-medium sm:block sm:text-[1.15rem] sm:leading-8 lg:text-[1.26rem]"
-                        style={{ color: slide.palette.body }}
-                      >
-                        {slide.expertiseDetail}
-                      </p>
-                      <div className="mt-3 hidden flex-wrap gap-2 sm:flex">
-                        {slide.expertiseTags.map((tag) => (
-                          <span
-                            key={`${slide.metricLabel}-left-${tag}`}
-                            className="rounded-full border px-2.5 py-1 text-[0.72rem] font-bold tracking-[0.1em] uppercase sm:px-3 sm:text-[0.8rem]"
-                            style={{
-                              background: slide.palette.tagBg,
-                              borderColor: slide.palette.tagBorder,
-                              color: slide.palette.tagText,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </article>
-                  ))}
+          {/* <div className="max-w-2xl">
+            <h1 className="font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem] text-white">
+              {homeContent.heroHeadline}
+            </h1>
+          </div> */}
+
+          <div className="hero-animated-caption-wrapper absolute bottom-8 left-4 right-4 sm:left-8 sm:bottom-8 lg:left-10 lg:bottom-8 xl:left-12 max-w-3xl">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={`caption-${slide.metricLabel}`}
+                className="hero-animated-caption"
+                style={
+                  {
+                    animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                    animationDuration: `${heroAnimationDurationSeconds}s`,
+                    "--caption-color": slide.palette.title,
+                    "--caption-glow": slide.palette.indicator,
+                  } as CSSProperties
+                }
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 -z-10 rounded-lg blur-2xl opacity-50" 
+                    style={{ background: `${slide.palette.indicator}` }} 
+                  />
+                  <p
+                    className="text-[1.15rem] leading-7 font-medium tracking-wide overflow-hidden italic"
+                    style={{
+                      color: slide.palette.title,
+                      textShadow: `0 0 30px ${slide.palette.indicator}, 0 0 60px ${slide.palette.indicator}50`,
+                      animation: `heroTextWrite 6s ease-out forwards`,
+                      animationDelay: `${index * heroSlideIntervalSeconds + 1}s`,
+                      animationDuration: `${heroAnimationDurationSeconds}s`,
+                      whiteSpace: "normal",
+                    }}
+                  >
+                    "{slide.caption}"
+                  </p>
                 </div>
               </div>
-
-              <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-6 sm:flex-row">
-                <Link
-                  href={withBasePathRoute("/contact")}
-                  className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
-                >
-                  {homeContent.heroPrimaryCta}
-                </Link>
-              </div>
-
-              <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-5" aria-hidden>
-                {heroSlides.map((slide, index) => (
-                  <span
-                    key={`indicator-${slide.metric}`}
-                    className="hero-cinematic-indicator"
-                    style={
-                      {
-                        animationDelay: `${index * heroSlideIntervalSeconds}s`,
-                        animationDuration: `${heroAnimationDurationSeconds}s`,
-                        "--hero-indicator-active": slide.palette.indicator,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-stats-shell animate-fade-rise-delay hidden md:block lg:justify-self-end">
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-                {stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="interactive-card-dark home-surface-card-compact border border-white/15 bg-white/10 p-3.5 text-white backdrop-blur transition hover:bg-white/14 sm:p-4"
-                  >
-                    <p className="font-serif text-[1.9rem] sm:text-4xl">{item.value}</p>
-                    <p className="mt-1.5 text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-white/72 sm:mt-2 sm:text-xs sm:tracking-[0.14em]">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

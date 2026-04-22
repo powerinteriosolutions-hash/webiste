@@ -829,6 +829,38 @@ h6 {
   }
 }
 
+@keyframes heroTextWrite {
+  0% {
+    opacity: 0;
+    max-width: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    max-width: 100%;
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 1;
+    max-width: 100%;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.hero-animated-caption-wrapper {
+  position: relative;
+}
+
+.hero-animated-caption {
+  position: absolute;
+  opacity: 0;
+  animation: heroFactCycle 18s ease-in-out infinite;
+  will-change: opacity;
+}
+
 .project-gallery-page {
   background:
     radial-gradient(circle at top right, rgba(217, 180, 140, 0.24), transparent 42%),
@@ -1275,6 +1307,37 @@ h6 {
   text-transform: uppercase;
   padding: 0.7rem 0.9rem;
   backdrop-filter: blur(10px);
+}
+
+/* Mobile hero image & text visibility fixes */
+@media (max-width: 640px) {
+  /* Force hero images to be centered to avoid important areas being cropped */
+  .hero-cinematic-image {
+    object-position: center center !important;
+  }
+
+  /* Reduce headline size so more of the image is visible on small screens */
+  .hero-mobile-dock h1,
+  .hero-content-shell h1 {
+    font-size: 1.9rem !important;
+    line-height: 1.02 !important;
+    max-width: 92% !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Ensure animated caption stays above image and inward from edges */
+  .hero-animated-caption-wrapper {
+    position: absolute !important;
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    bottom: 1.25rem !important;
+    z-index: 30 !important;
+    pointer-events: none;
+  }
+
+  .hero-animated-caption p {
+    font-size: 1rem !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
