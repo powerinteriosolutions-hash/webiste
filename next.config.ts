@@ -61,11 +61,12 @@ const configuredSiteUrl =
     ? defaultGitHubPagesSiteUrl
     : deployTarget === "vercel"
       ? explicitlyConfiguredSiteUrl ??
-        // Prefer Vercel's stable production hostname so stale env vars do not leak old aliases.
+        // This project has a canonical production domain, so prefer the checked-in value
+        // over Vercel hostnames or stale legacy env vars when generating SEO URLs.
+        defaultSiteUrl ??
         vercelProjectProductionUrl ??
         legacyPublicSiteUrl ??
-        vercelDeploymentUrl ??
-        defaultSiteUrl
+        vercelDeploymentUrl
       : explicitlyConfiguredSiteUrl ?? legacyPublicSiteUrl ?? "http://localhost:3000";
 const publicSiteUrl = normalizeSiteUrl(
   toAbsoluteUrl(configuredSiteUrl) ?? defaultGitHubPagesSiteUrl,
