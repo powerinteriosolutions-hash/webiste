@@ -98,6 +98,14 @@ export const toAbsoluteSiteUrl = (href: string = "/") => {
 
 export const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? companyData.siteUrl);
 export const company = companyData.company;
+export const brandAliases = Array.from(
+  new Set(
+    [
+      companyData.company.shortName,
+      ...(Array.isArray(companyData.company.brandAliases) ? companyData.company.brandAliases : []),
+    ].filter((value): value is string => typeof value === "string" && value.trim().length > 0),
+  ),
+);
 export const navLinks = companyData.navLinks;
 
 export const homeContent = homePage;

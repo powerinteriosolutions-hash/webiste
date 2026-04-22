@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { ArrowRight } from "lucide-react";
 import { CommercialShowcaseCarousel } from "@/components/commercial-showcase-carousel";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { HomeLeadForm } from "@/components/home-lead-form";
@@ -12,6 +11,7 @@ import {
 } from "@/components/home-project-gallery";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import {
+  brandAliases,
   company,
   contactPageContent,
   faqs,
@@ -28,22 +28,87 @@ import {
 } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: homeContent.meta.title,
+  title: {
+    absolute: homeContent.meta.title,
+  },
   description: homeContent.meta.description,
 };
 
-const seoSchema = {
-  "@context": "https://schema.org",
-  "@type": "InteriorDesign",
-  name: company.name,
-  url: siteUrl,
-  description: company.description,
-  areaServed: company.location,
-  serviceType: services.map((service) => service.title),
-};
+const organizationId = `${siteUrl}/#organization`;
+const logoUrl = `${siteUrl}${withBasePath(company.logoPath)}`;
+const organizationAlternateName = brandAliases[0] ?? company.shortName;
+const serviceAreas =
+  Array.isArray(company.serviceAreas) && company.serviceAreas.length > 0
+    ? company.serviceAreas
+    : [company.primaryCity ?? "Bengaluru (Bangalore)"];
+const sameAs = [company.instagram, company.linkedin].filter(
+  (value): value is string => typeof value === "string" && value.length > 0 && value !== "#",
+);
+const seoStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationId,
+    name: company.name,
+    alternateName: organizationAlternateName,
+    url: siteUrl,
+    logo: logoUrl,
+    image: logoUrl,
+    description: company.description,
+    email: company.email,
+    telephone: company.phone,
+    areaServed: serviceAreas,
+    sameAs,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        telephone: company.phone,
+        email: company.email,
+        areaServed: "IN",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name: company.name,
+    alternateName: brandAliases,
+    description: company.description,
+    publisher: {
+      "@id": organizationId,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Residential and commercial interior design",
+    provider: {
+      "@id": organizationId,
+    },
+    areaServed: serviceAreas,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Interior design services",
+      itemListElement: services.map((service) => ({
+        "@type": "OfferCatalog",
+        name: service.title,
+        itemListElement: [
+          {
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+          },
+        ],
+      })),
+    },
+  },
+];
 
 const projectImages = homeContent.projectImages.map((imagePath) => withBasePath(imagePath));
-const aboutFeatureImage = projectImages[0];
+const aboutFeatureImage = withBasePath("/workspace-premium.jpg");
 const testimonialColumns = Array.from({ length: 3 }, (_, columnIndex) =>
   testimonials.filter((_, index) => index % 3 === columnIndex),
 );
@@ -141,25 +206,25 @@ const heroAnimationDurationSeconds = heroSlides.length * heroSlideIntervalSecond
 
 const commercialShowcaseItems = [
   {
-    image: withBasePath("/commercial/comercial-4.jpeg"),
+    image: withBasePath("/commercial/comercial-1.jpeg"),
     label: "Commercial Office",
     title: "Reception and Arrival",
     description: "A clean welcome zone that sets the tone and keeps circulation easy.",
   },
   {
-    image: withBasePath("/commercial/comercial-1.jpeg"),
+    image: withBasePath("/commercial/comercial-3.jpeg"),
     label: "Workspace Planning",
     title: "Open Collaboration Floor",
     description: "Open desk planning shaped for team flow, visibility, and daily use.",
   },
   {
-    image: withBasePath("/commercial/comercial-6.jpeg"),
+    image: withBasePath("/commercial/comercial-5.jpeg"),
     label: "Meeting Zone",
     title: "Conference Room Flow",
     description: "A meeting setup built for clear presentations and focused discussion.",
   },
   {
-    image: withBasePath("/commercial/comercial-15.jpeg"),
+    image: withBasePath("/commercial/comercial-8.jpeg"),
     label: "Client Lounge",
     title: "Premium First Impressions",
     description: "A polished client-facing space that feels calm, premium, and welcoming.",
@@ -212,7 +277,7 @@ export default function Home() {
     <main className="bg-[var(--color-cream)] text-[var(--color-ink)]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(seoSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(seoStructuredData) }}
       />
 
       <section className="relative isolate overflow-hidden border-b border-white/10">
@@ -261,6 +326,18 @@ export default function Home() {
               </span>
             </div>
 
+            <div className="max-w-[19rem]">
+              <p className="text-[0.66rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
+                {homeContent.heroLocationLabel}
+              </p>
+              <h1 className="mt-3 font-serif text-[2.35rem] leading-[0.96] text-white">
+                {homeContent.heroHeadline}
+              </h1>
+              <p className="mt-3 text-[0.95rem] leading-6 text-white/82">
+                {homeContent.heroDescription}
+              </p>
+            </div>
+
             <div className="max-w-[18.5rem]">
               <div className="flex flex-wrap gap-2.5">
                 {mobileHeroLabels.map((label) => (
@@ -278,7 +355,19 @@ export default function Home() {
 
         <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:px-10 lg:pb-8 lg:pt-16 xl:px-14">
           <div className="grid flex-1 items-end gap-4 sm:gap-10 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-6 lg:items-end">
-            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[34rem] lg:self-end xl:max-w-[36rem]">
+            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[38rem] lg:self-end xl:max-w-[42rem]">
+              <div className="max-w-3xl">
+                <p className="text-[0.78rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
+                  {homeContent.heroLocationLabel}
+                </p>
+                <h1 className="mt-4 font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.7rem]">
+                  {homeContent.heroHeadline}
+                </h1>
+                <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/82 sm:text-[1.12rem] sm:leading-8">
+                  {homeContent.heroDescription}
+                </p>
+              </div>
+
               <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-6">
                 <p className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[0.92rem] sm:tracking-[0.2em]">
                   Core Expertise

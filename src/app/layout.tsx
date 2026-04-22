@@ -2,26 +2,32 @@ import type { Metadata } from "next";
 import { MotionFallback } from "@/components/motion-fallback";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { company, siteUrl } from "@/lib/site-content";
+import { brandAliases, company, siteUrl } from "@/lib/site-content";
 import "./globals.css";
+
+const metadataKeywords = Array.from(
+  new Set([
+    company.name,
+    ...brandAliases,
+    "interior design company India",
+    "interior designers India",
+    "home interior design India",
+    "office interior design India",
+    "turnkey interiors India",
+    "commercial office interiors",
+    "residential interiors",
+    "turnkey interior solutions",
+  ]),
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Power On Interio | Residential and Commercial Interiors",
+    default: "Power On Interio | Interior Design Company for Homes & Offices Across India",
     template: "%s | Power On Interio",
   },
   description: company.description,
-  keywords: [
-    "Power On Interio",
-    "Poweroninterio",
-    "interior design company",
-    "home interior design",
-    "office interior design",
-    "residential interiors",
-    "commercial office interiors",
-    "turnkey interior solutions",
-  ],
+  keywords: metadataKeywords,
   applicationName: "Power On Interio",
   authors: [{ name: "Power On Interio" }],
   creator: "Power On Interio",
@@ -33,14 +39,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Power On Interio | Residential and Commercial Interiors",
+    title: "Power On Interio | Interior Design Company for Homes & Offices Across India",
     description: company.description,
     siteName: "Power On Interio",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Power On Interio | Residential and Commercial Interiors",
+    title: "Power On Interio | Interior Design Company for Homes & Offices Across India",
     description: company.description,
   },
   robots: {
