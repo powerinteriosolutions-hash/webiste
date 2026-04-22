@@ -73,17 +73,27 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-16 grid gap-10 lg:mt-14 lg:gap-8">
-        <div>
-          <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-            {aboutContent.leadership.eyebrow}
-          </p>
-          <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
-            {aboutContent.leadership.title}
-          </h2>
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+              {aboutContent.leadership.eyebrow}
+            </p>
+            <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
+              {aboutContent.leadership.title}
+            </h2>
+          </div>
+          <div className="max-w-xl rounded-[1.4rem] border border-[rgba(157,113,69,0.12)] bg-[rgba(255,252,248,0.72)] px-5 py-4">
+            <p className="text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
+              Leadership Notes
+            </p>
+            <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] sm:text-base">
+              The leadership team stays close to planning, material decisions, and execution so the final interior matches the brief more closely.
+            </p>
+          </div>
         </div>
 
-        <div className="grid gap-6 lg:gap-5">
-          <div className="grid gap-5 md:grid-cols-2">
+        <div className="grid gap-8 lg:gap-6">
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
             {founders.map((founder) => {
               const initials = founder.name
                 .split(" ")
@@ -103,35 +113,32 @@ export default function AboutPage() {
               return (
                 <article
                   key={founder.name}
-                  className="executive-card profile-shell grid h-full gap-5 rounded-[2rem] border border-[rgba(157,113,69,0.14)] p-5 shadow-[0_20px_65px_rgba(71,52,34,0.08)] xl:grid-cols-[176px_1fr]"
+                  className="executive-card profile-shell flex flex-col items-center gap-6 rounded-[2rem] border border-[rgba(157,113,69,0.14)] p-6 text-center shadow-[0_18px_46px_rgba(71,52,34,0.08)]"
                 >
-                  <div className="executive-photo-frame aspect-square w-full xl:aspect-auto xl:min-h-[16rem]">
+                  <div className="executive-photo-frame h-40 w-40 overflow-hidden rounded-full border-4 border-[rgba(157,113,69,0.2)] shadow-[0_10px_30px_rgba(71,52,34,0.15)]">
                     {founderImage ? (
-                      <div className="relative h-full w-full xl:min-h-[16rem]">
+                      <div className="relative h-full w-full">
                         <Image
                           src={founderImage}
                           alt={founder.name}
                           fill
-                          sizes="(max-width: 1280px) 100vw, 190px"
+                          sizes="160px"
                           className="object-cover"
                         />
                       </div>
                     ) : (
-                      <div className="profile-avatar h-full w-full text-6xl xl:min-h-[16rem]">
-                        <div className="flex flex-col items-center gap-4">
-                          <span>{initials}</span>
-                          <span className="executive-photo-slot">Photo Slot</span>
-                        </div>
+                      <div className="profile-avatar flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(157,113,69,0.15)] to-[rgba(157,113,69,0.08)] text-5xl font-semibold text-[var(--color-accent)]">
+                        {initials}
                       </div>
                     )}
                   </div>
 
-                  <div className="flex h-full flex-col gap-4">
+                  <div className="flex w-full flex-col gap-3">
                     <div>
                       <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
                         Leadership Profile
                       </p>
-                      <p className="font-serif text-3xl text-[var(--color-ink)]">
+                      <p className="font-serif text-2xl leading-tight text-[var(--color-ink)] sm:text-3xl">
                         {founder.name}
                       </p>
                       <p className="mt-2 text-sm font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)]">
@@ -139,20 +146,26 @@ export default function AboutPage() {
                       </p>
                     </div>
 
-                    <div className="rounded-[1.3rem] border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.42)] p-4">
+                    <div className="rounded-[1.15rem] border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.42)] p-4">
                       <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)]">
                         Vision
                       </p>
-                      <p className="mt-3 text-base leading-7 text-[var(--color-muted)]">
+                      <p className="mt-2 text-[0.9rem] leading-6 text-[var(--color-muted)]">
                         {founder.vision}
                       </p>
                     </div>
 
-                    <div className="mt-auto grid gap-3 border-t border-[rgba(157,113,69,0.12)] pt-4 text-sm text-[var(--color-muted)]">
-                      <a href={`mailto:${founderEmail}`} className="break-all hover:text-[var(--color-accent)]">
+                    <div className="flex flex-col gap-2 border-t border-[rgba(157,113,69,0.12)] pt-4 text-sm text-[var(--color-muted)]">
+                      <a
+                        href={`mailto:${founderEmail}`}
+                        className="break-all rounded-full border border-[rgba(157,113,69,0.12)] bg-white/60 px-3 py-2 hover:text-[var(--color-accent)]"
+                      >
                         {founderEmail}
                       </a>
-                      <a href={`tel:${founderPhoneHref}`} className="hover:text-[var(--color-accent)]">
+                      <a
+                        href={`tel:${founderPhoneHref}`}
+                        className="rounded-full border border-[rgba(157,113,69,0.12)] bg-white/60 px-3 py-2 hover:text-[var(--color-accent)]"
+                      >
                         {founderPhone}
                       </a>
                     </div>
@@ -162,15 +175,20 @@ export default function AboutPage() {
             })}
           </div>
 
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ink)] px-5 py-6 text-white sm:px-6 lg:px-7 lg:py-5">
-            <div className="mb-5">
-              <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent-soft)]">
-                Team
+          <div className="rounded-[1.8rem] border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(180deg,#fffdf9_0%,#f5ede3_100%)] px-5 py-5 text-[var(--color-ink)] sm:px-6">
+            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.22em] uppercase text-[var(--color-accent)]">
+                  Team
+                </p>
+                <h3 className="mt-2 font-serif text-[2rem] leading-none">Meet the wider Power On Interio team</h3>
+              </div>
+              <p className="max-w-md text-sm leading-6 text-[var(--color-muted)]">
+                Core client support and coordination roles working alongside the leadership team.
               </p>
-              <h3 className="mt-2 font-serif text-3xl">Meet the wider Power On Interio team</h3>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-4">
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               {team.map((member) => {
                 const initials = member.name
                   .split(" ")
@@ -180,6 +198,8 @@ export default function AboutPage() {
                 const memberEmail = member.email ?? company.email;
                 const memberPhone = member.phone ?? company.phone;
                 const memberPhoneHref = memberPhone.replace(/[^0-9+]/g, "");
+                const hasEmail = typeof member.email === "string" && member.email.trim().length > 0;
+                const hasPhone = typeof member.phone === "string" && member.phone.trim().length > 0;
                 const memberImage =
                   typeof member.image === "string" &&
                   member.image.trim() &&
@@ -190,45 +210,55 @@ export default function AboutPage() {
                 return (
                   <article
                     key={member.name}
-                    className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04))] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)]"
+                    className="home-surface-card-compact grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 border border-[rgba(157,113,69,0.12)] bg-white/78 px-4 py-4"
                   >
-                    <div className="flex flex-col items-center text-center">
-                      <div className="mb-4 overflow-hidden rounded-full border-4 border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                        {memberImage ? (
-                          <div className="relative h-28 w-28">
-                            <Image
-                              src={memberImage}
-                              alt={member.name}
-                              fill
-                              sizes="112px"
-                              className="object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="profile-avatar h-28 w-28 text-3xl">
-                            {initials}
-                          </div>
-                        )}
-                      </div>
+                    <div className="overflow-hidden rounded-full border-2 border-[rgba(157,113,69,0.2)] shadow-[0_10px_24px_rgba(71,52,34,0.12)]">
+                      {memberImage ? (
+                        <div className="relative h-16 w-16">
+                          <Image
+                            src={memberImage}
+                            alt={member.name}
+                            fill
+                            sizes="64px"
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="profile-avatar h-16 w-16 text-2xl">
+                          {initials}
+                        </div>
+                      )}
+                    </div>
 
-                      <p className="font-serif text-3xl text-white">{member.name}</p>
-                      <p className="mt-2 text-xs font-semibold tracking-[0.18em] uppercase text-[var(--color-accent-soft)]">
+                    <div className="min-w-0">
+                      <p className="font-serif text-[1.45rem] leading-none text-[var(--color-ink)]">
+                        {member.name}
+                      </p>
+                      <p className="mt-2 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-accent)]">
                         {member.role}
                       </p>
-
-                      <div className="mt-4 grid w-full gap-2 text-sm text-white/72">
-                        <a
-                          href={`mailto:${memberEmail}`}
-                          className="break-all rounded-full border border-white/10 bg-white/5 px-4 py-2 hover:bg-white/10 hover:text-white"
-                        >
-                          {memberEmail}
-                        </a>
-                        <a
-                          href={`tel:${memberPhoneHref}`}
-                          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 hover:bg-white/10 hover:text-white"
-                        >
-                          {memberPhone}
-                        </a>
+                      <div className="mt-3 flex flex-wrap gap-2 text-[0.76rem] text-[var(--color-muted)]">
+                        {hasEmail ? (
+                          <a
+                            href={`mailto:${memberEmail}`}
+                            className="rounded-full border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.36)] px-3 py-1.5 hover:text-[var(--color-accent)]"
+                          >
+                            {memberEmail}
+                          </a>
+                        ) : null}
+                        {hasPhone ? (
+                          <a
+                            href={`tel:${memberPhoneHref}`}
+                            className="rounded-full border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.36)] px-3 py-1.5 hover:text-[var(--color-accent)]"
+                          >
+                            {memberPhone}
+                          </a>
+                        ) : null}
+                        {!hasEmail && !hasPhone ? (
+                          <span className="rounded-full border border-[rgba(157,113,69,0.12)] bg-[rgba(239,225,208,0.36)] px-3 py-1.5">
+                            Core Support
+                          </span>
+                        ) : null}
                       </div>
                     </div>
                   </article>

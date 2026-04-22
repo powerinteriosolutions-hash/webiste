@@ -326,140 +326,63 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="max-w-[19rem]">
-              <p className="text-[0.66rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
-                {homeContent.heroLocationLabel}
-              </p>
-              <h1 className="mt-3 font-serif text-[2.35rem] leading-[0.96] text-white">
+            {/* <div className="max-w-[19rem]">
+              <h1 className="font-serif text-[2.35rem] leading-[0.96] text-white">
                 {homeContent.heroHeadline}
               </h1>
-              <p className="mt-3 text-[0.95rem] leading-6 text-white/82">
-                {homeContent.heroDescription}
-              </p>
-            </div>
+            </div> */}
 
-            <div className="max-w-[18.5rem]">
-              <div className="flex flex-wrap gap-2.5">
-                {mobileHeroLabels.map((label) => (
-                  <span
-                    key={label}
-                    className="rounded-full border border-white/16 bg-[rgba(19,16,13,0.14)] px-3.5 py-2 text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-white/92 backdrop-blur-sm"
-                  >
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <div className="h-8" />
           </div>
         </div>
 
-        <div className="hidden min-h-[76svh] w-full flex-col justify-end px-4 pb-4 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-6 sm:pt-14 lg:min-h-[70vh] lg:px-10 lg:pb-6 lg:pt-12 xl:min-h-[72vh] xl:px-12">
-          <div className="grid flex-1 items-end gap-4 sm:gap-8 lg:grid-cols-[minmax(0,0.74fr)_minmax(18rem,0.36fr)] lg:gap-5 lg:items-end">
-            <div className="hero-content-shell hero-mobile-dock animate-fade-rise max-w-3xl text-white lg:max-w-[36rem] lg:self-end xl:max-w-[39rem]">
-              <div className="max-w-3xl">
-                <p className="text-[0.78rem] font-semibold tracking-[0.18em] uppercase text-[#f6e3cb]">
-                  {homeContent.heroLocationLabel}
-                </p>
-                <h1 className="mt-4 font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem]">
-                  {homeContent.heroHeadline}
-                </h1>
-                <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/82 sm:text-[1.12rem] sm:leading-8">
-                  {homeContent.heroDescription}
-                </p>
-              </div>
+        <div className="hidden min-h-[76svh] w-full flex-col justify-between px-4 pb-8 pt-10 sm:flex sm:min-h-[82vh] sm:px-8 sm:pb-24 sm:pt-14 lg:min-h-[70vh] lg:px-10 lg:pb-24 lg:pt-12 xl:min-h-[72vh] xl:px-12">
+          <div className="gradient-ring-badge max-w-fit">
+            <span className="gradient-ring-badge__inner text-[0.64rem] font-semibold tracking-[0.16em] uppercase text-white/88">
+              {homeContent.heroTag}
+            </span>
+          </div>
 
-              <div className="hero-expertise-card rounded-[1.45rem] p-2.5 text-white sm:rounded-[2rem] sm:p-5 lg:p-4">
-                <p className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#f6e3cb] sm:text-[0.92rem] sm:tracking-[0.2em]">
-                  Core Expertise
-                </p>
-                <div className="hero-expertise-stage mt-2 sm:mt-4" aria-hidden>
-                  {heroSlides.map((slide, index) => (
-                    <article
-                      key={`expertise-left-${slide.metricLabel}`}
-                      className="hero-expertise-frame rounded-[1rem] border p-2.5 backdrop-blur-[2px] flex flex-col items-center justify-center text-center sm:items-start sm:justify-start sm:text-left sm:rounded-[1.2rem] sm:p-4"
-                      style={
-                        {
-                          animationDelay: `${index * heroSlideIntervalSeconds}s`,
-                          animationDuration: `${heroAnimationDurationSeconds}s`,
-                          background: `linear-gradient(158deg, ${slide.palette.frameFrom} 0%, ${slide.palette.frameTo} 100%)`,
-                          borderColor: slide.palette.frameBorder,
-                          boxShadow: `0 20px 48px ${slide.palette.shadow}`,
-                        } as CSSProperties
-                      }
-                    >
-                      <h3
-                        className="font-serif font-semibold text-[1.6rem] leading-[1.1] sm:text-[2.6rem] lg:text-[3rem]"
-                        style={{ color: slide.palette.title }}
-                      >
-                        {slide.expertiseTitle}
-                      </h3>
-                      <p
-                        className="mt-2 hidden text-[1.02rem] leading-7 font-medium sm:block sm:text-[1.15rem] sm:leading-8 lg:text-[1.26rem]"
-                        style={{ color: slide.palette.body }}
-                      >
-                        {slide.expertiseDetail}
-                      </p>
-                      <div className="mt-3 hidden flex-wrap gap-2 sm:flex">
-                        {slide.expertiseTags.map((tag) => (
-                          <span
-                            key={`${slide.metricLabel}-left-${tag}`}
-                            className="rounded-full border px-2.5 py-1 text-[0.72rem] font-bold tracking-[0.1em] uppercase sm:px-3 sm:text-[0.8rem]"
-                            style={{
-                              background: slide.palette.tagBg,
-                              borderColor: slide.palette.tagBorder,
-                              color: slide.palette.tagText,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </article>
-                  ))}
+          {/* <div className="max-w-2xl">
+            <h1 className="font-serif text-[3rem] leading-[0.92] sm:text-[3.8rem] xl:text-[4.25rem] text-white">
+              {homeContent.heroHeadline}
+            </h1>
+          </div> */}
+
+          <div className="hero-animated-caption-wrapper absolute bottom-8 left-4 right-4 sm:left-8 sm:bottom-8 lg:left-10 lg:bottom-8 xl:left-12 max-w-3xl">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={`caption-${slide.metricLabel}`}
+                className="hero-animated-caption"
+                style={
+                  {
+                    animationDelay: `${index * heroSlideIntervalSeconds}s`,
+                    animationDuration: `${heroAnimationDurationSeconds}s`,
+                    "--caption-color": slide.palette.title,
+                    "--caption-glow": slide.palette.indicator,
+                  } as CSSProperties
+                }
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 -z-10 rounded-lg blur-2xl opacity-50" 
+                    style={{ background: `${slide.palette.indicator}` }} 
+                  />
+                  <p
+                    className="text-[1.15rem] leading-7 font-medium tracking-wide overflow-hidden italic"
+                    style={{
+                      color: slide.palette.title,
+                      textShadow: `0 0 30px ${slide.palette.indicator}, 0 0 60px ${slide.palette.indicator}50`,
+                      animation: `heroTextWrite 6s ease-out forwards`,
+                      animationDelay: `${index * heroSlideIntervalSeconds + 1}s`,
+                      animationDuration: `${heroAnimationDurationSeconds}s`,
+                      whiteSpace: "normal",
+                    }}
+                  >
+                    "{slide.caption}"
+                  </p>
                 </div>
               </div>
-
-              <div className="hero-cta-wrap mt-2 flex flex-col gap-3 sm:mt-6 sm:flex-row">
-                <Link
-                  href={withBasePathRoute("/contact")}
-                  className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white shadow-[0_18px_40px_rgba(157,113,69,0.28)] transition hover:-translate-y-1 hover:bg-[#b9824b] hover:shadow-[0_24px_48px_rgba(157,113,69,0.32)] sm:px-7 sm:py-4 sm:text-sm"
-                >
-                  {homeContent.heroPrimaryCta}
-                </Link>
-              </div>
-
-              <div className="hero-cinematic-indicators mt-5 hidden sm:flex sm:mt-5" aria-hidden>
-                {heroSlides.map((slide, index) => (
-                  <span
-                    key={`indicator-${slide.metric}`}
-                    className="hero-cinematic-indicator"
-                    style={
-                      {
-                        animationDelay: `${index * heroSlideIntervalSeconds}s`,
-                        animationDuration: `${heroAnimationDurationSeconds}s`,
-                        "--hero-indicator-active": slide.palette.indicator,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-stats-shell animate-fade-rise-delay hidden md:block lg:justify-self-end">
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-                {stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="interactive-card-dark home-surface-card-compact border border-white/15 bg-white/10 p-3.5 text-white backdrop-blur transition hover:bg-white/14 sm:p-4"
-                  >
-                    <p className="font-serif text-[1.9rem] sm:text-4xl">{item.value}</p>
-                    <p className="mt-1.5 text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-white/72 sm:mt-2 sm:text-xs sm:tracking-[0.14em]">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -491,32 +414,51 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f1ea_0%,#f2ebe2_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-                {homeContent.commercialSection.eyebrow}
-              </p>
-              <h2 className="mt-3 max-w-3xl font-serif text-[1.98rem] leading-[1.08] sm:mt-4 sm:text-[3rem]">
-                {homeContent.commercialSection.title}
-              </h2>
-              <p className="mt-3 max-w-2xl text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-[1rem] sm:leading-8">
-                {homeContent.commercialSection.description}
-              </p>
-            </div>
+          <div className="rounded-[2rem] border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,253,250,0.92)_0%,rgba(244,236,226,0.82)_100%)] p-5 shadow-[0_18px_54px_rgba(77,55,34,0.08)] sm:p-7 lg:p-8">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div className="max-w-3xl">
+                <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                  {homeContent.commercialSection.eyebrow}
+                </p>
+                <h2 className="mt-3 max-w-3xl font-serif text-[1.98rem] leading-[1.04] sm:mt-4 sm:text-[3rem]">
+                  {homeContent.commercialSection.title}
+                </h2>
+                <p className="mt-6 max-w-2xl text-[0.9rem] leading-6 text-[var(--color-muted)] sm:text-[1rem] sm:leading-7">
+                  {homeContent.commercialSection.description}
+                </p>
+              </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
-              <Link
-                href={withBasePathRoute("/contact")}
-                className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
-              >
-                {homeContent.commercialSection.primaryCta}
-              </Link>
-              <Link
-                href={withBasePathRoute("/projects")}
-                className="btn-premium inline-flex items-center justify-center rounded-full border border-[rgba(31,26,23,0.14)] bg-white/78 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
-              >
-                {homeContent.commercialSection.secondaryCta}
-              </Link>
+              <div className="flex flex-col gap-6 lg:items-end">
+                <div className="grid grid-cols-2 gap-2 text-[0.62rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-muted)] sm:text-[0.68rem] sm:gap-3">
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Reception Planning
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Workstations
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Meeting Rooms
+                  </span>
+                  <span className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center whitespace-nowrap">
+                    Turnkey Fit-Outs
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <Link
+                    href={withBasePathRoute("/contact")}
+                    className="btn-premium inline-flex items-center justify-center rounded-full bg-[var(--color-ink)] px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-white transition hover:-translate-y-1 hover:bg-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+                  >
+                    {homeContent.commercialSection.primaryCta}
+                  </Link>
+                  <Link
+                    href={withBasePathRoute("/projects")}
+                    className="btn-premium inline-flex items-center justify-center rounded-full border border-[rgba(31,26,23,0.14)] bg-white/78 px-6 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-[var(--color-ink)] transition hover:-translate-y-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:px-7 sm:py-4 sm:text-sm"
+                  >
+                    {homeContent.commercialSection.secondaryCta}
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -731,27 +673,56 @@ export default function Home() {
 
       <section className="section-wash bg-[linear-gradient(180deg,#f7f2eb_0%,#f1ebe6_100%)]">
         <div className="mx-auto max-w-7xl px-4 py-9 sm:px-8 sm:py-16 lg:px-12 lg:py-16">
-          <div className="grid gap-5 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
-                {homeContent.processSection.eyebrow}
-              </p>
-              <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.08] sm:mt-4 sm:text-5xl">
-                {homeContent.processSection.title}
-              </h2>
+          <div className="home-surface-panel-accent border border-[rgba(157,113,69,0.14)] bg-[linear-gradient(135deg,rgba(255,252,248,0.92)_0%,rgba(244,235,224,0.86)_100%)] p-5 text-[var(--color-ink)] sm:p-7 lg:p-8">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-xl">
+                <p className="text-sm font-semibold tracking-[0.28em] uppercase text-[var(--color-accent)]">
+                  {homeContent.processSection.eyebrow}
+                </p>
+                <h2 className="mt-3 max-w-md font-serif text-[1.96rem] leading-[1.02] sm:mt-4 sm:text-[3.3rem]">
+                  {homeContent.processSection.title}
+                </h2>
+                <p className="mt-3 max-w-lg text-[0.92rem] leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
+                  Clear brief alignment first, approvals before execution, and a handover that stays organised.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 text-[0.62rem] font-semibold tracking-[0.18em] uppercase text-[var(--color-muted)] sm:text-[0.68rem]">
+                {["Brief", "Approval", "Handover"].map((label) => (
+                  <span
+                    key={label}
+                    className="rounded-full border border-[rgba(31,26,23,0.08)] bg-white/72 px-3 py-2 text-center"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3 md:gap-4">
+            <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
               {processSteps.map((step, index) => (
                 <article
                   key={step.title}
-                  className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,#ffffff_0%,#f8f4ef_100%)] p-4 sm:p-6"
+                  className="interactive-card home-surface-card border border-[rgba(157,113,69,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(250,244,237,0.92)_100%)] p-4 sm:p-5"
                 >
-                  <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
-                    0{index + 1}
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] sm:text-sm sm:tracking-[0.24em]">
+                      0{index + 1}
+                    </p>
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]/70" />
+                  </div>
+                  <h3 className="mt-3 font-serif text-[1.45rem] leading-tight sm:text-[1.9rem]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2.5 text-[0.88rem] leading-6 text-[var(--color-muted)] sm:text-[0.96rem] sm:leading-7">
+                    {step.text}
                   </p>
-                  <h3 className="mt-2.5 font-serif text-[1.55rem] leading-tight sm:mt-4 sm:text-3xl">{step.title}</h3>
-                  <p className="mt-2.5 text-[0.9rem] leading-6 text-[var(--color-muted)] sm:mt-4 sm:text-base sm:leading-7">{step.text}</p>
+                  <div className="mt-4 h-1.5 rounded-full bg-[rgba(157,113,69,0.12)]">
+                    <div
+                      className="h-full rounded-full bg-[linear-gradient(90deg,#9d7145_0%,#d9b48c_100%)]"
+                      style={{ width: `${72 + index * 14}%` }}
+                    />
+                  </div>
                 </article>
               ))}
             </div>
